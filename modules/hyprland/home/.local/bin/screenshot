@@ -1,0 +1,29 @@
+#!/bin/bash
+
+command set -euo pipefail
+
+directory="$(command xdg-user-dir PICTURES)/Screenshots"
+file="${directory}/$(command date +'%Y%m%d-%H%M%S').png"
+
+command mkdir -p "${directory}"
+
+case "${1:-region}" in
+	region)
+		geometry="$(command slurp)" || exit 0
+		command grim -g "${geometry}" "${file}"
+		;;
+	window)
+		geometry="$(command hyprctl activewindow -j | command jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')"
+		command grim -g "${geometry}" "${file}"
+		;;
+	screen)
+		output="$(command hyprctl monitors -j | command jq -r '.[] | select(.focused) | .name')"
+		command grim -o "${output}" "${file}"
+		;;
+	*)
+		command echo "usage: screenshot region|window|screen" >&2
+		exit 1
+		;;
+esac
+
+command wl-copy --type image/png < "${file}"
