@@ -2,30 +2,6 @@ local function app(command)
 	return hl.dsp.exec_cmd("uwsm app -- " .. command)
 end
 
-local function at_edge(direction)
-	local window = hl.get_active_window()
-
-	if window == nil then
-		return false
-	end
-
-	if window.floating then
-		return true
-	end
-
-	for _, other in ipairs(window.workspace:get_windows()) do
-		if not other.floating and other.address ~= window.address then
-			if direction == "left" and other.at.x < window.at.x then
-				return false
-			elseif direction == "right" and other.at.x > window.at.x then
-				return false
-			end
-		end
-	end
-
-	return true
-end
-
 local function monitor_towards(direction)
 	local current = hl.get_active_monitor()
 
@@ -44,16 +20,36 @@ local function monitor_towards(direction)
 	return false
 end
 
+local function column_towards(window, direction)
+	for _, other in ipairs(window.workspace:get_windows()) do
+		if other.mapped and not other.hidden and not other.floating and other.address ~= window.address then
+			if direction == "left" and other.at.x < window.at.x then
+				return true
+			elseif direction == "right" and other.at.x > window.at.x then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
 local function move_window(direction)
 	return function()
-		if at_edge(direction) then
+		local window = hl.get_active_window()
+
+		if window == nil then
+			return
+		end
+
+		if window.floating then
 			if monitor_towards(direction) then
 				hl.dispatch(hl.dsp.window.move({ monitor = direction }))
 			end
-		elseif direction == "left" then
-			hl.dispatch(hl.dsp.layout("swapcol l"))
+		elseif column_towards(window, direction) then
+			hl.dispatch(hl.dsp.layout(direction == "left" and "swapcol l" or "swapcol r"))
 		else
-			hl.dispatch(hl.dsp.layout("swapcol r"))
+			hl.dispatch(hl.dsp.window.move({ direction = direction }))
 		end
 	end
 end

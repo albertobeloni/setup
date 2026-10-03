@@ -9,4 +9,4 @@ for i = 6, 10 do
 	hl.workspace_rule({ workspace = tostring(i), monitor = laptop, default = (i == 6) })
 end
 
-hl.workspace_rule({ workspace = "special:scratchpad", on_created_empty = "uwsm app -- kitty" })
+hl.workspace_rule({ workspace = "special:scratchpad", on_created_empty = "uwsm app -- kitty & uwsm app -- kitty" })

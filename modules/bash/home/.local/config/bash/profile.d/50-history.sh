@@ -1,4 +1,4 @@
-HISTCONTROL="ignoreboth"
+HISTCONTROL="ignoredups:erasedups"
 HISTFILE="${XDG_STATE_HOME}/bash/history"
 HISTFILESIZE=2000
 HISTSIZE=1000
