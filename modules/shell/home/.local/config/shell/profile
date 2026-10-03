@@ -1,0 +1,29 @@
+#!/bin/sh
+
+shell_include()
+{
+	command local directory
+
+	directory="${1}"
+
+	if command test -d "${directory}"
+	then
+		command local file
+
+		for file in "${directory}"/*.sh
+		do
+			if command test -r "${file}"
+			then
+				command . "${file}"
+			fi
+		done
+
+		command unset -v file
+	fi
+
+	command unset -v directory
+}
+
+shell_include "${XDG_CONFIG_HOME}/shell/profile.d"
+
+command unset -f shell_include

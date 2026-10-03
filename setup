@@ -1,0 +1,169 @@
+#!/bin/bash
+
+(
+	command set -uo pipefail
+
+	command export XDG_CACHE_HOME="${HOME}/.local/cache"
+	command export XDG_CONFIG_HOME="${HOME}/.local/config"
+	command export XDG_DATA_HOME="${HOME}/.local/data"
+	command export XDG_STATE_HOME="${HOME}/.local/state"
+
+	command mkdir -p "${XDG_CACHE_HOME}"
+	command mkdir -p "${XDG_CONFIG_HOME}"
+	command mkdir -p "${XDG_DATA_HOME}"
+	command mkdir -p "${XDG_STATE_HOME}"
+
+	command readonly base="$(command cd $(command dirname ${BASH_SOURCE[0]}) && command pwd)"
+	command readonly distribution="$(source /etc/os-release && echo ${ID:-})"
+
+	if command test -r "${base}/distributions/${distribution}.sh"
+	then
+		command source "${base}/distributions/${distribution}.sh"
+	fi
+
+	distribution()
+	{
+		command test "${1:-}" == "${distribution}"
+	}
+
+	message()
+	{
+		command echo "${module}: ${1}" >> "${messages}" 2>&1
+	}
+
+	backup()
+	{
+		command local destination
+		command local directory
+		command local file
+		command local origin
+
+		origin="${1:-}"
+		directory="$(command dirname ${origin})"
+		file="$(command basename ${origin})"
+		destination="${2:-${directory}}"
+
+		if command test -f "${origin}" -a ! -f "${destination}/${file}.old"
+		then
+			command sudo cp -r "${origin}" "${destination}/${file}.old"
+		fi
+	}
+
+	flathub()
+	{
+		setup install flatpak
+		command flatpak install --noninteractive flathub "${1}"
+	}
+
+	configure()
+	{
+		if command test -r "configure.sh"
+		then
+			command source "configure.sh"
+		fi
+
+		if command declare -F "pre" > "/dev/null"
+		then
+			pre
+		fi
+
+		if command test -d "home"
+		then
+			command cp -r "home/." "${HOME}"
+		fi
+
+		if command test -d "root"
+		then
+			command sudo cp -r --no-preserve=ownership "root/." "/"
+		fi
+
+		if command declare -F "post" > "/dev/null"
+		then
+			post
+		fi
+	}
+
+	install()
+	{
+		if command test -r "install.sh"
+		then
+			command source "install.sh"
+		fi
+	}
+
+	setup()
+	{
+		command local action
+		command local module
+		command local path
+		command local log
+
+		action="${1}"
+		module="${2}"
+		path="${base}/modules/${module}"
+		log="${path}/${action}.log"
+
+		(
+			command set -e
+			command cd "${path}"
+
+			"${action}"  > "${log}" 2>&1
+		)
+
+		command local status="${?}"
+
+		if command test "${status}" -gt 0
+		then
+			message "${module}: ${action} failed (${log})"
+		else
+			command rm "${log}"
+		fi
+
+		return "${status}"
+	}
+
+	main()
+	{
+		command local messages
+
+		messages="${base}/messages.log"
+
+		command local -a modules
+		command local module
+
+		modules=("${@}")
+
+		if command test "${#modules[@]}" -eq 0
+		then
+			for module in "${base}/modules/"*
+			do
+				if command test -f "${module}/optional"
+				then
+					continue
+				fi
+
+				modules+=("$(command basename ${module})")
+			done
+		fi
+
+		for module in "${modules[@]}"
+		do
+			if command test ! -d  "${base}/modules/${module}"
+			then
+				message "module not found"
+				command continue
+			fi
+
+			setup install "${module}"
+			setup configure "${module}"
+		done
+
+		if command test -f "${messages}"
+		then
+			command cat "${messages}"
+			command rm "${messages}"
+		fi
+	}
+
+	main "${@}"
+)

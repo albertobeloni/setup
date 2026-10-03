@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Arch Splash
+Description=Arch logo matching the UKI splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/arch-splash
+ScriptFile=/usr/share/plymouth/themes/arch-splash/arch-splash.script

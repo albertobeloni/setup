@@ -1,0 +1,11 @@
+flathub org.gnome.Calculator
+flathub org.gnome.Calendar
+flathub org.gnome.Evince
+flathub org.gnome.font-viewer
+flathub org.gnome.Loupe
+flathub org.gnome.Maps
+flathub org.gnome.Music
+flathub org.gnome.Showtime
+flathub org.gnome.Snapshot
+flathub org.gnome.TextEditor
+flathub org.gnome.Weather
