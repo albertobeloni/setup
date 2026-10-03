@@ -114,7 +114,7 @@
 
 		if command test "${status}" -gt 0
 		then
-			message "${module}: ${action} failed (${log})"
+			message "${action} failed (${log})"
 		else
 			command rm "${log}"
 		fi
