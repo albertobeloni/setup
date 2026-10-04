@@ -9,3 +9,4 @@ flathub org.gnome.Showtime
 flathub org.gnome.Snapshot
 flathub org.gnome.TextEditor
 flathub org.gnome.Weather
+flathub net.nokyan.Resources

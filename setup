@@ -3,6 +3,12 @@
 (
 	command set -uo pipefail
 
+	if command test "${EUID}" -eq 0
+	then
+		command echo "setup: do not run as root" >&2
+		command exit 1
+	fi
+
 	command export XDG_CACHE_HOME="${HOME}/.local/cache"
 	command export XDG_CONFIG_HOME="${HOME}/.local/config"
 	command export XDG_DATA_HOME="${HOME}/.local/data"
@@ -13,15 +19,48 @@
 	command mkdir -p "${XDG_DATA_HOME}"
 	command mkdir -p "${XDG_STATE_HOME}"
 
-	command readonly base="$(command cd $(command dirname "${BASH_SOURCE[0]}") && command pwd)"
+	command readonly base="$(command dirname "$(command readlink -f "${BASH_SOURCE[0]}")")"
 	command readonly distribution="$(source /etc/os-release && echo ${ID:-})"
+	command readonly host="${base}/hosts/${SETUP_HOST:-$(command uname -n)}"
 
 	if command test -r "${base}/distributions/${distribution}.sh"
 	then
 		command source "${base}/distributions/${distribution}.sh"
 	else
+		command echo "setup: unsupported distribution \"${distribution}\"" >&2
 		command exit 1
 	fi
+
+	keepalive=""
+	state=""
+
+	privileges()
+	{
+		command sudo -v || command exit 1
+
+		(
+			while command kill -0 "${$}" 2> "/dev/null"
+			do
+				command sudo -n -v 2> "/dev/null"
+				command sleep 60
+			done
+		) 2> "/dev/null" &
+
+		keepalive="${!}"
+
+		command disown "${keepalive}"
+	}
+
+	cleanup()
+	{
+		if command test -n "${keepalive:-}"
+		then
+			command pkill -P "${keepalive}" 2> "/dev/null"
+			command kill "${keepalive}" 2> "/dev/null"
+		fi
+
+		command rm -rf "${state:-}"
+	}
 
 	distribution()
 	{
@@ -35,26 +74,131 @@
 
 	backup()
 	{
-		command local destination
-		command local directory
-		command local file
 		command local source
+		command local backup
 
 		source="${1}"
-		directory="$(command dirname ${source})"
-		file="$(command basename ${source})"
-		destination="${2:-${directory}}"
+		backup="${XDG_STATE_HOME}/setup/backup/$(command basename "${source}")"
 
-		if command test -f "${source}" -a ! -f "${destination}/${file}.old"
+		if command test -f "${source}" -a ! -f "${backup}" && ! command cmp -s "${source}" "${backup}"
 		then
-			command sudo mv "${source}" "${destination}/${file}.old"
+			command mkdir -p "$(command dirname "${backup}")"
+			command sudo mv "${source}" "${backup}"
+			message "backup: ${backup}"
 		fi
 	}
 
 	flathub()
 	{
-		setup install flatpak
 		command flatpak install --noninteractive flathub "${1}"
+	}
+
+	entries()
+	{
+		command local line
+
+		if command test ! -r "${1}"
+		then
+			return 0
+		fi
+
+		while command read -r line || command test -n "${line}"
+		do
+			line="${line%%#*}"
+			line="${line//[[:space:]]/}"
+
+			if command test -n "${line}"
+			then
+				command echo "${line}"
+			fi
+		done < "${1}"
+	}
+
+	overridden()
+	{
+		command test "${path}" != "${host}" -a -e "${host}/${1}"
+	}
+
+	link()
+	{
+		command local backup
+		command local relative
+		command local source
+		command local target
+
+		while command read -r -d "" source
+		do
+			relative="${source#"${path}/home/"}"
+			target="${HOME}/${relative}"
+
+			if overridden "home/${relative}"
+			then
+				continue
+			fi
+
+			if command test -L "${target}" -a "$(command readlink "${target}")" == "${source}"
+			then
+				continue
+			fi
+
+			command mkdir -p "$(command dirname "${target}")"
+
+			if command test -f "${target}" -a ! -L "${target}" && ! command cmp -s "${source}" "${target}"
+			then
+				backup="${base}/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
+				command mkdir -p "$(command dirname "${backup}")"
+				command mv "${target}" "${backup}"
+				message "backup: ${backup}"
+			fi
+
+			command ln -sfn "${source}" "${target}"
+		done < <(command find "${path}/home" \( -type f -o -type l \) -print0)
+	}
+
+	copy()
+	{
+		command local backup
+		command local relative
+		command local source
+		command local target
+
+		while command read -r -d "" source
+		do
+			relative="${source#"${path}/root/"}"
+			target="/${relative}"
+
+			if overridden "root/${relative}"
+			then
+				continue
+			fi
+
+			if command cmp -s "${source}" "${target}" 2> "/dev/null"
+			then
+				continue
+			fi
+
+			command mkdir -p "$(command dirname "${target}")"
+
+			if command test -f "${target}" -a ! -L "${target}" && ! command cmp -s "${source}" "${target}"
+			then
+				backup="${base}/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
+				command mkdir -p "$(command dirname "${backup}")"
+				command sudo mv "${target}" "${backup}"
+				message "backup: ${backup}"
+			fi
+
+			command sudo cp --no-preserve=ownership "${source}" "${target}"
+		done < <(command find "${path}/root" -type f -print0)
+	}
+
+	prune()
+	{
+		command local stale
+
+		while command read -r -d "" stale
+		do
+			command rm "${stale}"
+		done < <(command find "${HOME}/.local" -xdev -type l -lname "${base}/*" -xtype l -print0 2> "/dev/null")
 	}
 
 	configure()
@@ -71,12 +215,12 @@
 
 		if command test -d "home"
 		then
-			command cp -r "home/." "${HOME}"
+			link
 		fi
 
 		if command test -d "root"
 		then
-			command sudo cp -r --no-preserve=ownership "root/." "/"
+			copy
 		fi
 
 		if command declare -F "post" > "/dev/null"
@@ -102,7 +246,7 @@
 
 		action="${1}"
 		module="${2}"
-		path="${base}/modules/${module}"
+		path="${3}"
 		log="${path}/${action}.log"
 
 		(
@@ -124,11 +268,135 @@
 		return "${status}"
 	}
 
+	host()
+	{
+		if command test ! -d "${host}"
+		then
+			return 0
+		fi
+
+		setup install "host" "${host}" && setup configure "host" "${host}"
+	}
+
+	module()
+	{
+		command local module
+		command local path
+		command local dependecy
+
+		module="${1}"
+		path="${base}/modules/${module}"
+
+		if command test -e "${state}/${module}.done"
+		then
+			return 0
+		fi
+
+		if command test -e "${state}/${module}.failed"
+		then
+			return 1
+		fi
+
+		if command test ! -d "${path}"
+		then
+			message "module not found"
+			return 1
+		fi
+
+		if command test -e "${state}/${module}.active"
+		then
+			message "circular dependency"
+			return 1
+		fi
+
+		command touch "${state}/${module}.active"
+
+		for dependency in $(entries "${path}/requires")
+		do
+			if ! module "${dependency}"
+			then
+				message "requires ${dependency}"
+				command rm "${state}/${module}.active"
+				command touch "${state}/${module}.failed"
+				return 1
+			fi
+		done
+
+		command local status
+
+		status=0
+
+		setup install "${module}" "${path}" && setup configure "${module}" "${path}" || status="${?}"
+
+		command rm "${state}/${module}.active"
+
+		if command test "${status}" -eq 0
+		then
+			command touch "${state}/${module}.done"
+		else
+			command touch "${state}/${module}.failed"
+		fi
+
+		return "${status}"
+	}
+
+	modules()
+	{
+		command local module
+		command local -a include
+		command local -a exclude
+
+		include=()
+		exclude=()
+
+		for module in $(entries "${host}/modules")
+		do
+			if command test "${module:0:1}" == "!"
+			then
+				exclude+=("${module:1}")
+			else
+				include+=("${module}")
+			fi
+		done
+
+		for module in "${base}/modules/"*
+		do
+			module="$(command basename "${module}")"
+
+			if [[ " ${exclude[*]} " == *" ${module} "* ]]
+			then
+				continue
+			fi
+
+			if command test -f "${base}/modules/${module}/optional" && [[ " ${include[*]} " != *" ${module} "* ]]
+			then
+				continue
+			fi
+
+			command echo "${module}"
+		done
+
+		for module in "${include[@]}"
+		do
+			if command test ! -d "${base}/modules/${module}"
+			then
+				command echo "${module}"
+			fi
+		done
+	}
+
 	main()
 	{
+		command local status
 		command local messages
 
-		messages="${base}/messages.log"
+		status=0
+		state="$(command mktemp -d)"
+		messages="${state}/messages.log"
+
+		command trap cleanup EXIT
+
+		privileges
 
 		command local -a modules
 		command local module
@@ -137,34 +405,28 @@
 
 		if command test "${#modules[@]}" -eq 0
 		then
-			for module in "${base}/modules/"*
-			do
-				if command test -f "${module}/optional"
-				then
-					continue
-				fi
-
-				modules+=("$(command basename ${module})")
-			done
+			command mapfile -t modules < <(modules)
+			modules+=("host")
 		fi
 
 		for module in "${modules[@]}"
 		do
-			if command test ! -d  "${base}/modules/${module}"
+			if command test "${module}" == "host"
 			then
-				message "module not found"
-				command continue
+				host || status=1
+			else
+				module "${module}" || status=1
 			fi
-
-			setup install "${module}"
-			setup configure "${module}"
 		done
+
+		prune
 
 		if command test -f "${messages}"
 		then
 			command cat "${messages}"
-			command rm "${messages}"
 		fi
+
+		return "${status}"
 	}
 
 	main "${@}"

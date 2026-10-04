@@ -1,6 +1,7 @@
 pre()
 {
 	backup "/etc/locale.conf"
+	backup "/etc/locale.gen"
 }
 
 post()

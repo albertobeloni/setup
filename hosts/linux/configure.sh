@@ -1,6 +1,6 @@
 pre()
 {
-	if ! command cmp -s "root/etc/plymouth/plymouthd.conf" "/etc/plymouth/plymouthd.conf"
+	if ! command cmp -s "root/etc/cmdline.d/usb.conf" "/etc/cmdline.d/usb.conf"
 	then
 		rebuild="true"
 	fi
