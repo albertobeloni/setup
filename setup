@@ -95,7 +95,7 @@
 
 	flathub()
 	{
-		command flatpak install --noninteractive flathub "${@}"
+		command sudo flatpak install --noninteractive flathub "${@}"
 	}
 
 	entries()
