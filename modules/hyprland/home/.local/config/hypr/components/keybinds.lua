@@ -54,7 +54,7 @@ local function move_window(direction)
 	end
 end
 
-hl.bind("SUPER + L", app("hyprlock"))
+hl.bind("SUPER + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("uwsm stop"))
 
 hl.bind("SUPER + Return", app("kitty"))

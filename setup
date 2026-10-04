@@ -62,6 +62,11 @@
 		command rm -rf "${state:-}"
 	}
 
+	changed()
+	{
+		command test "${changed}" == "true"
+	}
+
 	distribution()
 	{
 		command test "${1:-}" == "${distribution}"
@@ -80,17 +85,17 @@
 		source="${1}"
 		backup="${XDG_STATE_HOME}/setup/backup/$(command basename "${source}")"
 
-		if command test -f "${source}" -a ! -f "${backup}" && ! command cmp -s "${source}" "${backup}"
+		if command test -f "${source}" -a ! -f "${backup}"
 		then
 			command mkdir -p "$(command dirname "${backup}")"
-			command sudo mv "${source}" "${backup}"
+			command sudo cp -a "${source}" "${backup}"
 			message "backup: ${backup}"
 		fi
 	}
 
 	flathub()
 	{
-		command flatpak install --noninteractive flathub "${1}"
+		command flatpak install --noninteractive flathub "${@}"
 	}
 
 	entries()
@@ -145,7 +150,7 @@
 
 			if command test -f "${target}" -a ! -L "${target}" && ! command cmp -s "${source}" "${target}"
 			then
-				backup="${base}/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
+				backup="${XDG_STATE_HOME}/setup/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
 				command mkdir -p "$(command dirname "${backup}")"
 				command mv "${target}" "${backup}"
 				message "backup: ${backup}"
@@ -181,8 +186,8 @@
 
 			if command test -f "${target}" -a ! -L "${target}" && ! command cmp -s "${source}" "${target}"
 			then
-				backup="${base}/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
-				command mkdir -p "$(command dirname "${backup}")"
+				backup="${XDG_STATE_HOME}/setup/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
+				command sudo mkdir -p "$(command dirname "${backup}")"
 				command sudo mv "${target}" "${backup}"
 				message "backup: ${backup}"
 			fi
@@ -203,6 +208,10 @@
 
 	configure()
 	{
+		command local changed
+
+		changed="false"
+
 		if command test -r "configure.sh"
 		then
 			command source "configure.sh"
@@ -216,11 +225,13 @@
 		if command test -d "home"
 		then
 			link
+			changed="true"
 		fi
 
 		if command test -d "root"
 		then
 			copy
+			changed="true"
 		fi
 
 		if command declare -F "post" > "/dev/null"
@@ -253,7 +264,7 @@
 			command set -e
 			command cd "${path}"
 
-			"${action}"  > "${log}" 2>&1
+			"${action}" < "/dev/null" > "${log}" 2>&1
 		)
 
 		command local status="${?}"
@@ -275,14 +286,33 @@
 			return 0
 		fi
 
-		setup install "host" "${host}" && setup configure "host" "${host}"
+		command local status
+
+		status=0
+
+		setup install "host" "${host}"
+
+		status="$(command test ${status} -eq 0 && echo "${?}")"
+
+		setup configure "host" "${host}"
+
+		status="$(command test ${status} -eq 0 && echo "${?}")"
+
+		if command test "${status}" -eq 0
+		then
+			command touch "${state}/host.done"
+		else
+			command touch "${state}/host.failed"
+		fi
+
+		return "${status}"
 	}
 
 	module()
 	{
 		command local module
 		command local path
-		command local dependecy
+		command local dependency
 
 		module="${1}"
 		path="${base}/modules/${module}"
@@ -313,7 +343,9 @@
 
 		for dependency in $(entries "${path}/requires")
 		do
-			if ! module "${dependency}"
+			module "${dependency}"
+
+			if command test "${?}" -ne 0
 			then
 				message "requires ${dependency}"
 				command rm "${state}/${module}.active"
@@ -326,7 +358,13 @@
 
 		status=0
 
-		setup install "${module}" "${path}" && setup configure "${module}" "${path}" || status="${?}"
+		setup install "${module}" "${path}"
+
+		status="$(command test ${status} -eq 0 && echo "${?}")"
+
+		setup configure "${module}" "${path}"
+
+		status="$(command test ${status} -eq 0 && echo "${?}")"
 
 		command rm "${state}/${module}.active"
 
@@ -398,6 +436,13 @@
 
 		privileges
 
+		if command declare -F update > "/dev/null"
+		then
+			update
+		fi
+
+		status="${?}"
+
 		command local -a modules
 		command local module
 
@@ -413,11 +458,13 @@
 		do
 			if command test "${module}" == "host"
 			then
-				host || status=1
+				host
 			else
-				module "${module}" || status=1
+				module "${module}"
 			fi
 		done
+
+		status="${?}"
 
 		prune
 

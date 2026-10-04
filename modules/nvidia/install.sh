@@ -1,1 +1,1 @@
-distribution arch && packages nvidia-open nvidia-utils
+distribution arch && packages nvidia-open nvidia-utils libva-nvidia-driver

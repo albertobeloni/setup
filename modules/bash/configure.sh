@@ -5,4 +5,8 @@ pre()
 	backup "${HOME}/.bashrc"
 	backup "${HOME}/.bash_profile"
 	backup "${HOME}/.bash_logout"
+
+	command rm "${HOME}/.bashrc"
+	command rm "${HOME}/.bash_profile"
+	command rm "${HOME}/.bash_logout"
 }

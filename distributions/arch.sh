@@ -1,3 +1,8 @@
+update()
+{
+	command sudo pacman -Syu --noconfirm
+}
+
 packages()
 {
 	command sudo pacman -S --noconfirm --needed "${@}"

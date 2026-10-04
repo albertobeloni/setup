@@ -1,15 +1,4 @@
-pre()
-{
-	if ! command cmp -s "root/etc/plymouth/plymouthd.conf" "/etc/plymouth/plymouthd.conf"
-	then
-		rebuild="true"
-	fi
-}
-
 post()
 {
-	if command test "${rebuild:-}" = "true"
-	then
-		command sudo mkinitcpio -P
-	fi
+	changed && command sudo mkinitcpio -P
 }

@@ -1,4 +1,4 @@
-background()
+bash_background()
 {
 	command local color
 	command local prefix
@@ -50,7 +50,7 @@ background()
 	command return
 }
 
-foreground()
+bash_foreground()
 {
 	command local color
 	command local prefix
@@ -102,7 +102,7 @@ foreground()
 	command return
 }
 
-format()
+bash_format()
 {
 	command local format
 
