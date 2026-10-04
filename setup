@@ -445,8 +445,6 @@
 			update || return 1
 		fi
 
-		status="${?}"
-
 		command local -a modules
 		command local module
 
