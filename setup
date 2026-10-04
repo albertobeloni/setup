@@ -13,12 +13,14 @@
 	command mkdir -p "${XDG_DATA_HOME}"
 	command mkdir -p "${XDG_STATE_HOME}"
 
-	command readonly base="$(command cd $(command dirname ${BASH_SOURCE[0]}) && command pwd)"
+	command readonly base="$(command cd $(command dirname "${BASH_SOURCE[0]}") && command pwd)"
 	command readonly distribution="$(source /etc/os-release && echo ${ID:-})"
 
 	if command test -r "${base}/distributions/${distribution}.sh"
 	then
 		command source "${base}/distributions/${distribution}.sh"
+	else
+		command exit 1
 	fi
 
 	distribution()

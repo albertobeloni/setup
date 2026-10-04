@@ -43,5 +43,5 @@ $if mode=emacs
 	"\e[B": history-search-forward
 	"\e[Z": menu-complete-backward
 	"\e[C": forward-word
-	"\e\e[D": backward-word
+	"\e[D": backward-word
 $endif

@@ -1,4 +1,4 @@
 post()
 {
-	command mkdir -p "${HOME}/.local/state/less"
+	command mkdir -p "${XDG_STATE_HOME}/less"
 }
