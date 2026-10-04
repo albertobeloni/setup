@@ -1,4 +1,7 @@
 post()
 {
-	changed && command sudo mkinitcpio -P
+	if changed
+	then
+		command sudo mkinitcpio -P
+	fi
 }

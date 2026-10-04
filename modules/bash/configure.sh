@@ -6,7 +6,7 @@ pre()
 	backup "${HOME}/.bash_profile"
 	backup "${HOME}/.bash_logout"
 
-	command rm "${HOME}/.bashrc"
-	command rm "${HOME}/.bash_profile"
-	command rm "${HOME}/.bash_logout"
+	command rm -f "${HOME}/.bashrc"
+	command rm -f "${HOME}/.bash_profile"
+	command rm -f "${HOME}/.bash_logout"
 }

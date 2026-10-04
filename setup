@@ -156,6 +156,7 @@
 				message "backup: ${backup}"
 			fi
 
+			changed="true"
 			command ln -sfn "${source}" "${target}"
 		done < <(command find "${path}/home" \( -type f -o -type l \) -print0)
 	}
@@ -182,16 +183,17 @@
 				continue
 			fi
 
-			command mkdir -p "$(command dirname "${target}")"
+			command sudo mkdir -p "$(command dirname "${target}")"
 
 			if command test -f "${target}" -a ! -L "${target}" && ! command cmp -s "${source}" "${target}"
 			then
 				backup="${XDG_STATE_HOME}/setup/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
-				command sudo mkdir -p "$(command dirname "${backup}")"
+				command mkdir -p "$(command dirname "${backup}")"
 				command sudo mv "${target}" "${backup}"
 				message "backup: ${backup}"
 			fi
 
+			changed="true"
 			command sudo cp --no-preserve=ownership "${source}" "${target}"
 		done < <(command find "${path}/root" -type f -print0)
 	}
@@ -225,13 +227,11 @@
 		if command test -d "home"
 		then
 			link
-			changed="true"
 		fi
 
 		if command test -d "root"
 		then
 			copy
-			changed="true"
 		fi
 
 		if command declare -F "post" > "/dev/null"
@@ -292,11 +292,13 @@
 
 		setup install "host" "${host}"
 
-		status="$(command test ${status} -eq 0 && echo "${?}")"
+		status="${?}"
 
-		setup configure "host" "${host}"
-
-		status="$(command test ${status} -eq 0 && echo "${?}")"
+		if command test "${status}" -eq 0
+		then
+			setup configure "host" "${host}"
+			status="${?}"
+		fi
 
 		if command test "${status}" -eq 0
 		then
@@ -360,11 +362,13 @@
 
 		setup install "${module}" "${path}"
 
-		status="$(command test ${status} -eq 0 && echo "${?}")"
+		status="${?}"
 
-		setup configure "${module}" "${path}"
-
-		status="$(command test ${status} -eq 0 && echo "${?}")"
+		if command test "${status}" -eq 0
+		then
+			setup configure "${module}" "${path}"
+			status="${?}"
+		fi
 
 		command rm "${state}/${module}.active"
 
@@ -438,7 +442,7 @@
 
 		if command declare -F update > "/dev/null"
 		then
-			update
+			update || return 1
 		fi
 
 		status="${?}"
@@ -462,9 +466,9 @@
 			else
 				module "${module}"
 			fi
-		done
 
-		status="${?}"
+			command test "${?}" -eq 0 || status=1
+		done
 
 		prune
 

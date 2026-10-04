@@ -5,5 +5,8 @@ post()
 	command sudo sed -i -e "s/\#pt_BR\.UTF-8/pt_BR\.UTF-8/g" "/etc/locale.gen"
 	command sudo locale-gen
 
-	changed && command sudo mkinitcpio -P
+	if changed
+	then
+		command sudo mkinitcpio -P
+	fi
 }
