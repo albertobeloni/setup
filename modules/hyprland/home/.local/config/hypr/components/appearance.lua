@@ -2,8 +2,8 @@ hl.config({
 
 	general = {
 		gaps_in = 8,
-		gaps_out = 16,
-		border_size = 4,
+		gaps_out = 32,
+		border_size = 2,
 		resize_on_border = true,
 	},
 
@@ -14,9 +14,10 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 0,
+		rounding = 8,
 		active_opacity = 1.0,
 		inactive_opacity = 1.0,
+		dim_special = 0.5,
 
 		shadow = {
 			enabled = false,
@@ -26,6 +27,7 @@ hl.config({
 			enabled = true,
 			size = 16,
 			passes = 3,
+			special = true,
 		},
 
 	},
