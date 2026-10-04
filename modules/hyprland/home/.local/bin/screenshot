@@ -17,11 +17,10 @@ case "${1:-region}" in
 		command grim -g "${geometry}" "${file}"
 		;;
 	screen)
-		output="$(command hyprctl monitors -j | command jq -r '.[] | select(.focused) | .name')"
-		command grim -o "${output}" "${file}"
+		screen="$(command hyprctl monitors -j | command jq -r '.[] | select(.focused) | .name')"
+		command grim -o "${screen}" "${file}"
 		;;
 	*)
-		command echo "usage: screenshot region|window|screen" >&2
 		exit 1
 		;;
 esac

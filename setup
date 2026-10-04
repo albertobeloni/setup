@@ -36,16 +36,16 @@
 		command local destination
 		command local directory
 		command local file
-		command local origin
+		command local source
 
-		origin="${1:-}"
-		directory="$(command dirname ${origin})"
-		file="$(command basename ${origin})"
+		source="${1}"
+		directory="$(command dirname ${source})"
+		file="$(command basename ${source})"
 		destination="${2:-${directory}}"
 
-		if command test -f "${origin}" -a ! -f "${destination}/${file}.old"
+		if command test -f "${source}" -a ! -f "${destination}/${file}.old"
 		then
-			command sudo cp -r "${origin}" "${destination}/${file}.old"
+			command sudo mv "${source}" "${destination}/${file}.old"
 		fi
 	}
 
