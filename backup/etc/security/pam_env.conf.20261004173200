@@ -1,0 +1,4 @@
+XDG_CACHE_HOME	DEFAULT=${HOME}/.local/cache
+XDG_CONFIG_HOME	DEFAULT=${HOME}/.local/config
+XDG_DATA_HOME	DEFAULT=${HOME}/.local/data
+XDG_STATE_HOME	DEFAULT=${HOME}/.local/state
