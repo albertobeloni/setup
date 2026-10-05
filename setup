@@ -88,7 +88,7 @@
 		if command test -f "${source}" -a ! -f "${backup}"
 		then
 			command mkdir -p "$(command dirname "${backup}")"
-			command sudo cp "${source}" "${backup}"
+			command sudo cp -a "${source}" "${backup}"
 			message "backup: ${backup}"
 		fi
 	}
@@ -193,8 +193,15 @@
 				message "backup: ${backup}"
 			fi
 
+			if command test -x "${source}"
+			then
+				mode="0755"
+			else
+				mode="0644"
+			fi
+
 			changed="true"
-			command sudo cp --no-preserve=ownership "${source}" "${target}"
+			command sudo install -D -o root -g root -m "${mode}" "${source}" "${target}"
 		done < <(command find "${path}/root" -type f -print0)
 	}
 

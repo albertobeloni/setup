@@ -24,8 +24,4 @@ aur()
 update()
 {
 	command sudo pacman -Syu --noconfirm
-
-	packages pacman-contrib
-
-	sudo systemctl enable paccache.timer
 }

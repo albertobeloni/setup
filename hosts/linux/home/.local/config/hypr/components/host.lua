@@ -23,8 +23,24 @@ for i = 6, 10 do
 	hl.workspace_rule({ workspace = tostring(i), monitor = laptop, default = (i == 6) })
 end
 
--- Lid: with an external monitor connected, closing the lid turns the laptop panel off
+-- Lid: with an external monitor connected, a closed lid turns the laptop panel off
 -- and its workspaces move to the external monitor. Without one, logind suspends as usual.
+--
+-- The switch binds only fire when the lid changes, so the state is also checked when
+-- the config is (re)loaded, when Hyprland starts and when monitors come and go.
+
+local function lid_closed()
+	local pipe = io.popen("cat /proc/acpi/button/lid/*/state 2> /dev/null")
+
+	if pipe == nil then
+		return false
+	end
+
+	local state = pipe:read("*a")
+	pipe:close()
+
+	return state:find("closed") ~= nil
+end
 
 local function external_connected()
 	for _, monitor in ipairs(hl.get_monitors()) do
@@ -37,22 +53,27 @@ local function external_connected()
 end
 
 local function laptop_panel(enabled)
-	hl.monitor({ output = laptop, disabled = not enabled })
+	if enabled then
+		hl.monitor({ output = laptop, mode = "1920x1080@144", scale = 1 })
+	else
+		hl.monitor({ output = laptop, disabled = true })
+	end
 end
 
-hl.bind("switch:on:Lid Switch", function()
-	if external_connected() then
-		laptop_panel(false)
+-- closed is passed by the switch binds; everything else reads it from ACPI
+local function sync(closed)
+	if closed == nil then
+		closed = lid_closed()
 	end
-end, { locked = true })
 
-hl.bind("switch:off:Lid Switch", function()
-	laptop_panel(true)
-end, { locked = true })
+	laptop_panel(not (closed and external_connected()))
+end
 
--- Unplugging the external monitor with the lid closed brings the panel back
-hl.on("monitor.removed", function()
-	if not external_connected() then
-		laptop_panel(true)
-	end
-end)
+sync()
+
+hl.on("hyprland.start", function() sync() end)
+hl.on("monitor.added", function() sync() end)
+hl.on("monitor.removed", function() sync() end)
+
+hl.bind("switch:on:Lid Switch", function() sync(true) end, { locked = true })
+hl.bind("switch:off:Lid Switch", function() sync(false) end, { locked = true })

@@ -1,0 +1,9 @@
+# External SSD the system boots from. Keeps its USB bridge out of autosuspend
+# instead of disabling autosuspend for every USB device (usbcore.autosuspend=-1).
+#
+# IDs (lowercase hex): udevadm info --query=property --name=/dev/sdX | grep -E "ID_USB_(VENDOR|MODEL)_ID"
+
+# ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="9210", ATTR{idProduct}=="0bda", ATTR{power/control}="on"
+
+# TRIM: only if "lsblk --discard /dev/sdX" shows zeros but the bridge supports UNMAP
+# ACTION=="add|change", SUBSYSTEM=="scsi_disk", ATTRS{idVendor}=="9210", ATTRS{idProduct}=="0bda", ATTR{provisioning_mode}="unmap"
