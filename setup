@@ -88,7 +88,7 @@
 		if command test -f "${source}" -a ! -f "${backup}"
 		then
 			command mkdir -p "$(command dirname "${backup}")"
-			command sudo cp -a "${source}" "${backup}"
+			command sudo cp "${source}" "${backup}"
 			message "backup: ${backup}"
 		fi
 	}
@@ -178,14 +178,14 @@
 				continue
 			fi
 
-			if command cmp -s "${source}" "${target}" 2> "/dev/null"
+			if command sudo cmp -s "${source}" "${target}" 2> "/dev/null"
 			then
 				continue
 			fi
 
 			command sudo mkdir -p "$(command dirname "${target}")"
 
-			if command test -f "${target}" -a ! -L "${target}" && ! command cmp -s "${source}" "${target}"
+			if command test -f "${target}" -a ! -L "${target}" && ! command sudo cmp -s "${source}" "${target}"
 			then
 				backup="${XDG_STATE_HOME}/setup/backup/${relative}.$(command date +%Y%m%d%H%M%S)"
 				command mkdir -p "$(command dirname "${backup}")"

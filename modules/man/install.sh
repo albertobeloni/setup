@@ -1,1 +1,1 @@
-distribution arch && packages man-db man-pages texinfo
+distribution arch && packages man-db man-pages

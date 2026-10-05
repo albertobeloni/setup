@@ -1,3 +1,3 @@
 hl.on("hyprland.start", function ()
-	hl.exec_cmd("/usr/lib/soteria-polkit/soteria")
+	hl.exec_cmd("uwsm app -- /usr/lib/soteria-polkit/soteria")
 end)

@@ -1,1 +1,1 @@
-distribution arch && packages wireplumber pipewire-pulse pipewire-alsa pipewire-jack sof-firmware alsa-ucm-conf
+distribution arch && packages wireplumber pipewire-pulse pipewire-alsa sof-firmware rtkit

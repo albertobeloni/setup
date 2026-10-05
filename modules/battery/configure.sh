@@ -4,7 +4,7 @@ post()
 
 	for device in $(command upower -e | command grep "battery_")
 	do
-		if [[ "$(command upower -i ${device} | command grep 'charge-threshold-supported:')" == *"yes"* ]]
+		if [[ "$(command upower -i "${device}" | command grep 'charge-threshold-supported:')" == *"yes"* ]]
 		then
 			command sudo busctl call org.freedesktop.UPower "${device}" org.freedesktop.UPower.Device EnableChargeThreshold b true
 		fi

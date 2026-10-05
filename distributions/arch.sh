@@ -1,8 +1,3 @@
-update()
-{
-	command sudo pacman -Syu --noconfirm
-}
-
 packages()
 {
 	command sudo pacman -S --noconfirm --needed "${@}"
@@ -19,9 +14,18 @@ aur()
 		build="$(mktemp -d)"
 
 		command git clone "https://aur.archlinux.org/yay.git" "${build}/yay"
-		(command cd "${build}/yay" && command makepkg -si --clean --noconfirm)
+		(command cd "${build}/yay" && command makepkg -rsi --clean --noconfirm)
 		command rm -rf "${build}"
 	fi
 
 	command yay -S --noconfirm --needed --answerclean None --answerdiff None --removemake "${@}"
+}
+
+update()
+{
+	command sudo pacman -Syu --noconfirm
+
+	packages pacman-contrib
+
+	sudo systemctl enable paccache.timer
 }
