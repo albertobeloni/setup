@@ -6,10 +6,10 @@ local geometry = require("helpers.geometry")
 local DIRECTIONS = geometry.DIRECTIONS
 local box, overlap, inside, reach = geometry.box, geometry.overlap, geometry.inside, geometry.reach
 
-local helper = {}
+local M = {}
 
 -- The other visible windows on the same workspace, or only the tiled ones.
-function helper.others(window, tiled_only)
+function M.others(window, tiled_only)
 	local result = {}
 
 	if window.workspace == nil then
@@ -26,12 +26,12 @@ function helper.others(window, tiled_only)
 end
 
 -- The nearest tiled window that way, overlapping it on the other axis.
-function helper.tiled(window, direction)
+function M.tiled(window, direction)
 	local d = DIRECTIONS[direction]
 	local a = box(window)
 	local best, best_gap, best_overlap = nil, math.huge, -1
 
-	for _, other in ipairs(helper.others(window, true)) do
+	for _, other in ipairs(M.others(window, true)) do
 		local b = box(other)
 		local shared = overlap(a[d.across], b[d.across])
 
@@ -51,7 +51,7 @@ end
 
 -- The tiled window closest to the screen edge in a direction, and its reach.
 -- Ties go to the one nearest the window.
-function helper.edge_most_tiled(window, direction)
+function M.edge_most_tiled(window, direction)
 	local d = DIRECTIONS[direction]
 	local a = box(window)
 	local best, best_reach, best_offset = nil, -math.huge, math.huge
@@ -91,34 +91,17 @@ local function recency(window)
 	return id < 0 and math.huge or id
 end
 
--- The window to focus in a direction, tiled or floating.
---
--- A candidate must start and end further in that direction than the current
--- window, so a large window that only sticks out a little doesn't count.
--- Windows straight ahead (overlapping on the other axis) beat windows off to
--- the side. Among those, the closest center wins, then the one nearest the
--- line of travel, then the larger overlap, then the most recently focused,
--- as in Hyprland's own movefocus. Windows off to the side must be within 45
--- degrees, and their offset counts double.
---
--- Windows inside one another need their own rules, since they never start
--- and end further out:
--- - A window inside the current one, such as a floating window over a tiled
---   one, counts as straight ahead when its center lies in that direction.
--- - If the centers match, it counts in every direction, but only when nothing
---   else does. The same applies to the window the current one sits inside,
---   which is the way back out.
---
--- line is the point focus has been traveling through (see helpers/focus.lua).
--- It settles ties the geometry can't, such as a floating window centered
--- over a grid: from the top-right corner, pressing down twice ends in the
--- bottom-right corner.
-function helper.to_focus(window, direction, line)
+-- The window to focus in a direction, tiled or floating. Candidates are
+-- ranked by group (below), then distance, then closeness to the line of
+-- travel, overlap and how recently they were focused. line is the point focus
+-- has been moving through; it settles ties, like a floating window centered
+-- over a grid (see helpers/focus.lua).
+function M.to_focus(window, direction, line)
 	local d = DIRECTIONS[direction]
 	local a = box(window)
 	local best, best_rank = nil, nil
 
-	for _, other in ipairs(helper.others(window, false)) do
+	for _, other in ipairs(M.others(window, false)) do
 		local b = box(other)
 		local along, across = b[d.along], b[d.across]
 
@@ -130,10 +113,19 @@ function helper.to_focus(window, direction, line)
 		local nested = inside(b, a)
 		local rank = nil
 
+		-- Straight ahead: entirely further that way and overlapping on
+		-- the other axis (so a big window sticking out a little doesn't
+		-- count), or inside the current window on that side.
 		if (nested and distance > 1) or (beyond and shared > 0) then
 			rank = { 0, distance, deviation, -shared, recency(other) }
+
+		-- Off to the side: within 45 degrees, with the offset counting
+		-- double.
 		elseif beyond and offset <= distance then
 			rank = { 1, distance + 2 * offset, deviation, 0, recency(other) }
+
+		-- Last resort, in any direction: a window centered inside the
+		-- current one, then the window the current one sits inside.
 		elseif nested and distance > -1 then
 			rank = { 2, 0, deviation, 0, recency(other) }
 		elseif inside(a, b) then
@@ -148,4 +140,4 @@ function helper.to_focus(window, direction, line)
 	return best
 end
 
-return helper
+return M
