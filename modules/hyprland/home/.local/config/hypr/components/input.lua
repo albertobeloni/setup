@@ -6,7 +6,7 @@ hl.config({
 		kb_model = "abnt2",
 		repeat_delay = 300,
 		repeat_rate = 40,
-		follow_mouse = 1,
+		follow_mouse = 2,
 
 		touchpad = {
 			natural_scroll = true,
