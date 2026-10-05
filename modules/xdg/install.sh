@@ -1,1 +1,1 @@
-distribution arch && packages xdg-user-dirs xdg-user-dirs-gtk
+distribution arch && packages xdg-utils xdg-user-dirs xdg-user-dirs-gtk

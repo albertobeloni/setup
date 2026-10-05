@@ -7,6 +7,4 @@ post()
 	command gsettings set org.gnome.desktop.interface font-hinting "slight"
 	command gsettings set org.gnome.desktop.interface font-rendering "manual"
 	command gsettings set org.gnome.desktop.interface font-rgba-order "rgb"
-
-	command fc-cache -f
 }

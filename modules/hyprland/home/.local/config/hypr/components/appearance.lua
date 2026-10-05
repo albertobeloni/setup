@@ -1,14 +1,14 @@
 hl.config({
 
 	general = {
-		border_size = 1,
+		border_size = 2,
 		gaps_in = 8,
 		gaps_out = 32,
 		resize_on_border = true,
 
 		col = {
-			active_border = 0xff00ff00,
-			inactive_border = 0xff0000ff,
+			active_border = 0xffc56e00,
+			inactive_border = 0xffffffff,
 		},
 
 	},
@@ -23,7 +23,7 @@ hl.config({
 		active_opacity = 1.0,
 		dim_special = 0.5,
 		inactive_opacity = 1.0,
-		rounding = 4,
+		rounding = 2,
 
 		shadow = {
 			color = 0x11000000,

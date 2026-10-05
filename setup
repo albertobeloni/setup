@@ -248,6 +248,39 @@
 		fi
 	}
 
+	system()
+	{
+		command local action
+		command local path
+		command local log
+
+		action="${1}"
+		path="${base}/distributions"
+		log="${path}/${distribution}.log"
+
+		command echo "system: ${action}"
+
+		(
+			command set -e
+
+			if command declare -F "${action}" > "/dev/null"
+			then
+				"${action}" < "/dev/null" > "${log}" 2>&1
+			fi
+		)
+
+		command local status="${?}"
+
+		if command test "${status}" -gt 0
+		then
+			command echo "system: ${action} failed (${log})"
+		else
+			command rm "${log}"
+		fi
+
+		return "${status}"
+	}
+
 	setup()
 	{
 		command local action
@@ -259,6 +292,8 @@
 		module="${2}"
 		path="${3}"
 		log="${path}/${action}.log"
+
+		command echo "${module}: ${action}"
 
 		(
 			command set -e
@@ -440,10 +475,7 @@
 
 		privileges
 
-		if command declare -F update > "/dev/null"
-		then
-			update || return 1
-		fi
+		system update
 
 		command local -a modules
 		command local module

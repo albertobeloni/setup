@@ -1,12 +1,1 @@
-flathub org.gnome.Calculator
-flathub org.gnome.Calendar
-flathub org.gnome.Evince
-flathub org.gnome.font-viewer
-flathub org.gnome.Loupe
-flathub org.gnome.Maps
-flathub org.gnome.Music
-flathub org.gnome.Showtime
-flathub org.gnome.Snapshot
-flathub org.gnome.TextEditor
-flathub org.gnome.Weather
-flathub net.nokyan.Resources
+flathub org.gnome.Calculator org.gnome.Calendar org.gnome.Evince org.gnome.Loupe org.gnome.Maps org.gnome.Music org.gnome.Showtime org.gnome.Snapshot org.gnome.TextEditor org.gnome.Weather net.nokyan.Resources
