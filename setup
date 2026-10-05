@@ -193,6 +193,8 @@
 				message "backup: ${backup}"
 			fi
 
+			command local mode
+
 			if command test -x "${source}"
 			then
 				mode="0755"

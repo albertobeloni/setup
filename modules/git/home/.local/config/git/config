@@ -23,30 +23,5 @@
 	status = auto
 	grep = auto
 
-[include]
-	path = ~/.local/config/git/local
-
-[core]
-	quotepath = false
-
-[init]
-	defaultBranch = main
-
-[push]
-	default = simple
-	autoSetupRemote = true
-	followTags = true
-
-[fetch]
-	prune = true
-	pruneTags = true
-	all = true
-
-[color]
-	ui = true
-	diff = auto
-	status = auto
-	grep = auto
-
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
