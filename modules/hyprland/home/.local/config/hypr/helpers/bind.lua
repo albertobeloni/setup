@@ -1,10 +1,10 @@
 -- Keybind helpers.
 
-local helper = {}
+local Helper = {}
 
 -- Binds keys to an action that receives the active window, followed by any
 -- extra arguments. Does nothing when no window is focused.
-function helper.active(keys, action, ...)
+function Helper.active(keys, action, ...)
 	local arguments = { ... }
 
 	hl.bind(keys, function()
@@ -16,4 +16,4 @@ function helper.active(keys, action, ...)
 	end)
 end
 
-return helper
+return Helper

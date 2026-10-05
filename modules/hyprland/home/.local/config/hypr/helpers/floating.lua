@@ -6,7 +6,7 @@
 
 local geometry = require("helpers.geometry")
 
-local helper = {}
+local Helper = {}
 
 -- State, keyed by window address and cleared on config reload: the size each
 -- window opened with, and the position and size of floating windows
@@ -27,7 +27,7 @@ end)
 
 -- Tiles a window. Dwindle places it next to the active tiled window, or the
 -- one under the cursor, on the side the cursor is on (smart_split).
-function helper.tile(window)
+function Helper.tile(window)
 	hl.dispatch(hl.dsp.window.float({ window = window, action = "disable" }))
 end
 
@@ -58,7 +58,7 @@ end
 
 -- Floats a window at its opening size, centered on a point and kept within
 -- that point's monitor.
-function helper.float_under(window, point)
+function Helper.float_under(window, point)
 	float(window)
 
 	-- The window's size already reads as the new size here.
@@ -77,13 +77,13 @@ function helper.float_under(window, point)
 end
 
 -- Tiles a floating window, or floats a tiled one centered at its opening size.
-function helper.toggle(window)
+function Helper.toggle(window)
 	if window.fullscreen ~= 0 then
 		return
 	end
 
 	if window.floating then
-		helper.tile(window)
+		Helper.tile(window)
 	else
 		float_at(window)
 	end
@@ -91,7 +91,7 @@ end
 
 -- Toggles maximize. Floating windows are tiled first, then return to their
 -- previous position and size when unmaximized.
-function helper.toggle_maximized(window)
+function Helper.toggle_maximized(window)
 	if window.fullscreen ~= 0 then
 		local previous = maximized_geometry[window.address]
 
@@ -119,10 +119,10 @@ function helper.toggle_maximized(window)
 			height = window.size.y,
 		}
 
-		helper.tile(window)
+		Helper.tile(window)
 	end
 
 	hl.dispatch(hl.dsp.window.fullscreen({ window = window, mode = "maximized", action = "set" }))
 end
 
-return helper
+return Helper

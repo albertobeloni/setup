@@ -5,7 +5,7 @@
 local geometry = require("helpers.geometry")
 local neighbors = require("helpers.neighbors")
 
-local helper = {}
+local Helper = {}
 
 -- The line focus is traveling along: the window it last landed on and the
 -- point it passed through. Focusing a window any other way, such as by
@@ -14,7 +14,7 @@ local line_state = nil
 
 -- Focuses the nearest window in a direction and raises it. If there's none on
 -- this workspace, focus moves to the next monitor.
-function helper.towards(direction)
+function Helper.towards(direction)
 	local window = hl.get_active_window()
 
 	if window ~= nil and window.fullscreen ~= 0 then
@@ -64,4 +64,4 @@ function helper.towards(direction)
 	end
 end
 
-return helper
+return Helper

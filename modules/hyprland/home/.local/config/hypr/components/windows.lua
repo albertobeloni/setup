@@ -15,16 +15,20 @@ local move = require("helpers.move")
 
 hl.window_rule({
 	name = "defaults",
-	match = { class = ".*" },
+	match = {
+		class = ".*",
+	},
 	float = true,
 	center = true,
-	-- suppress_event = "maximize",
+	suppress_event = "maximize",
 	idle_inhibit = "fullscreen",
 })
 
 hl.window_rule({
 	name = "tile-scratchpad",
-	match = { workspace = "special:scratchpad" },
+	match = {
+		workspace = "special:scratchpad",
+	},
 	tile = true,
 })
 
@@ -35,12 +39,31 @@ hl.window_rule({
 -- })
 
 hl.window_rule({
+	name = "firefox-floating",
+	match = {
+		class = "^(firefox|org.mozilla.firefox)$",
+	},
+	size = {
+		"monitor_w*0.75",
+		"monitor_h*0.75",
+	},
+})
+
+hl.window_rule({
 	name = "picture-in-picture",
-	match = { title = "^(Picture-in-Picture)$" },
+	match = {
+		title = "^(Picture-in-Picture)$",
+	},
 	pin = true,
 	keep_aspect_ratio = true,
-	size = { "monitor_w*0.25", "monitor_h*0.25" },
-	move = { "monitor_w*0.75-24", "monitor_h*0.75-24" },
+	size = {
+		"monitor_w*0.25",
+		"monitor_h*0.25",
+	},
+	move = {
+		"monitor_w*0.75-32",
+		"monitor_h*0.75-32",
+	},
 })
 
 -- XWayland drag-and-drop helpers are invisible and must not take focus.

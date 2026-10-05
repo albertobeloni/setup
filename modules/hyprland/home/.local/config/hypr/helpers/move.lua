@@ -5,7 +5,7 @@ local geometry = require("helpers.geometry")
 local neighbors = require("helpers.neighbors")
 local floating = require("helpers.floating")
 
-local helper = {}
+local Helper = {}
 
 -- How close to the top or bottom of the screen a drop must be, in pixels.
 local EDGE = 2
@@ -33,7 +33,7 @@ end
 --   that direction, if there is one.
 -- - A floating window tiles against that edge, next to the tiled window
 --   closest to it.
-function helper.towards(window, direction)
+function Helper.towards(window, direction)
 	if window.fullscreen ~= 0 then
 		return
 	end
@@ -81,7 +81,7 @@ local function relocate(window, destination)
 end
 
 -- Sends a window to the previous ("up") or next ("down") workspace.
-function helper.to_workspace(window, side)
+function Helper.to_workspace(window, side)
 	local workspace = window.workspace
 
 	if workspace == nil or workspace.special or (side == "up" and workspace.id <= 1) then
@@ -93,7 +93,7 @@ end
 
 -- Sends a window to the monitor in a direction. Hyprland's lookup never
 -- returns the focused monitor itself.
-function helper.to_monitor(window, side)
+function Helper.to_monitor(window, side)
 	local target = hl.get_monitor(side)
 
 	if target ~= nil then
@@ -135,7 +135,7 @@ end
 -- - Without it (SUPER), a tiled window floats at its opening size under the
 --   cursor. Hyprland puts a dragged tiled window back into the layout on
 --   drop, so a window that's tiled now was tiled when the drag started.
-function helper.drop(tile_floating)
+function Helper.drop(tile_floating)
 	local window = hl.get_active_window()
 
 	if window == nil or window.pinned or window.fullscreen ~= 0 then
@@ -146,7 +146,7 @@ function helper.drop(tile_floating)
 	local side = outer_edge(cursor)
 
 	if side ~= nil then
-		helper.to_workspace(window, side)
+		Helper.to_workspace(window, side)
 	elseif tile_floating and window.floating then
 		floating.tile(window)
 	elseif not tile_floating and not window.floating then
@@ -154,4 +154,4 @@ function helper.drop(tile_floating)
 	end
 end
 
-return helper
+return Helper

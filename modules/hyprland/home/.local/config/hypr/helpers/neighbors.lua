@@ -6,10 +6,10 @@ local geometry = require("helpers.geometry")
 local DIRECTIONS = geometry.DIRECTIONS
 local box, overlap, inside, reach = geometry.box, geometry.overlap, geometry.inside, geometry.reach
 
-local M = {}
+local Helper = {}
 
 -- The other visible windows on the same workspace, or only the tiled ones.
-function M.others(window, tiled_only)
+function Helper.others(window, tiled_only)
 	local result = {}
 
 	if window.workspace == nil then
@@ -26,12 +26,12 @@ function M.others(window, tiled_only)
 end
 
 -- The nearest tiled window that way, overlapping it on the other axis.
-function M.tiled(window, direction)
+function Helper.tiled(window, direction)
 	local d = DIRECTIONS[direction]
 	local a = box(window)
 	local best, best_gap, best_overlap = nil, math.huge, -1
 
-	for _, other in ipairs(M.others(window, true)) do
+	for _, other in ipairs(Helper.others(window, true)) do
 		local b = box(other)
 		local shared = overlap(a[d.across], b[d.across])
 
@@ -51,12 +51,12 @@ end
 
 -- The tiled window closest to the screen edge in a direction, and its reach.
 -- Ties go to the one nearest the window.
-function M.edge_most_tiled(window, direction)
+function Helper.edge_most_tiled(window, direction)
 	local d = DIRECTIONS[direction]
 	local a = box(window)
 	local best, best_reach, best_offset = nil, -math.huge, math.huge
 
-	for _, other in ipairs(M.others(window, true)) do
+	for _, other in ipairs(Helper.others(window, true)) do
 		local b = box(other)
 		local r = reach(b, direction)
 		local offset = math.abs(b[d.across].mid - a[d.across].mid)
@@ -96,12 +96,12 @@ end
 -- travel, overlap and how recently they were focused. line is the point focus
 -- has been moving through; it settles ties, like a floating window centered
 -- over a grid (see helpers/focus.lua).
-function M.to_focus(window, direction, line)
+function Helper.to_focus(window, direction, line)
 	local d = DIRECTIONS[direction]
 	local a = box(window)
 	local best, best_rank = nil, nil
 
-	for _, other in ipairs(M.others(window, false)) do
+	for _, other in ipairs(Helper.others(window, false)) do
 		local b = box(other)
 		local along, across = b[d.along], b[d.across]
 
@@ -140,4 +140,4 @@ function M.to_focus(window, direction, line)
 	return best
 end
 
-return M
+return Helper
