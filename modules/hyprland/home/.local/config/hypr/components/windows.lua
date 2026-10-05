@@ -15,7 +15,7 @@ hl.window_rule({
 	match = { class = ".*" },
 	float = true,
 	center = true,
-	suppress_event = "maximize",
+	-- suppress_event = "maximize",
 	idle_inhibit = "fullscreen",
 })
 
@@ -25,11 +25,11 @@ hl.window_rule({
 	tile = true,
 })
 
-hl.window_rule({
-	name = "file-chooser",
-	match = { class = "^(xdg-desktop-portal-gtk)$" },
-	size = { "monitor_w*0.5", "monitor_h*0.6" },
-})
+-- hl.window_rule({
+-- 	name = "file-chooser",
+-- 	match = { class = "^(xdg-desktop-portal-gtk)$" },
+-- 	size = { "monitor_w*0.5", "monitor_h*0.6" },
+-- })
 
 hl.window_rule({
 	name = "picture-in-picture",
@@ -434,6 +434,10 @@ end
 
 hl.bind("SUPER + SHIFT + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + SHIFT + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+hl.bind("SUPER + ALT + up", hl.dsp.focus({ workspace = "r-1" }))
+hl.bind("SUPER + ALT + down", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind("SUPER + Tab", hl.dsp.focus({ workspace = "previous" }))
 
 -- Jumps to an empty workspace, or back if you're already on one.
 hl.bind("SUPER + D", function()
