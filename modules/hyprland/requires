@@ -1,5 +1,8 @@
-shell
+audio
+bluetooth
 fonts
-kitty
-xdg
 greetd
+kitty
+network
+shell
+xdg

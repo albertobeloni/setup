@@ -1,4 +1,4 @@
-# setup
+# Setup
 
 Sets up a Linux system from a minimal installation.
 
