@@ -10,4 +10,5 @@ post()
 		fi
 	done
 
+	command sudo systemctl enable power-profiles-daemon.service
 }

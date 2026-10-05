@@ -1,0 +1,1 @@
+KERNEL=="card*", SUBSYSTEM=="drm", DRIVERS=="nvidia", SYMLINK+="dri/nvidia"

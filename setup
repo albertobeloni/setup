@@ -475,7 +475,7 @@
 
 		privileges
 
-		system update
+		system update || return 1
 
 		command local -a modules
 		command local module
