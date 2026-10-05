@@ -8,7 +8,7 @@ hl.config({
 
 		col = {
 			active_border = 0xffc56e00,
-			inactive_border = 0xffffffff,
+			inactive_border = 0xff848484,
 		},
 
 	},
