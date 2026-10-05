@@ -4,11 +4,19 @@
 
 $radius: 4px;
 $spacing: 8px;
+$icon-size: 16px;
 
-// Matches Hyprland's window borders (general.border_size and
-// general.col.active_border in hypr/components/appearance.lua).
+// The shell's own palette, the same in light and dark mode.
+$background: #000000;
+$surface: #1a1a1a;
+$foreground: #ffffff;
+
+// Match Hyprland's window borders and colors (general.border_size and
+// general.col in hypr/components/appearance.lua).
 $border-width: 2px;
-$border-color: #c56e00;
+$accent: #c56e00;
+$muted: #848484;
+$border-color: $accent;
 
 // A GTK named color, such as window_bg_color, optionally made translucent.
 // GTK's @name syntax isn't valid Sass, so it's passed through as text.

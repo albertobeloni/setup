@@ -2,17 +2,20 @@
 
 .launcher {
 	$width: 480px;
-	color: white;
+
+	color: $foreground;
 
 	entry {
 		min-width: $width;
 		min-height: 40px;
-		padding: 0 8px;
+		padding: 0 $spacing;
 		border: $border-width solid $border-color;
 		border-radius: $radius;
 		outline: none;
 		box-shadow: none;
-		background-color: black;
+		color: $foreground;
+		caret-color: $foreground;
+		background-color: $background;
 
 		// The provider's icon.
 		> image.left {
@@ -33,21 +36,22 @@
 		border: $border-width solid $border-color;
 		border-top: none;
 		border-radius: 0 0 $radius $radius;
-		background-color: black;
+		background-color: $background;
 	}
 
 	.result {
-		padding: 8px;
+		padding: $spacing;
 		border-radius: 0;
+		color: $foreground;
 		background: none;
 		box-shadow: none;
 
 		&:hover {
-			background-color: gtk(window_fg_color, 0.05);
+			background-color: $surface;
 		}
 
 		&.selected {
-			background-color: gtk(accent_bg_color, 0.2);
+			background-color: rgba($accent, 0.3);
 		}
 
 		// The last row follows the list's rounded corners.

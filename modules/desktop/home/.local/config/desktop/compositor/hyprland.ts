@@ -64,6 +64,14 @@ export async function evaluate(code: string) {
 	return reply === "ok"
 }
 
+// Workspace rules from the config: which workspace each rule names, and the
+// monitor it assigns it to, if any.
+export async function workspaceRules(): Promise<{ workspace: string; monitor?: string }[]> {
+	const rules: { workspaceString: string; monitor?: string }[] = JSON.parse(await request("j/workspacerules"))
+
+	return rules.map((rule) => ({ workspace: rule.workspaceString, monitor: rule.monitor }))
+}
+
 // Actions
 
 // AstalHyprland drops the 0x from client addresses; selectors need it.

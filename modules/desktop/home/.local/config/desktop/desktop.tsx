@@ -8,6 +8,8 @@ import app from "ags/gtk4/app"
 import { Gtk } from "ags/gtk4"
 
 import { command, handle } from "./lib/commands"
+import { ForMonitors } from "./lib/monitors"
+import Bar from "./components/bar/bar"
 import Launcher from "./components/launcher/launcher"
 
 import style from "./style.scss"
@@ -32,5 +34,7 @@ app.start({
 			// Quitting exits right away, so answer the request first.
 			setTimeout(() => app.quit())
 		})
+
+		return <ForMonitors>{(monitor) => <Bar gdkmonitor={monitor} />}</ForMonitors>
 	},
 })

@@ -1,0 +1,71 @@
+@use "../../theme" as *;
+
+.bar {
+	color: $foreground;
+
+	// The bar's own box. A floating bar gets a border and rounded corners.
+	.content {
+		min-height: 32px;
+		padding: 0 $spacing;
+		background-color: $background;
+	}
+
+	&.floating .content {
+		border: $border-width solid $border-color;
+		border-radius: $radius;
+	}
+
+	image {
+		-gtk-icon-size: $icon-size;
+	}
+
+	// Every module. Each one below can override any of this.
+	.module {
+		padding: 0 $spacing;
+		border: none;
+		border-radius: $radius;
+		background: none;
+	}
+
+	.workspaces {
+		$dot: 10px;
+		$pill: 28px;
+		$speed: 200ms;
+
+		.workspace {
+			min-width: $dot;
+			min-height: $dot;
+			margin: 0 3px;
+			padding: 0;
+			border: none;
+			border-radius: $dot;
+			box-shadow: none;
+			transition:
+				min-width $speed ease-out,
+				background-color $speed ease-out;
+
+			&.empty {
+				background-color: rgba($muted, 0.4);
+			}
+
+			&.occupied {
+				background-color: $foreground;
+			}
+
+			&.current {
+				min-width: $pill;
+				background-color: $accent;
+			}
+		}
+	}
+
+	.clock {
+		font-weight: bold;
+	}
+
+	.status {
+		image {
+			margin: 0 4px;
+		}
+	}
+}
