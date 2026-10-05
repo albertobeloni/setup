@@ -1,1 +1,1 @@
-distribution arch && packages nautilus
+distribution arch && packages nautilus xdg-desktop-portal-gnome
