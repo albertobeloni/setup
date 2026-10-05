@@ -15,12 +15,25 @@ hl.monitor({
 	scale = 1,
 })
 
+local names = {
+	"Desk",
+	"Code",
+	"Chat",
+	"Game",
+	"Misc",
+	"6",
+	"7",
+	"8",
+	"9",
+	"0",
+}
+
 for i = 1, 5 do
-	hl.workspace_rule({ workspace = tostring(i), monitor = external, default = (i == 1) })
+	hl.workspace_rule({ workspace = tostring(i), default_name = names[i], monitor = external, default = (i == 1) })
 end
 
 for i = 6, 10 do
-	hl.workspace_rule({ workspace = tostring(i), monitor = laptop, default = (i == 6) })
+	hl.workspace_rule({ workspace = tostring(i), default_name = names[i], monitor = laptop, default = (i == 6) })
 end
 
 -- Lid: with an external monitor connected, a closed lid turns the laptop panel off

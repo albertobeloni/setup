@@ -15,11 +15,11 @@ end
 
 -- Previous and next workspaces
 
-hl.bind("SUPER + SHIFT + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind("SUPER + SHIFT + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind("SUPER + SHIFT + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind("SUPER + SHIFT + mouse_up", hl.dsp.focus({ workspace = "m-1" }))
 
-hl.bind("SUPER + ALT + up", hl.dsp.focus({ workspace = "r-1" }))
-hl.bind("SUPER + ALT + down", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind("SUPER + ALT + up", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind("SUPER + ALT + down", hl.dsp.focus({ workspace = "m+1" }))
 hl.bind("SUPER + Tab", hl.dsp.focus({ workspace = "previous" }))
 
 -- Left and right send the window to the next monitor; up and down send it to
