@@ -26,7 +26,8 @@ hl.on("window.close", function(window)
 end)
 
 -- Tiles a window. Dwindle places it next to the active tiled window, or the
--- one under the cursor, on the side the cursor is on (smart_split).
+-- one under the cursor, on the side the cursor is on (smart_split). Scrolling
+-- adds it as a new column after the active one.
 function Helper.tile(window)
 	hl.dispatch(hl.dsp.window.float({ window = window, action = "disable" }))
 end

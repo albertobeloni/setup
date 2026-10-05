@@ -33,7 +33,7 @@ for i = 1, 5 do
 end
 
 for i = 6, 10 do
-	hl.workspace_rule({ workspace = tostring(i), default_name = names[i], monitor = laptop, default = (i == 6) })
+	hl.workspace_rule({ workspace = tostring(i), default_name = names[i], layout = "scrolling", monitor = laptop, default = (i == 6) })
 end
 
 -- Lid: with an external monitor connected, a closed lid turns the laptop panel off

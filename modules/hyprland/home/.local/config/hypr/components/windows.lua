@@ -7,6 +7,7 @@
 local bind = require("helpers.bind")
 local floating = require("helpers.floating")
 local focus = require("helpers.focus")
+local layout = require("helpers.layout")
 local move = require("helpers.move")
 
 --------------------------------------------------------------------------------
@@ -117,7 +118,7 @@ bind.active("SUPER + F", floating.toggle)
 bind.active("SUPER + SHIFT + F", floating.toggle_maximized)
 hl.bind("SUPER + Q", hl.dsp.window.close())
 
--- Tiling (dwindle)
+-- Tiling (split ratio on dwindle, column width on scrolling)
 
-hl.bind("SUPER + equal", hl.dsp.layout("splitratio +0.1"))
-hl.bind("SUPER + minus", hl.dsp.layout("splitratio -0.1"))
+hl.bind("SUPER + equal", function() layout.resize(0.1) end)
+hl.bind("SUPER + minus", function() layout.resize(-0.1) end)

@@ -10,6 +10,10 @@ hl.config({
 		use_active_for_splits = true,
 	},
 
+	scrolling = {
+		column_width = 0.5,
+	},
+
 	binds = {
 		drag_threshold = 8,
 		movefocus_cycles_fullscreen = true,
@@ -17,3 +21,6 @@ hl.config({
 	},
 
 })
+
+-- Workspaces use dwindle unless a rule picks scrolling, for example:
+-- hl.workspace_rule({ workspace = "2", layout = "scrolling" })

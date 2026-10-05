@@ -1,0 +1,8 @@
+// Styles shared by every part of the shell. Each component has its own
+// stylesheet next to it, included here.
+
+@use "components/launcher/launcher";
+
+window {
+	background-color: transparent;
+}
