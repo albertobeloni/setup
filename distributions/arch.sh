@@ -1,6 +1,6 @@
 update()
 {
-	command sudo pacman -Syu --noconfirm
+	command sudo pacman -Syu --noconfirm > "/dev/null" 2>&1
 }
 
 packages()
