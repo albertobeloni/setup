@@ -13,6 +13,8 @@ export interface Result {
 
 export interface Provider {
 	name: string
+	// A symbolic icon name, shown in the search box while this provider answers.
+	icon: string
 	prefix?: string
 	// Called each time the launcher opens, to pick up changes.
 	refresh?(): void

@@ -11,6 +11,7 @@ let apps: AstalApps.Apps | null = null
 
 const applications: Provider = {
 	name: "Applications",
+	icon: "view-app-grid-symbolic",
 
 	// Re-reads the desktop files, so newly installed apps show up.
 	refresh() {

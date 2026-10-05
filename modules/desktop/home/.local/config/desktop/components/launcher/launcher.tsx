@@ -1,10 +1,15 @@
-// The launcher: a search box that drops down from the top of the focused
-// monitor. The search goes to a provider (see provider.ts); arrow keys pick a
-// result, Enter or a click runs it, and Escape or focusing anything else
-// closes it.
+// The launcher: a search box in the middle of the focused monitor, with
+// results expanding down from it once you type. The search goes to a provider
+// (see provider.ts); arrow keys pick a result, Enter or a click runs it, and
+// Escape or a click outside closes it.
+//
+// The window covers the whole monitor, transparent around the search box and
+// results, so a click anywhere outside them reaches it. It takes the keyboard
+// while open.
 
 import app from "ags/gtk4/app"
 import Gio from "gi://Gio?version=2.0"
+import Graphene from "gi://Graphene?version=1.0"
 import Pango from "gi://Pango?version=1.0"
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import { For, createComputed, createState } from "ags"
@@ -32,16 +37,21 @@ function route(text: string): [Provider, string] {
 }
 
 export default function Launcher() {
+	const [provider, setProvider] = createState(route("")[0])
 	const [results, setResults] = createState<Result[]>([])
 	const [selected, setSelected] = createState(0)
 
 	let window: Astal.Window
 	let entry: Gtk.Entry
+	let list: Gtk.Box
 
 	function search(text: string) {
-		const [provider, query] = route(text)
+		const [answering, query] = route(text)
 
-		setResults(provider.search(query).slice(0, LIMIT))
+		setProvider(answering)
+
+		// Nothing to show until something is typed.
+		setResults(text === "" ? [] : answering.search(query).slice(0, LIMIT))
 		setSelected(0)
 	}
 
@@ -106,6 +116,17 @@ export default function Launcher() {
 		return false
 	}
 
+	// Whether a point in the window falls on the widget.
+	function hits(widget: Gtk.Widget, x: number, y: number) {
+		const [, bounds] = widget.compute_bounds(window)
+		return widget.visible && bounds.contains_point(new Graphene.Point({ x, y }))
+	}
+
+	// Closes on a click anywhere outside the search box and results.
+	function onPressed(_: Gtk.GestureClick, __: number, x: number, y: number) {
+		if (!hits(entry, x, y) && !hits(list, x, y)) close()
+	}
+
 	return (
 		<window
 			$={(self) => (window = self)}
@@ -114,49 +135,66 @@ export default function Launcher() {
 			class="launcher"
 			application={app}
 			layer={Astal.Layer.OVERLAY}
-			anchor={Astal.WindowAnchor.TOP}
+			anchor={
+				Astal.WindowAnchor.TOP |
+				Astal.WindowAnchor.BOTTOM |
+				Astal.WindowAnchor.LEFT |
+				Astal.WindowAnchor.RIGHT
+			}
 			exclusivity={Astal.Exclusivity.IGNORE}
-			keymode={Astal.Keymode.ON_DEMAND}
-			onNotifyIsActive={(self) => {
-				if (!self.isActive) close()
-			}}
+			keymode={Astal.Keymode.EXCLUSIVE}
 		>
 			<Gtk.EventControllerKey propagationPhase={Gtk.PropagationPhase.CAPTURE} onKeyPressed={onKeyPressed} />
-			<box class="panel" orientation={Gtk.Orientation.VERTICAL}>
+			<Gtk.GestureClick onPressed={onPressed} />
+			{/* The search box sits in the exact middle; results hang below it. A
+			    centerbox gives its end child only the space it needs, at the very
+			    bottom, unless it expands: the plain box fills everything below the
+			    search box, and the results sit at its top. */}
+			<centerbox orientation={Gtk.Orientation.VERTICAL} halign={Gtk.Align.CENTER}>
 				<entry
+					$type="center"
 					$={(self) => (entry = self)}
+					class={results((found) => (found.length > 0 ? "expanded" : ""))}
 					placeholderText="Search"
+					primaryIconName={provider((current) => current.icon)}
 					onNotifyText={({ text }) => search(text)}
 				/>
-				<box class="results" orientation={Gtk.Orientation.VERTICAL} visible={results((list) => list.length > 0)}>
-					<For each={results}>
-						{(result, index) => (
-							<button
-								class={createComputed(() => (index() === selected() ? "result selected" : "result"))}
-								focusOnClick={false}
-								onClicked={() => activate(result)}
-							>
-								<box spacing={12}>
-									<image
-										gicon={Gio.Icon.new_for_string(result.icon ?? "application-x-executable")}
-										pixelSize={32}
-									/>
-									<box orientation={Gtk.Orientation.VERTICAL} valign={Gtk.Align.CENTER}>
-										<label class="title" label={result.title} xalign={0} ellipsize={Pango.EllipsizeMode.END} />
-										<label
-											class="subtitle"
-											label={result.subtitle ?? ""}
-											visible={result.subtitle !== undefined}
-											xalign={0}
-											ellipsize={Pango.EllipsizeMode.END}
+				<box $type="end" vexpand orientation={Gtk.Orientation.VERTICAL}>
+					<box
+						$={(self) => (list = self)}
+						class="results"
+						orientation={Gtk.Orientation.VERTICAL}
+						visible={results((found) => found.length > 0)}
+					>
+						<For each={results}>
+							{(result, index) => (
+								<button
+									class={createComputed(() => (index() === selected() ? "result selected" : "result"))}
+									focusOnClick={false}
+									onClicked={() => activate(result)}
+								>
+									<box spacing={12}>
+										<image
+											gicon={Gio.Icon.new_for_string(result.icon ?? "application-x-executable")}
+											pixelSize={32}
 										/>
+										<box orientation={Gtk.Orientation.VERTICAL} valign={Gtk.Align.CENTER}>
+											<label class="title" label={result.title} xalign={0} ellipsize={Pango.EllipsizeMode.END} />
+											<label
+												class="subtitle"
+												label={result.subtitle ?? ""}
+												visible={result.subtitle !== undefined}
+												xalign={0}
+												ellipsize={Pango.EllipsizeMode.END}
+											/>
+										</box>
 									</box>
-								</box>
-							</button>
-						)}
-					</For>
+								</button>
+							)}
+						</For>
+					</box>
 				</box>
-			</box>
+			</centerbox>
 		</window>
 	)
 }

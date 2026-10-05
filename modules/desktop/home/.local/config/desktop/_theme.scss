@@ -1,0 +1,21 @@
+// Values shared by every stylesheet. Use with: @use "<path>/theme" as *;
+
+@use "sass:string";
+
+$radius: 4px;
+$spacing: 8px;
+
+// Matches Hyprland's window borders (general.border_size and
+// general.col.active_border in hypr/components/appearance.lua).
+$border-width: 2px;
+$border-color: #c56e00;
+
+// A GTK named color, such as window_bg_color, optionally made translucent.
+// GTK's @name syntax isn't valid Sass, so it's passed through as text.
+@function gtk($name, $alpha: 1) {
+	@if $alpha == 1 {
+		@return string.unquote("@#{$name}");
+	}
+
+	@return string.unquote("alpha(@#{$name}, #{$alpha})");
+}

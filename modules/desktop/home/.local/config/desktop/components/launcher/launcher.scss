@@ -1,27 +1,44 @@
 @use "../../theme" as *;
 
 .launcher {
-	.panel {
-		min-width: 560px;
-		margin-top: $spacing;
-		padding: $spacing;
-		border-radius: $radius;
-		border: 1px solid gtk(window_fg_color, 0.1);
-		background-color: gtk(window_bg_color, 0.95);
-	}
+	$width: 480px;
+	color: white;
 
 	entry {
+		min-width: $width;
 		min-height: 40px;
-		border-radius: $radius - 4px;
+		padding: 0 8px;
+		border: $border-width solid $border-color;
+		border-radius: $radius;
+		outline: none;
+		box-shadow: none;
+		background-color: black;
+
+		// The provider's icon.
+		> image.left {
+			margin-right: $spacing;
+			opacity: 0.7;
+		}
+
+		// With results below, the bottom corners square off and the bottom
+		// border becomes the line between the search box and the results.
+		&.expanded {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
 	}
 
 	.results {
-		margin-top: $spacing;
+		min-width: $width;
+		border: $border-width solid $border-color;
+		border-top: none;
+		border-radius: 0 0 $radius $radius;
+		background-color: black;
 	}
 
 	.result {
-		padding: 6px $spacing;
-		border-radius: $radius - 4px;
+		padding: 8px;
+		border-radius: 0;
 		background: none;
 		box-shadow: none;
 
@@ -30,7 +47,12 @@
 		}
 
 		&.selected {
-			background-color: gtk(accent_bg_color, 0.25);
+			background-color: gtk(accent_bg_color, 0.2);
+		}
+
+		// The last row follows the list's rounded corners.
+		&:last-child {
+			border-radius: 0 0 $radius $radius;
 		}
 	}
 
