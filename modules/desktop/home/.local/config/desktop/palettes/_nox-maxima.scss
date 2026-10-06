@@ -1,0 +1,22 @@
+// nox-maxima, the dark theme.
+// Each ramp lists steps 0 (lightest) to 16 (darkest); read them with color()
+// from _theme.scss.
+
+$background: #111;
+$foreground: #f1f1f1;
+
+$ramps: (
+	base: (#e2e2e2, #d4d4d4, #c6c6c6, #b9b9b9, #ababab, #9e9e9e, #919191, #848484, #777, #6a6a6a, #5e5e5e, #525252, #474747, #3b3b3b, #303030, #262626, #1b1b1b),
+	red: (#ffdad3, #ffc8bc, #ffb4a5, #ffa08d, #fc8c75, #f27b64, #e66c54, #d75e46, #c7513a, #b64630, #a43c28, #913321, #7e2b1c, #67271a, #512219, #3d1d16, #2a1713),
+	orange: (#fedcc2, #ffca9f, #f8ba85, #eeab71, #e39c5c, #d78d49, #cb7f35, #bf711f, #b26300, #a05800, #8f4e00, #7d4400, #6c3a00, #5c3000, #4c2700, #3b1f02, #291808),
+	yellow: (#f2e1bd, #ead29c, #dec487, #d1b672, #c5a85e, #b99a4a, #ac8d36, #a08020, #937300, #846700, #755b00, #674f00, #594400, #4b3900, #3e2e00, #312400, #231b05),
+	lime: (#e2e5c4, #d1daa1, #c1cd88, #b3c073, #a4b25f, #96a54b, #889837, #7a8c21, #6d7f00, #627200, #566500, #4b5800, #404c00, #364000, #2c3400, #222902, #1a1d09),
+	green: (#d5e8d2, #b9deb8, #9ed3a0, #88c88d, #73bb7b, #5eaf6a, #48a359, #2e9649, #068a3a, #007c32, #006e2c, #006025, #00531f, #004619, #043915, #0c2c13, #101f12),
+	teal: (#cfe8e0, #b3ddd1, #9fd0c3, #8bc4b5, #77b7a8, #62ab9a, #4b9f8d, #319380, #008673, #007967, #006b5b, #005e4f, #005144, #004439, #00382e, #002c24, #081f1a),
+	cyan: (#cfe7eb, #b5dbe2, #a1ced6, #8dc1cb, #79b5bf, #64a8b4, #4d9ca8, #32909d, #008392, #007683, #006874, #005b66, #004f58, #00424a, #00363d, #002b30, #071f22),
+	azure: (#d4e5f4, #b7d9f3, #a3cbea, #8fbee1, #7bb1d8, #66a5cf, #4f98c6, #348bbd, #007fb4, #0072a2, #006590, #00587e, #004c6d, #00405d, #00344d, #00293d, #0d1d28),
+	blue: (#dde2f7, #c7d3fc, #b2c5fe, #9db7ff, #88a9fe, #759bfa, #628df3, #517fea, #4172de, #3365cf, #2859bd, #204da8, #1b4391, #1a3878, #192e5e, #182544, #151b2b),
+	indigo: (#e8def6, #dccefa, #d0bdfb, #c4acfb, #b79cf9, #ab8df4, #9e7ded, #916fe3, #8461d6, #7755c7, #6a49b5, #5d3fa1, #50368b, #432e73, #36275b, #2a2042, #1e192a),
+	purple: (#f4dbef, #f1c8ed, #ecb5e9, #e5a2e4, #dd91dd, #d380d5, #c870cb, #bb61c0, #ad54b3, #9e47a4, #8e3d94, #7e3483, #6c2c71, #5b265e, #49214b, #371c38, #251725),
+	magenta: (#fed9e2, #ffc5d5, #ffb1c8, #fc9dbb, #f58aae, #ec79a1, #e06994, #d35a87, #c44d7a, #b3416e, #a13761, #8f2f55, #7b2849, #68223d, #531e32, #3e1a27, #2a151c),
+);

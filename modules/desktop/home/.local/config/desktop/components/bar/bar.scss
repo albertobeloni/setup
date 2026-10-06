@@ -8,6 +8,7 @@
 		min-height: 32px;
 		padding: 0 $spacing;
 		background-color: $background;
+		border-bottom: $border-width solid $border-color;
 	}
 
 	&.floating .content {
@@ -28,14 +29,14 @@
 	}
 
 	.workspaces {
-		$dot: 10px;
-		$pill: 28px;
+		$dot: 8px;
+		$pill: 24px;
 		$speed: 200ms;
 
 		.workspace {
 			min-width: $dot;
 			min-height: $dot;
-			margin: 0 3px;
+			margin: 0 4px;
 			padding: 0;
 			border: none;
 			border-radius: $dot;

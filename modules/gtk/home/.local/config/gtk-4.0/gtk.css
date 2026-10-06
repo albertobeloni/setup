@@ -1,0 +1,29 @@
+.nautilus-window {
+	background-color: #111111;
+}
+
+.nautilus-window .title {
+	opacity: 0;
+}
+
+.nautilus-window .content-pane {
+	background-color: #111111;
+}
+
+.nautilus-window .sidebar-pane {
+	background-color: #1b1b1b;
+}
+
+.nautilus-window .sidebar-pane *:selected {
+}
+
+.nautilus-window .content-pane .top-bar,
+.nautilus-window .sidebar-pane .top-bar {
+}
+
+.nautilus-window .content-pane .top-bar label,
+.nautilus-window .sidebar-pane .top-bar label {
+}
+
+.nautilus-window .navigation-sidebar {
+}

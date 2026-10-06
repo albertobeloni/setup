@@ -1,22 +1,33 @@
 // Values shared by every stylesheet. Use with: @use "<path>/theme" as *;
 
+@use "sass:list";
+@use "sass:map";
 @use "sass:string";
 
-$radius: 4px;
+// The color scheme: nox-maxima (dark) for now. palettes/lux-maxima is the
+// light one.
+@use "palettes/nox-maxima" as palette;
+
+$radius: 0px;
 $spacing: 8px;
 $icon-size: 16px;
-
-// The shell's own palette, the same in light and dark mode.
-$background: #000000;
-$surface: #1a1a1a;
-$foreground: #ffffff;
-
-// Match Hyprland's window borders and colors (general.border_size and
-// general.col in hypr/components/appearance.lua).
 $border-width: 2px;
-$accent: #c56e00;
-$muted: #848484;
-$border-color: $accent;
+
+// A step (0-16) of one of the scheme's ramps: base, red, orange, yellow, lime,
+// green, teal, cyan, azure, blue, indigo, purple or magenta.
+@function color($ramp, $step) {
+	@return list.nth(map.get(palette.$ramps, $ramp), $step + 1);
+}
+
+// Colors by role. Components use these, so changing the scheme or a role's
+// step here restyles the whole shell.
+$background: palette.$background;
+$foreground: palette.$foreground;
+$surface: color(base, 15);
+$muted: color(base, 7);
+$accent: color(orange, 8);
+// $border-color: $accent;
+$border-color: color(base, 14);
 
 // A GTK named color, such as window_bg_color, optionally made translucent.
 // GTK's @name syntax isn't valid Sass, so it's passed through as text.
