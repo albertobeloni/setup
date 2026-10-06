@@ -29,6 +29,8 @@ set output-meta on
 Tab: menu-complete
 
 $if mode=emacs
+	"\e[1;2C": forward-word
+	"\e[1;2D": backward-word
 	"\e[1;3C": forward-word
 	"\e[1;3D": backward-word
 	"\e[1;5C": forward-word

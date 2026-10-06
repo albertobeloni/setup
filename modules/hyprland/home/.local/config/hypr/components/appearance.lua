@@ -7,8 +7,8 @@ hl.config({
 		resize_on_border = true,
 
 		col = {
-			active_border = "rgb(777777)",
-			inactive_border = "rgb(262626)",
+			active_border = "rgba(117, 117, 117, 0.15)",
+			inactive_border = "rgba(117, 117, 117, 0.15)",
 		},
 
 	},
@@ -23,15 +23,10 @@ hl.config({
 		active_opacity = 1.0,
 		dim_special = 0.5,
 		inactive_opacity = 1.0,
-		rounding = 0,
+		rounding = 8,
 
 		shadow = {
-			color = "rgba(0, 0, 0, 0.25)",
-			color_inactive = "rgba(0, 0, 0, 0.25)",
-			enabled = true,
-			offset = {4, 4},
-			range = 0,
-			sharp = true,
+			enabled = false,
 		},
 
 		blur = {
