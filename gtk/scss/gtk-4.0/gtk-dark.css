@@ -45,37 +45,40 @@
 @define-color dark_5 #000000;
 @define-color accent_color #5c74b1;
 @define-color destructive_bg_color #b15e4e;
-@define-color destructive_fg_color #fee7e2;
+@define-color destructive_fg_color #ff0000;
 @define-color destructive_color #b15e4e;
 @define-color success_bg_color #5c74b1;
-@define-color success_fg_color #16181f;
+@define-color success_fg_color #ff0000;
 @define-color success_color #5c74b1;
 @define-color warning_bg_color #8f7218;
-@define-color warning_fg_color #f5ebd8;
+@define-color warning_fg_color #ff0000;
 @define-color warning_color #8f7218;
 @define-color error_bg_color #b15e4e;
-@define-color error_fg_color #fee7e2;
+@define-color error_fg_color #ff0000;
 @define-color error_color #b15e4e;
-@define-color window_bg_color #ffffff;
-@define-color window_fg_color #757575;
-@define-color view_bg_color transparent;
-@define-color view_fg_color #757575;
-@define-color headerbar_bg_color #ffffff;
-@define-color headerbar_fg_color #757575;
-@define-color headerbar_border_color alpha(#757575, 0.15);
-@define-color headerbar_backdrop_color #ffffff;
-@define-color headerbar_shade_color #ffffff;
-@define-color sidebar_bg_color #ffffff;
-@define-color sidebar_fg_color #757575;
-@define-color sidebar_border_color alpha(#757575, 0.15);
-@define-color sidebar_backdrop_color #ffffff;
-@define-color sidebar_shade_color #ffffff;
-@define-color card_bg_color #ffffff;
-@define-color card_fg_color #757575;
-@define-color dialog_bg_color #ffffff;
-@define-color dialog_fg_color #757575;
-@define-color popover_bg_color #ffffff;
-@define-color popover_fg_color #757575;
+@define-color window_bg_color #000000;
+@define-color window_fg_color #ff0000;
+@define-color view_bg_color #000000;
+@define-color view_fg_color #ff0000;
+@define-color headerbar_bg_color #000000;
+@define-color headerbar_fg_color #ff0000;
+@define-color headerbar_border_color "#ff0000";
+@define-color headerbar_backdrop_color "#ff0000";
+@define-color headerbar_shade_color "#ff0000";
+@define-color sidebar_bg_color #000000;
+@define-color sidebar_fg_color #ff0000;
+@define-color sidebar_border_color "#ff0000";
+@define-color sidebar_backdrop_color "#ffff00";
+@define-color sidebar_shade_color "#ff00ff";
+@define-color card_bg_color #000000;
+@define-color card_fg_color #ff0000;
+@define-color card_shade_color "#ff0000";
+@define-color dialog_bg_color #000000;
+@define-color dialog_fg_color #ff0000;
+@define-color popover_bg_color #000000;
+@define-color popover_fg_color #ff0000;
+@define-color shade_color "#ff0000";
+@define-color scrollbar_outline_color "#ff0000";
 :root {
   --blue-1: #bcc8ee;
   --blue-2: #899bcc;
@@ -132,19 +135,6 @@
   --accent-purple: #9a629a;
   --accent-slate: #757575;
   --accent-color: #5c74b1;
-  --accent-bg-color: #5368a1;
-  --accent-fg-color: #ebebf6;
-}
-
-.nautilus-window {
-  background-color: transparent;
-}
-.nautilus-window .content-pane {
-  background-color: #ffffff;
-}
-.nautilus-window .sidebar-pane {
-  background-color: alpha(#ffffff, 0.8);
-}
-.nautilus-window .sidebar-pane separator {
-  margin: 8px 0;
+  --accent-bg-color: #6b80ba;
+  --accent-fg-color: #16181f;
 }
