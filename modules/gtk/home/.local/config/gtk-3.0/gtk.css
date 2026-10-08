@@ -1,150 +1,425 @@
-@define-color blue_1 #bcc8ee;
-@define-color blue_2 #899bcc;
-@define-color blue_3 #5c74b1;
-@define-color blue_4 #415282;
-@define-color blue_5 #263251;
-@define-color green_1 #afd2ae;
-@define-color green_2 #78a77a;
-@define-color green_3 #47824f;
-@define-color green_4 #325d37;
-@define-color green_5 #1d3920;
-@define-color yellow_1 #dec78e;
-@define-color yellow_2 #b49950;
-@define-color yellow_3 #8f7218;
-@define-color yellow_4 #67510d;
-@define-color yellow_5 #403105;
-@define-color orange_1 #f2bf95;
-@define-color orange_2 #cb8f5a;
-@define-color orange_3 #a66729;
-@define-color orange_4 #77491b;
-@define-color orange_5 #4b2c0d;
-@define-color red_1 #f9baad;
-@define-color red_2 #d48879;
-@define-color red_3 #b15e4e;
-@define-color red_4 #7f4337;
-@define-color red_5 #51271f;
-@define-color purple_1 #e4bde0;
-@define-color purple_2 #bc8cba;
-@define-color purple_3 #9a629a;
-@define-color purple_4 #6f456f;
-@define-color purple_5 #442a45;
-@define-color brown_1 #e9c38f;
-@define-color brown_2 #c19452;
-@define-color brown_3 #9c6c1b;
-@define-color brown_4 #704d11;
-@define-color brown_5 #472e05;
-@define-color light_1 #ffffff;
-@define-color light_2 #dadada;
-@define-color light_3 #b9b9b9;
-@define-color light_4 #9c9c9c;
-@define-color light_5 #818181;
-@define-color dark_1 #6a6a6a;
-@define-color dark_2 #545454;
-@define-color dark_3 #3e3e3e;
-@define-color dark_4 #272727;
-@define-color dark_5 #000000;
-@define-color accent_color #5c74b1;
-@define-color destructive_bg_color #b15e4e;
-@define-color destructive_fg_color #fee7e2;
-@define-color destructive_color #b15e4e;
-@define-color success_bg_color #5c74b1;
-@define-color success_fg_color #16181f;
-@define-color success_color #5c74b1;
-@define-color warning_bg_color #8f7218;
-@define-color warning_fg_color #f5ebd8;
-@define-color warning_color #8f7218;
-@define-color error_bg_color #b15e4e;
-@define-color error_fg_color #fee7e2;
-@define-color error_color #b15e4e;
-@define-color window_bg_color #ffffff;
-@define-color window_fg_color #757575;
-@define-color view_bg_color transparent;
-@define-color view_fg_color #757575;
-@define-color headerbar_bg_color #ffffff;
-@define-color headerbar_fg_color #757575;
-@define-color headerbar_border_color alpha(#757575, 0.15);
-@define-color headerbar_backdrop_color #ffffff;
-@define-color headerbar_shade_color #ffffff;
-@define-color sidebar_bg_color #ffffff;
-@define-color sidebar_fg_color #757575;
-@define-color sidebar_border_color alpha(#757575, 0.15);
-@define-color sidebar_backdrop_color #ffffff;
-@define-color sidebar_shade_color #ffffff;
-@define-color card_bg_color #ffffff;
-@define-color card_fg_color #757575;
-@define-color dialog_bg_color #ffffff;
-@define-color dialog_fg_color #757575;
-@define-color popover_bg_color #ffffff;
-@define-color popover_fg_color #757575;
-:root {
-  --blue-1: #bcc8ee;
-  --blue-2: #899bcc;
-  --blue-3: #5c74b1;
-  --blue-4: #415282;
-  --blue-5: #263251;
-  --green-1: #afd2ae;
-  --green-2: #78a77a;
-  --green-3: #47824f;
-  --green-4: #325d37;
-  --green-5: #1d3920;
-  --yellow-1: #dec78e;
-  --yellow-2: #b49950;
-  --yellow-3: #8f7218;
-  --yellow-4: #67510d;
-  --yellow-5: #403105;
-  --orange-1: #f2bf95;
-  --orange-2: #cb8f5a;
-  --orange-3: #a66729;
-  --orange-4: #77491b;
-  --orange-5: #4b2c0d;
-  --red-1: #f9baad;
-  --red-2: #d48879;
-  --red-3: #b15e4e;
-  --red-4: #7f4337;
-  --red-5: #51271f;
-  --purple-1: #e4bde0;
-  --purple-2: #bc8cba;
-  --purple-3: #9a629a;
-  --purple-4: #6f456f;
-  --purple-5: #442a45;
-  --brown-1: #e9c38f;
-  --brown-2: #c19452;
-  --brown-3: #9c6c1b;
-  --brown-4: #704d11;
-  --brown-5: #472e05;
-  --light-1: #ffffff;
-  --light-2: #dadada;
-  --light-3: #b9b9b9;
-  --light-4: #9c9c9c;
-  --light-5: #818181;
-  --dark-1: #6a6a6a;
-  --dark-2: #545454;
-  --dark-3: #3e3e3e;
-  --dark-4: #272727;
-  --dark-5: #000000;
-  --accent-blue: #5c74b1;
-  --accent-teal: #188472;
-  --accent-green: #47824f;
-  --accent-yellow: #8f7218;
-  --accent-orange: #a66729;
-  --accent-red: #b15e4e;
-  --accent-pink: #ac5d78;
-  --accent-purple: #9a629a;
-  --accent-slate: #757575;
-  --accent-color: #5c74b1;
-  --accent-bg-color: #5368a1;
-  --accent-fg-color: #ebebf6;
-}
+@define-color base_00 #ececec;
+@define-color base_01 #dadada;
+@define-color base_02 #c9c9c9;
+@define-color base_03 #b9b9b9;
+@define-color base_04 #aaaaaa;
+@define-color base_05 #9c9c9c;
+@define-color base_06 #8e8e8e;
+@define-color base_07 #818181;
+@define-color base_08 #757575;
+@define-color base_09 #6a6a6a;
+@define-color base_10 #5f5f5f;
+@define-color base_11 #545454;
+@define-color base_12 #494949;
+@define-color base_13 #3e3e3e;
+@define-color base_14 #333333;
+@define-color base_15 #272727;
+@define-color base_16 #181818;
 
-.nautilus-window {
-  background-color: transparent;
-}
-.nautilus-window .content-pane {
-  background-color: #ffffff;
-}
-.nautilus-window .sidebar-pane {
-  background-color: alpha(#ffffff, 0.8);
-}
-.nautilus-window .sidebar-pane separator {
-  margin: 8px 0;
-}
+@define-color red_00 #fee7e2;
+@define-color red_01 #ffcfc5;
+@define-color red_02 #f9baad;
+@define-color red_03 #eda89a;
+@define-color red_04 #e09889;
+@define-color red_05 #d48879;
+@define-color red_06 #c77a6a;
+@define-color red_07 #bc6c5c;
+@define-color red_08 #b15e4e;
+@define-color red_09 #9f5546;
+@define-color red_10 #8f4c3e;
+@define-color red_11 #7f4337;
+@define-color red_12 #703a2e;
+@define-color red_13 #603127;
+@define-color red_14 #51271f;
+@define-color red_15 #3c1f19;
+@define-color red_16 #221512;
+
+@define-color orange_00 #fde8da;
+@define-color orange_01 #fad2b4;
+@define-color orange_02 #f2bf95;
+@define-color orange_03 #e5ae7f;
+@define-color orange_04 #d89e6c;
+@define-color orange_05 #cb8f5a;
+@define-color orange_06 #be814a;
+@define-color orange_07 #b37338;
+@define-color orange_08 #a66729;
+@define-color orange_09 #975c23;
+@define-color orange_10 #88521e;
+@define-color orange_11 #77491b;
+@define-color orange_12 #693f16;
+@define-color orange_13 #5a3612;
+@define-color orange_14 #4b2c0d;
+@define-color orange_15 #38220e;
+@define-color orange_16 #20160e;
+
+@define-color brown_00 #fae9d7;
+@define-color brown_01 #f3d5af;
+@define-color brown_02 #e9c38f;
+@define-color brown_03 #dcb278;
+@define-color brown_04 #cfa264;
+@define-color brown_05 #c19452;
+@define-color brown_06 #b48640;
+@define-color brown_07 #a8792f;
+@define-color brown_08 #9c6c1b;
+@define-color brown_09 #8e6116;
+@define-color brown_10 #7f5714;
+@define-color brown_11 #704d11;
+@define-color brown_12 #62430e;
+@define-color brown_13 #54390a;
+@define-color brown_14 #472e05;
+@define-color brown_15 #34240b;
+@define-color brown_16 #1e170d;
+
+@define-color yellow_00 #f5ebd8;
+@define-color yellow_01 #ebd8ae;
+@define-color yellow_02 #dec78e;
+@define-color yellow_03 #d1b676;
+@define-color yellow_04 #c2a763;
+@define-color yellow_05 #b49950;
+@define-color yellow_06 #a88b3d;
+@define-color yellow_07 #9c7e2b;
+@define-color yellow_08 #8f7218;
+@define-color yellow_09 #836612;
+@define-color yellow_10 #735c12;
+@define-color yellow_11 #67510d;
+@define-color yellow_12 #5b460a;
+@define-color yellow_13 #4d3c07;
+@define-color yellow_14 #403105;
+@define-color yellow_15 #2f260a;
+@define-color yellow_16 #1c180d;
+
+@define-color lime_00 #ededdb;
+@define-color lime_01 #d8ddb7;
+@define-color lime_02 #c5ce98;
+@define-color lime_03 #b5be83;
+@define-color lime_04 #a4b070;
+@define-color lime_05 #96a25e;
+@define-color lime_06 #87954d;
+@define-color lime_07 #7b883d;
+@define-color lime_08 #6e7c2d;
+@define-color lime_09 #637026;
+@define-color lime_10 #596423;
+@define-color lime_11 #50581e;
+@define-color lime_12 #454d19;
+@define-color lime_13 #3a4214;
+@define-color lime_14 #30360f;
+@define-color lime_15 #25290f;
+@define-color lime_16 #17190f;
+
+@define-color green_00 #e7eee2;
+@define-color green_01 #c9e0c6;
+@define-color green_02 #afd2ae;
+@define-color green_03 #9bc39c;
+@define-color green_04 #88b58a;
+@define-color green_05 #78a77a;
+@define-color green_06 #689a6b;
+@define-color green_07 #578e5d;
+@define-color green_08 #47824f;
+@define-color green_09 #417547;
+@define-color green_10 #38693f;
+@define-color green_11 #325d37;
+@define-color green_12 #2c5130;
+@define-color green_13 #214628;
+@define-color green_14 #1d3920;
+@define-color green_15 #192b1a;
+@define-color green_16 #131a13;
+
+@define-color teal_00 #e4eee9;
+@define-color teal_01 #c0e1d7;
+@define-color teal_02 #a2d3c5;
+@define-color teal_03 #8cc4b6;
+@define-color teal_04 #77b6a7;
+@define-color teal_05 #64a898;
+@define-color teal_06 #4c9c8b;
+@define-color teal_07 #35907e;
+@define-color teal_08 #188472;
+@define-color teal_09 #157766;
+@define-color teal_10 #106b5b;
+@define-color teal_11 #0d5f50;
+@define-color teal_12 #0a5345;
+@define-color teal_13 #07473b;
+@define-color teal_14 #073a31;
+@define-color teal_15 #0d2c26;
+@define-color teal_16 #101a17;
+
+@define-color cyan_00 #e3eef0;
+@define-color cyan_01 #c1dfe5;
+@define-color cyan_02 #a2d1da;
+@define-color cyan_03 #8bc2cc;
+@define-color cyan_04 #74b4bf;
+@define-color cyan_05 #61a6b2;
+@define-color cyan_06 #4c99a6;
+@define-color cyan_07 #328d9b;
+@define-color cyan_08 #02828f;
+@define-color cyan_09 #017582;
+@define-color cyan_10 #016974;
+@define-color cyan_11 #025d67;
+@define-color cyan_12 #01515a;
+@define-color cyan_13 #02454e;
+@define-color cyan_14 #003940;
+@define-color cyan_15 #0d2b30;
+@define-color cyan_16 #101a1c;
+
+@define-color blue_00 #e5edf5;
+@define-color blue_01 #c6ddf0;
+@define-color blue_02 #accde7;
+@define-color blue_03 #96bedc;
+@define-color blue_04 #83afcf;
+@define-color blue_05 #71a1c4;
+@define-color blue_06 #5e94ba;
+@define-color blue_07 #4a88b0;
+@define-color blue_08 #337ca7;
+@define-color blue_09 #2d7097;
+@define-color blue_10 #296487;
+@define-color blue_11 #215978;
+@define-color blue_12 #204d69;
+@define-color blue_13 #18425b;
+@define-color blue_14 #14364b;
+@define-color blue_15 #142937;
+@define-color blue_16 #12191e;
+
+@define-color indigo_00 #ebebf6;
+@define-color indigo_01 #d2d9f3;
+@define-color indigo_02 #bcc8ee;
+@define-color indigo_03 #aab8e2;
+@define-color indigo_04 #99a9d7;
+@define-color indigo_05 #899bcc;
+@define-color indigo_06 #7a8dc4;
+@define-color indigo_07 #6b80ba;
+@define-color indigo_08 #5c74b1;
+@define-color indigo_09 #5368a1;
+@define-color indigo_10 #4a5d91;
+@define-color indigo_11 #415282;
+@define-color indigo_12 #384871;
+@define-color indigo_13 #303d61;
+@define-color indigo_14 #263251;
+@define-color indigo_15 #20263a;
+@define-color indigo_16 #16181f;
+
+@define-color purple_00 #f1e9f5;
+@define-color purple_01 #e0d5f2;
+@define-color purple_02 #d0c2ed;
+@define-color purple_03 #c0b2e0;
+@define-color purple_04 #b2a2d5;
+@define-color purple_05 #a493ca;
+@define-color purple_06 #9685c0;
+@define-color purple_07 #8b77b7;
+@define-color purple_08 #7f6aae;
+@define-color purple_09 #72609d;
+@define-color purple_10 #65568d;
+@define-color purple_11 #5a4c7d;
+@define-color purple_12 #4e426e;
+@define-color purple_13 #43385f;
+@define-color purple_14 #372e4e;
+@define-color purple_15 #2a233a;
+@define-color purple_16 #1a171f;
+
+@define-color magenta_00 #f7e8f1;
+@define-color magenta_01 #eed1ea;
+@define-color magenta_02 #e4bde0;
+@define-color magenta_03 #d6acd2;
+@define-color magenta_04 #c89cc6;
+@define-color magenta_05 #bc8cba;
+@define-color magenta_06 #af7eaf;
+@define-color magenta_07 #a470a4;
+@define-color magenta_08 #9a629a;
+@define-color magenta_09 #8b588b;
+@define-color magenta_10 #7c4f7d;
+@define-color magenta_11 #6f456f;
+@define-color magenta_12 #613c61;
+@define-color magenta_13 #533353;
+@define-color magenta_14 #442a45;
+@define-color magenta_15 #332132;
+@define-color magenta_16 #1d161d;
+
+@define-color pink_00 #fce7ea;
+@define-color pink_01 #facfda;
+@define-color pink_02 #f4b9c9;
+@define-color pink_03 #e6a8ba;
+@define-color pink_04 #da97ab;
+@define-color pink_05 #cd889d;
+@define-color pink_06 #c27990;
+@define-color pink_07 #b66b83;
+@define-color pink_08 #ac5d78;
+@define-color pink_09 #9b546b;
+@define-color pink_10 #8b4b60;
+@define-color pink_11 #7b4256;
+@define-color pink_12 #6d394a;
+@define-color pink_13 #5e303f;
+@define-color pink_14 #4e2734;
+@define-color pink_15 #391f28;
+@define-color pink_16 #201519;
+
+@define-color dark #000000;
+@define-color light #ffffff;
+@define-color neutral @base_08;
+
+@define-color background @light;
+@define-color foreground @neutral;
+
+@define-color surface_level_0 mix(@neutral, @background, 1.00);
+@define-color surface_level_1 mix(@neutral, @background, 0.95);
+@define-color surface_level_2 mix(@neutral, @background, 0.90);
+@define-color surface_level_3 mix(@neutral, @background, 0.85);
+@define-color surface_level_4 mix(@neutral, @background, 0.80);
+@define-color surface_level_5 mix(@neutral, @background, 0.75);
+
+@define-color surface_level_0_divider mix(@neutral, @background, 0.90);
+@define-color surface_level_1_divider mix(@neutral, @background, 0.85);
+@define-color surface_level_2_divider mix(@neutral, @background, 0.80);
+@define-color surface_level_3_divider mix(@neutral, @background, 0.75);
+@define-color surface_level_4_divider mix(@neutral, @background, 0.70);
+@define-color surface_level_5_divider mix(@neutral, @background, 0.65);
+
+@define-color surface_divider alpha(@neutral, 0.10);
+
+@define-color red_1 @red_04;
+@define-color red_2 @red_06;
+@define-color red_3 @red_08;
+@define-color red_4 @red_10;
+@define-color red_5 @red_12;
+
+@define-color orange_1 @orange_04;
+@define-color orange_2 @orange_06;
+@define-color orange_3 @orange_08;
+@define-color orange_4 @orange_10;
+@define-color orange_5 @orange_12;
+
+@define-color brown_1 @brown_04;
+@define-color brown_2 @brown_06;
+@define-color brown_3 @brown_08;
+@define-color brown_4 @brown_10;
+@define-color brown_5 @brown_12;
+
+@define-color yellow_1 @yellow_04;
+@define-color yellow_2 @yellow_06;
+@define-color yellow_3 @yellow_08;
+@define-color yellow_4 @yellow_10;
+@define-color yellow_5 @yellow_12;
+
+@define-color green_1 @green_04;
+@define-color green_2 @green_06;
+@define-color green_3 @green_08;
+@define-color green_4 @green_10;
+@define-color green_5 @green_12;
+
+@define-color blue_1 @blue_04;
+@define-color blue_2 @blue_06;
+@define-color blue_3 @blue_08;
+@define-color blue_4 @blue_10;
+@define-color blue_5 @blue_12;
+
+@define-color purple_1 @purple_04;
+@define-color purple_2 @purple_06;
+@define-color purple_3 @purple_08;
+@define-color purple_4 @purple_10;
+@define-color purple_5 @purple_12;
+
+@define-color light_1 @light;
+@define-color light_2 @base_01;
+@define-color light_3 @base_03;
+@define-color light_4 @base_05;
+@define-color light_5 @base_07;
+
+@define-color dark_1 @base_09;
+@define-color dark_2 @base_11;
+@define-color dark_3 @base_13;
+@define-color dark_4 @base_15;
+@define-color dark_5 @dark;
+
+@define-color accent_red @red_08;
+@define-color accent_orange @orange_08;
+@define-color accent_yellow @yellow_08;
+@define-color accent_green @green_08;
+@define-color accent_teal @teal_08;
+@define-color accent_blue @blue_08;
+@define-color accent_purple @purple_08;
+@define-color accent_pink @pink_08;
+@define-color accent_slate @base_08;
+
+/*@define-color accent_color @blue_08;*/
+/*@define-color accent_bg_color @blue_08;*/
+/*@define-color accent_fg_color @light;*/
+
+@define-color destructive_color @red_08;
+@define-color destructive_bg_color @red_08;
+@define-color destructive_fg_color @light;
+
+@define-color success_color @green_08;
+@define-color success_bg_color @gree_08;
+@define-color success_fg_color @light;
+
+@define-color warning_color @yellow_08;
+@define-color warning_bg_color @yellow_08;
+@define-color warning_fg_color @light;
+
+@define-color error_color @red_08;
+@define-color error_bg_color @red_08;
+@define-color error_fg_color @light;
+
+@define-color window_bg_color @surface_level_1;
+@define-color window_fg_color @foreground;
+
+@define-color view_bg_color @surface_level_0;
+@define-color view_fg_color @foreground;
+
+@define-color headerbar_bg_color @surface_level_2;
+@define-color headerbar_fg_color @foreground;
+@define-color headerbar_backdrop_color @surface_level_2;
+@define-color headerbar_border_color @surface_level_2_divider;
+@define-color headerbar_shade_color @surface_level_2_divider;
+@define-color headerbar_darker_shade_color @surface_level_2_divider;
+
+@define-color sidebar_bg_color @surface_level_2;
+@define-color sidebar_fg_color @foreground;
+@define-color sidebar_backdrop_color @surface_level_2;
+@define-color sidebar_border_color @surface_level_2_divider;
+@define-color sidebar_shade_color @surface_level_2_divider;
+
+@define-color secondary_sidebar_bg_color @surface_level_1;
+@define-color secondary_sidebar_fg_color @foreground;
+@define-color secondary_sidebar_backdrop_color @surface_level_1;
+@define-color secondary_sidebar_border_color @surface_level_1_divider;
+@define-color secondary_sidebar_shade_color @surface_level_1_divider;
+
+@define-color card_bg_color @surface_level_0;
+@define-color card_fg_color @foreground;
+@define-color card_shade_color @surface_level_0_divider;
+
+@define-color overview_bg_color @surface_level_2;
+@define-color overview_fg_color @foreground;
+
+@define-color thumbnail_bg_color @surface_level_0;
+@define-color thumbnail_fg_color @foreground;
+
+@define-color active_toggle_bg_color @surface_level_0;
+@define-color active_toggle_fg_color @foreground;
+
+@define-color dialog_bg_color @surface_level_0;
+@define-color dialog_fg_color @foreground;
+
+@define-color popover_bg_color @surface_level_0;
+@define-color popover_fg_color @foreground;
+@define-color popover_shade_color @surface_level_0_divider;
+
+@define-color shade_color @surface_divider;
+@define-color scrollbar_outline_color transparent;
+
+@define-color borders @surface_divider;
+@define-color insensitive_base_color #ff0000;
+@define-color insensitive_bg_color #00ff00;
+@define-color insensitive_fg_color #0000ff;
+@define-color theme_base_color #00ffff;
+@define-color theme_bg_color #ffff00;
+@define-color theme_fg_color #ff00ff;
+@define-color theme_selected_bg_color #ff0000;
+@define-color theme_selected_fg_color #00ff00;
+@define-color theme_text_color #ff00ff;
+@define-color theme_unfocused_base_color @window_bg_color;
+@define-color theme_unfocused_bg_color @window_bg_color;
+@define-color theme_unfocused_fg_color @window_fg_color;
+@define-color theme_unfocused_selected_bg_color @accent_bg_color;
+@define-color theme_unfocused_selected_fg_color @accent_fg_color;
+@define-color theme_unfocused_text_color @view_fg_color;
+@define-color unfocused_borders @surface_divider;
+@define-color unfocused_insensitive_color ;

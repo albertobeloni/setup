@@ -27,7 +27,7 @@ $surface: color(base, 15);
 $muted: color(base, 7);
 $accent: color(orange, 8);
 // $border-color: $accent;
-$border-color: color(base, 14);
+$border-color: rgba(#ffffff, 0.15);
 
 // A GTK named color, such as window_bg_color, optionally made translucent.
 // GTK's @name syntax isn't valid Sass, so it's passed through as text.

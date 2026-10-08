@@ -2,8 +2,8 @@
 // Each ramp lists steps 0 (lightest) to 16 (darkest); read them with color()
 // from _theme.scss.
 
-$background: #111;
-$foreground: #f1f1f1;
+$background: #000000;
+$foreground: #ffffff;
 
 $ramps: (
 	base: (#e2e2e2, #d4d4d4, #c6c6c6, #b9b9b9, #ababab, #9e9e9e, #919191, #848484, #777, #6a6a6a, #5e5e5e, #525252, #474747, #3b3b3b, #303030, #262626, #1b1b1b),

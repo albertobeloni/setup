@@ -254,7 +254,7 @@
 @define-color light #ffffff;
 @define-color neutral @base_08;
 
-@define-color background @light;
+@define-color background @dark;
 @define-color foreground @neutral;
 
 @define-color surface_level_0 mix(@neutral, @background, 1.00);

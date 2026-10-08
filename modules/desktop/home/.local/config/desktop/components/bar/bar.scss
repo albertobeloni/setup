@@ -5,7 +5,7 @@
 
 	// The bar's own box. A floating bar gets a border and rounded corners.
 	.content {
-		min-height: 32px;
+		min-height: 40px;
 		padding: 0 $spacing;
 		background-color: $background;
 		border-bottom: $border-width solid $border-color;
@@ -61,7 +61,7 @@
 	}
 
 	.clock {
-		font-weight: bold;
+		font-weight: 500;
 	}
 
 	.status {
