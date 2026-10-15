@@ -1,0 +1,366 @@
+#!/bin/bash
+
+(
+	message()
+	{
+		command printf '%s: %s\n' "${module:-setup}" "${1:-}" >&3
+		command printf '%s: %s\n' "${module:-setup}" "${1:-}" >&2
+	}
+
+	distribution()
+	{
+		command test "${1:-}" == "${distribution}" || command return 200
+	}
+
+	changed()
+	{
+		command test "${changed:-}" == "true" || command return 200
+	}
+
+	backup()
+	{
+		command local backup
+		command local source
+
+		source="${1:-}"
+		backup="${source#"${HOME}"/}"
+
+		if command test "${backup}" != "${source}"
+		then
+			backup="${state}/backup/home/${backup}"
+		else
+			backup="${state}/backup/root${source}"
+		fi
+
+		if command sudo test -f "${source}" && ! command sudo test -e "${backup}"
+		then
+			command mkdir -p "${backup%/*}"
+			command sudo cp -a "${source}" "${backup}"
+			message "backup (${backup})"
+		fi
+	}
+
+	elevate()
+	{
+		if command test "${EUID}" -eq 0
+		then
+			message "do not run as root"
+			command return 1
+		fi
+
+		command sudo -v || command exit 1
+
+		(
+			while command kill -0 "${$}"
+			do
+				command sudo -n -v
+				command sleep 60
+			done
+		) &
+
+		process="${!}"
+
+		command disown "${process}"
+	}
+
+	clean()
+	{
+		if command test "${?}" -eq 0
+		then
+			command rm -f "${base}/setup.log"
+		fi
+
+		if command test -n "${process:-}"
+		then
+			command pkill -P "${process}"
+			command kill "${process}"
+		fi
+	}
+
+	home()
+	{
+		command local source
+		command local target
+
+		while command read -r -d "" source
+		do
+			target="${HOME}/${source}"
+			source="${path}/home/${source}"
+
+			if command test "$(command readlink -- "${target}")" == "${source}"
+			then
+				command continue
+			fi
+
+			if command test -f "${target}" && ! command test -L "${target}"
+			then
+				backup "${target}"
+			fi
+
+			command mkdir -p "${target%/*}"
+			command ln -sfn "${source}" "${target}"
+			changed="true"
+		done < <(command find "${path}/home" -type f -printf '%P\0')
+	}
+
+	root()
+	{
+		command local source
+		command local target
+
+		while command read -r -d "" source
+		do
+			target="/${source}"
+			source="${path}/root/${source}"
+
+			if command sudo cmp --quiet "${source}" "${target}"
+			then
+				command continue
+			fi
+
+			if command sudo test -f "${target}"
+			then
+				backup "${target}"
+			fi
+
+			command sudo install -D -m "$(command stat -c %a "${source}")" -o root -g root "${source}" "${target}"
+			changed="true"
+		done < <(command find "${path}/root" -type f -printf '%P\0')
+	}
+
+	configure()
+	{
+		command local changed
+
+		changed="false"
+
+		if command test -r "configure.sh"
+		then
+			command source "configure.sh"
+		fi
+
+		if command declare -F "pre" > "/dev/null"
+		then
+			pre
+		fi
+
+		if command test -d "home"
+		then
+			home
+		fi
+
+		if command test -d "root"
+		then
+			root
+		fi
+
+		if command declare -F "post" > "/dev/null"
+		then
+			post
+		fi
+	}
+
+	install()
+	{
+		if command test -r "install.sh"
+		then
+			command source "install.sh"
+		fi
+	}
+
+	run()
+	{
+		command local action
+		command local module
+		command local path
+
+		action="${1}"
+		module="${2}"
+		path="${3}"
+
+		command local log
+
+		log="${base}/${module}-${action}.log"
+
+		command local state
+
+		state="${XDG_STATE_HOME:-${HOME}/.local/state}/setup"
+
+		command local status
+
+		status=0
+
+		message "${action}"
+
+		(
+			command set -E
+			command trap 'status="${?}"; command test "${status}" -eq 200 || command exit "${status}"' ERR
+			command cd "${path}" && "${action}" > "${log}" 2>&1
+		)
+
+		status="${?}"
+
+		command test "${status}" -eq 200 && status=0
+		command test "${status}" -eq 0 && command rm -f "${log}"
+		command test "${status}" -ne 0 && message "${action} failed (${log})"
+
+		command return "${status}"
+	}
+
+	parse()
+	{
+		command local line
+
+		command test -r "${1}" || command return 0
+
+		while command read -r line || command test -n "${line}"
+		do
+			line="${line%%#*}"
+			line="${line//[[:space:]]/}"
+
+			if command test -z "${line}"
+			then
+				command continue
+			fi
+
+			if command test "${line:0:1}" == "!"
+			then
+				exclude["modules/${line:1}"]="true"
+			else
+				modules+=("modules/${line}")
+			fi
+		done < "${1}"
+	}
+
+	modules()
+	{
+		command local -A exclude
+		command local -a modules
+		command local module
+
+		if command test -r "${base}/distributions/${distribution}/distribution.sh"
+		then
+			command source "${base}/distributions/${distribution}/distribution.sh"
+		fi
+
+		if command declare -F "prepare" > "/dev/null"
+		then
+			run prepare "${distribution}" "${base}/distributions/${distribution}"
+		fi
+
+		modules=("${@}")
+
+		if command test "${#modules[@]}" -eq 0
+		then
+			if command test -d "${base}/distributions/${distribution}"
+			then
+				parse "${base}/distributions/${distribution}/modules"
+				modules+=("distributions/${distribution}")
+			fi
+
+			if command test -d "${base}/hosts/${host}"
+			then
+				parse "${base}/hosts/${host}/modules"
+				modules+=("hosts/${host}")
+			fi
+		fi
+
+		command local name
+		command local path
+		command local status
+
+		status=0
+
+		for module in "${modules[@]}"
+		do
+			if command test "${module#*/}" == "${module}"
+			then
+				module="modules/${module}"
+			fi
+
+			name="${module##*/}"
+			path="${base}/${module}"
+
+			if command test -n "${exclude[${module}]:-}"
+			then
+				module="${name}"
+				message "skipping module"
+				command continue
+			fi
+
+			exclude["${module}"]="true"
+			module="${name}"
+
+			if command test ! -d "${path}"
+			then
+				message "module \"${module}\" not found" && status=1
+				command continue
+			fi
+
+			run install "${module}" "${path}"
+
+			if command test "${?}" -ne 0
+			then
+				status=1
+				message "skipping module configuration"
+				command continue
+			fi
+
+			run configure "${module}" "${path}"
+
+			if command test "${?}" -ne 0
+			then
+				status=1
+			fi
+		done
+
+		command return "${status}"
+	}
+
+	main()
+	{
+		command set -uo pipefail
+
+		command declare -g base
+		command declare -g process
+
+		base="$(command dirname "$(command readlink -f "${BASH_SOURCE[0]}")")"
+
+		command exec 3>&2 > "${base}/setup.log" 2>&1
+		command trap clean EXIT
+
+		#
+		# Sudo
+		#
+
+		elevate
+		command test "${?}" -eq 0 || command exit 1
+
+		#
+		# Distribution
+		#
+
+		command local distribution
+
+		distribution="$(command source "/etc/os-release" && command printf '%s' "${ID:-}")"
+
+		#
+		# Host
+		#
+
+		command local host
+
+		host="${SETUP_HOST:-$(command uname -n)}"
+
+		#
+		# Modules
+		#
+
+		command local modules
+
+		modules "${@}"
+		command test "${?}" -eq 0 || command exit 1
+	}
+
+	main "${@}"
+)

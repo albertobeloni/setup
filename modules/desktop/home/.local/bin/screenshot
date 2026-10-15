@@ -1,0 +1,34 @@
+#!/bin/bash
+
+command set -euo pipefail
+
+command declare directory
+command declare file
+
+directory="$(command xdg-user-dir PICTURES)/Screenshots"
+file="${directory}/$(command date +'%Y%m%d-%H%M%S').png"
+
+command mkdir -p "${directory}"
+
+case "${1:-region}" in
+	region)
+		geometry="$(command slurp)" || exit 0
+		command grim -g "${geometry}" "${file}"
+		;;
+	# window)
+		# geometry="$(command hyprctl activewindow -j | command jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')"
+		# command grim -g "${geometry}" "${file}"
+		# ;;
+	# screen)
+		# screen="$(command hyprctl monitors -j | command jq -r '.[] | select(.focused) | .name')"
+		# command grim -o "${screen}" "${file}"
+		# ;;
+	*)
+		exit 1
+		;;
+esac
+
+command wl-copy --type "image/png" < "${file}"
+
+command unset directory
+command unset file
