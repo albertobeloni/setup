@@ -24,6 +24,6 @@ bash_include()
 	command unset -v directory
 }
 
-bash_include "${XDG_CONFIG_HOME}/bash/profile.d"
+bash_include "${XDG_CONFIG_HOME}/bash/bash.d"
 
 command unset -f bash_include
