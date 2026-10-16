@@ -13,7 +13,7 @@
 
 [session]
 # Session Name from `noctalia-greeter sessions` (picker label) or its .desktop filename.
-default = "umbriel"
+default = "Umbriel"
 
 [user]
 # Opens the password step for this account on startup.
