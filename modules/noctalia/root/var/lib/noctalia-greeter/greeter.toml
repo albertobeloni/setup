@@ -13,11 +13,11 @@
 
 [session]
 # Session Name from `noctalia-greeter sessions` (picker label) or its .desktop filename.
-default = "niri"
+default = "umbriel"
 
 [user]
 # Opens the password step for this account on startup.
-default = "lysec"
+default = "alberto"
 
 [appearance]
 # Color scheme name: "Synced" (palette below or Sync sync.toml), or a builtin
