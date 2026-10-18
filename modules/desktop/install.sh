@@ -28,3 +28,9 @@ distribution arch && packages grim slurp
 
 distribution arch && packages noctalia noctalia-greeter
 distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
+
+# ------------------------------------------------------------------------------
+# Other
+# ------------------------------------------------------------------------------
+
+distribution arch && packages adwaita-cursors adwaita-fonts adwaita-icon-theme
