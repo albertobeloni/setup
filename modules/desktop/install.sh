@@ -34,3 +34,4 @@ distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
 # ------------------------------------------------------------------------------
 
 distribution arch && packages adwaita-cursors adwaita-fonts adwaita-icon-theme
+distribution arch && packages papirus-icon-theme
