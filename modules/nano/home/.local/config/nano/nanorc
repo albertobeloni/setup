@@ -1,0 +1,17 @@
+# https://www.nano-editor.org/dist/latest/cheatsheet.html
+
+include /usr/share/nano/*.nanorc
+include /usr/share/nano/extra/*.nanorc
+include /usr/share/nano-syntax-highlighting/*.nanorc
+
+set autoindent
+set linenumbers
+set nohelp
+set nonewlines
+set numbercolor white
+set tabsize 4
+set zero
+
+bind ^f whereis main
+bind ^z undo main
+bind ^y redo main

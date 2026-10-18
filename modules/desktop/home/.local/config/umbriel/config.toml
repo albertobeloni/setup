@@ -1,0 +1,20 @@
+# ------------------------------------------------------------------------------
+# Includes
+# ------------------------------------------------------------------------------
+
+[include]
+files = [
+	"components/animations.toml",
+	"components/appearance.toml",
+	"components/events.toml",
+	"components/general.toml",
+	"components/inputs.toml",
+	"components/keybinds.toml",
+	"components/layers.toml",
+	"components/layouts.toml",
+	"components/outputs.toml",
+	"components/windows.toml",
+]
+
+[include.optional]
+files = []
