@@ -1,0 +1,12 @@
+[Desktop Entry]
+name=Firefox
+Categories=Utility
+Comment=Navigate the web
+Exec=firefox
+GenericName=Web Browser
+Icon=firefox
+Keyword=Web;Browser;
+NoDisplay=true
+Terminal=false
+TryExec=firefox
+Type=Application
