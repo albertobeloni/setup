@@ -2,7 +2,7 @@
 # XDG Desktop
 # ------------------------------------------------------------------------------
 
-distribution arch && packages xdg-user-dirs xdg-desktop-portal
+distribution arch && packages xdg-user-dirs xdg-user-dirs-gtk xdg-desktop-portal
 
 # ------------------------------------------------------------------------------
 # System Control
