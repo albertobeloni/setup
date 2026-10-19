@@ -6,15 +6,19 @@
 files = [
 	"components/animations.toml",
 	"components/appearance.toml",
+	"components/effects.toml",
 	"components/events.toml",
+	"components/environment.toml",
 	"components/general.toml",
 	"components/inputs.toml",
 	"components/keybinds.toml",
 	"components/layers.toml",
 	"components/layouts.toml",
 	"components/outputs.toml",
+	"components/overview.toml",
+	"components/tabs.toml",
 	"components/windows.toml",
 ]
 
 [include.optional]
-files = []
+files = ["noctalia.toml"]

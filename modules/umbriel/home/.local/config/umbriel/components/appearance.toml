@@ -1,0 +1,45 @@
+# ------------------------------------------------------------------------------
+# Appearance
+# ------------------------------------------------------------------------------
+
+[appearance]
+border_width = 2
+corner_radius = 8
+drag_opacity = 1.0
+opaque_fullscreen = true
+outer_border_width = 0
+prefer_no_csd = true
+
+[colors]
+# accent_primary = "#000000ff"
+# accent_secondary = "#000000ff"
+# backdrop = "#000000ff"
+# background = "#000000ff"
+# error = "#000000ff"
+# insert_hint = "#000000ff"
+# shadow = "#000000ff"
+# text_muted = "#000000ff"
+# text_primary = "#000000ff"
+# warning = "#000000ff"
+
+[colors.border]
+# focused = "#000000ff"
+# outer = "#000000ff"
+# unfocused = "#000000ff"
+
+
+[appearance.blur]
+brightness = 0.8
+contrast = 0.8
+enabled = true
+noise = 0.02
+optimized = true
+passes = 2
+radius = 2
+saturation = 1.0
+
+[appearance.shadow]
+enabled = false
+softness = 0
+offset_x = 0
+offset_y = 0

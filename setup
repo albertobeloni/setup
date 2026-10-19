@@ -7,6 +7,12 @@
 		command printf '%s: %s\n' "${module:-setup}" "${1:-}" >&2
 	}
 
+	prompt()
+	{
+		command printf '%s' "${1:-}" >&3
+		command printf '%s' "${1:-}" >&2
+	}
+
 	distribution()
 	{
 		command test "${1:-}" == "${distribution}" || command return 200

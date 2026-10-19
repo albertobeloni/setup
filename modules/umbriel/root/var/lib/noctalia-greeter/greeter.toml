@@ -1,9 +1,6 @@
 [session]
 default = "Umbriel"
 
-[user]
-default = ""
-
 [appearance]
 hide_logo = true
 password_style = "default"

@@ -20,10 +20,10 @@ flathub()
 
 aur()
 {
-	if ! command -v "yay" > "/dev/null"
+	if ! command -v "paru" > "/dev/null"
 	then
-		modules "yay"
+		modules "paru"
 	fi
 
-	command yay -S --noconfirm --needed --answerclean None --answerdiff None --removemake "${@}"
+	command paru -S --cleanafter --skipreview --removemake=yes --noconfirm --needed "${@}"
 }

@@ -2,7 +2,8 @@
 # XDG Desktop
 # ------------------------------------------------------------------------------
 
-distribution arch && packages xdg-user-dirs xdg-user-dirs-gtk xdg-desktop-portal
+distribution arch && packages xdg-user-dirs xdg-user-dirs-gtk
+distribution arch && packages xdg-desktop-portal-gtk xdg-desktop-portal-gnome
 
 # ------------------------------------------------------------------------------
 # System Control
@@ -23,11 +24,11 @@ distribution arch && packages wl-clipboard
 distribution arch && packages grim slurp
 
 # ------------------------------------------------------------------------------
-# Compositor & Shell
+# Compositor
 # ------------------------------------------------------------------------------
 
-distribution arch && packages noctalia noctalia-greeter
-distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
+distribution arch && packages niri
+distribution arch && aur libastal-niri-git
 
 # ------------------------------------------------------------------------------
 # Other

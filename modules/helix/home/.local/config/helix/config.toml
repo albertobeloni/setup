@@ -1,7 +1,8 @@
+theme = "flexoki_dark"
+
 [editor]
 line-number = "absolute"
 mouse = true
-rulers = [80]
 trim-trailing-whitespace = true
 
 [editor.cursor-shape]
