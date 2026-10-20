@@ -1,1 +1,2 @@
 distribution arch && aur libastal-git libastal-4-git libastal-battery-git libastal-bluetooth-git libastal-greetd-git libastal-mpris-git libastal-network-git libastal-notifd-git libastal-powerprofiles-git libastal-wireplumber-git libastal-apps-git libastal-auth-git libastal-io-git libastal-tray-git libastal-wl-git libastal-brightness-git libastal-idle-notify-git libastal-wl4-git libastal-workspace-git
+distribution arch && aur aylurs-gtk-shell-git

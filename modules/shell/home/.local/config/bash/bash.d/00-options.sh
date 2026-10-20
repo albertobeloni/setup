@@ -5,3 +5,5 @@ command shopt -s extglob
 command shopt -s globstar
 command shopt -s histappend
 command shopt -s nocaseglob
+
+command stty -echoctl

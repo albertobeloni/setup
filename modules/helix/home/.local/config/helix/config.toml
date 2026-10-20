@@ -1,4 +1,4 @@
-theme = "flexoki_dark"
+theme = "base16_terminal"
 
 [editor]
 line-number = "absolute"
