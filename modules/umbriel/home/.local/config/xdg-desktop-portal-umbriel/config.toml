@@ -1,7 +1,0 @@
-[screencast]
-chooser_cmd = "/usr/local/libexec/umbriel-share-picker"
-max_fps = 0
-
-[screenshot]
-cmd = ""
-color_pick_cmd = ""
