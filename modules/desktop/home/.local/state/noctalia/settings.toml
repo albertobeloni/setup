@@ -1,0 +1,268 @@
+config_version = 15
+
+[bar.default]
+background_opacity = 0.0
+capsule = true
+capsule_opacity = 0.0
+capsule_padding = 4.0
+capsule_thickness = 1.0
+center = []
+end = [ "tray", "group:g1" ]
+hover_highlight = false
+margin_edge = 16
+margin_ends = 16
+padding = 0
+panel_overlap = 0
+position = "bottom"
+radius = 0
+reserve_space = false
+shadow = false
+show_on_workspace_switch = false
+show_tooltip = false
+start = [ "overview" ]
+thickness = 24
+widget_spacing = 8
+
+[bar.default.dead_zone.actions]
+right = "none"
+
+[[bar.default.capsule_group]]
+accordion = true
+accordion_direction = "end"
+border_width = 1.0
+enabled = true
+fill = "surface_variant"
+id = "g1"
+members = [ "clock", "control-center" ]
+opacity = 0.0
+padding = 4.0
+
+[battery]
+warning_threshold = 25
+
+[brightness]
+enable_ddcutil = true
+sync_all_monitors = true
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+[desktop_widgets.grid]
+cell_size = 8
+major_interval = 4
+visible = true
+
+[hot_corners]
+delay_ms = 150
+enabled = true
+
+[hot_corners.top_left]
+action = "command"
+command = "umbriel msg overview-toggle"
+
+[hot_corners.top_right]
+action = "command"
+command = "umbriel msg overview-toggle"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+[idle.behavior.lock]
+action = "lock"
+enabled = false
+timeout = 600.0
+
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = true
+timeout = 900.0
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 660.0
+
+[location]
+address = "Barueri, Brazil"
+
+[lockscreen]
+blurred_desktop = true
+transition = [ "fade" ]
+transition_duration = 200
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+
+[lockscreen_widgets.grid]
+cell_size = 8
+major_interval = 4
+visible = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+box_height = 80.0
+box_width = 400.0
+cx = 960.0
+cy = 960.0
+output = "HDMI-A-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+background_color = "surface_variant"
+background_opacity = 1.0
+background_radius = 8.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 8.0
+layout = "compact"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = false
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = false
+show_weather = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 80.0
+box_width = 400.0
+cx = 960.0
+cy = 960.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 1.0
+background_radius = 8.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 8.0
+layout = "compact"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = false
+show_media = true
+show_password_reveal = true
+show_session_buttons = true
+show_unlock_hint = false
+show_weather = true
+
+[notification]
+background_opacity = 1.0
+offset_x = 16
+offset_y = 16
+
+[osd]
+background_opacity = 1.0
+offset_x = 16
+offset_y = 16
+position = "bottom_center"
+position_vertical = "center_left"
+
+[shell]
+corner_radius_scale = 0.40000000000000002
+polkit_agent = true
+popup_shadows = false
+umbriel_overview_type_to_launch_enabled = true
+
+[shell.launcher]
+categories = false
+compact = true
+layout = "simple"
+show_app_origin_indicator = false
+show_icons = false
+
+[shell.panel]
+control_center_placement = "floating"
+floating_offset = 16
+open_near_click_control_center = true
+session_placement = "floating"
+wallpaper_placement = "floating"
+wallpaper_position = "center"
+wallpaper_show_names = false
+
+[shell.screen_corners]
+enabled = true
+
+[shell.session]
+show_shortcuts = false
+
+[[shell.session.actions]]
+action = "lock"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "1"
+variant = "ghost"
+
+[[shell.session.actions]]
+action = "logout"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "2"
+variant = "ghost"
+
+[[shell.session.actions]]
+action = "lock_and_suspend"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "3"
+variant = "ghost"
+
+[[shell.session.actions]]
+action = "reboot"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "4"
+variant = "ghost"
+
+[[shell.session.actions]]
+action = "shutdown"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "5"
+variant = "ghost"
+
+[shell.shadow]
+alpha = 0.0
+
+[shell.window_switcher]
+show_app_icon = false
+show_caption = false
+show_count = false
+
+[theme]
+community_palette = "Flexoki"
+source = "community"
+
+[wallpaper]
+transition = [ "fade" ]
+
+[wallpaper.default]
+path = "color:#100F0F"
+
+[wallpaper.monitors.HDMI-A-1]
+path = "color:#100F0F"
+
+[wallpaper.monitors.eDP-1]
+path = "color:#100F0F"
+
+[widget.control-center]
+glyph = "user"
+
+[widget.overview]
+type = "custom_button"
+
+[widget.overview.actions]
+left = "exec umbriel msg overview-toggle"
+scroll_down = "exec umbriel msg workspace-next"
+scroll_up = "exec umbriel msg workspace-previous"

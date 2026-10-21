@@ -1,0 +1,32 @@
+# ------------------------------------------------------------------------------
+# General
+# ------------------------------------------------------------------------------
+
+[general]
+autostart = ["noctalia"]
+show_cheatsheet = false
+
+# ------------------------------------------------------------------------------
+# Includes
+# ------------------------------------------------------------------------------
+
+[include]
+files = [
+	"components/animations.toml",
+	"components/appearance.toml",
+	"components/effects.toml",
+	"components/environment.toml",
+	"components/events.toml",
+	# "components/general.toml",
+	"components/inputs.toml",
+	"components/keybinds.toml",
+	"components/layers.toml",
+	"components/layouts.toml",
+	"components/outputs.toml",
+	"components/overview.toml",
+	"components/tabs.toml",
+	"components/windows.toml",
+]
+
+[include.optional]
+files = ["noctalia.toml"]

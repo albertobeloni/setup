@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------------------
+# Inputs
+# ------------------------------------------------------------------------------
+
+[input]
+client_window_drag = true
+middle_click_paste = false
+window_drag_toggle = "floating"
+
+[input.keyboard]
+layout = "br"
+repeat_delay = 250
+repeat_rate = 25
+
+[input.mouse]
+sensitivity = 0.0
+
+[input.focus]
+follows_mouse = false
+
+[input.cursor]
+hide_when_typing = false
+size = 24
+theme = "Adwaita"
+
+[input.touchpad]
+natural_scroll = true
+tap = true
+
+[input.drag_edge_scroll]
+delay_ms = 100
+enabled = true
+max_speed = 1500.0
+trigger_zone = 30

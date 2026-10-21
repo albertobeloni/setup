@@ -1,0 +1,12 @@
+[Desktop Entry]
+name=Sample
+Categories=Utility
+Comment=Sample application
+Exec=sample-program
+GenericName=Application
+Icon=
+Keyword=Onw;Two;
+NoDisplay=true
+Terminal=false
+TryExec=
+Type=Application
