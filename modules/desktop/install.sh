@@ -18,6 +18,12 @@ distribution arch && packages brightnessctl ddcutil playerctl accountsservice
 distribution arch && packages wl-clipboard
 
 # ------------------------------------------------------------------------------
+# Secret Service Provider
+# ------------------------------------------------------------------------------
+
+distribution arch && packages oo7
+
+# ------------------------------------------------------------------------------
 # Screenshot & Screencast
 # ------------------------------------------------------------------------------
 
@@ -43,7 +49,22 @@ distribution arch && packages sound-theme-freedesktop
 # ------------------------------------------------------------------------------
 
 distribution arch && packages nautilus gnome-software gnome-system-monitor
-distribution arch && flathub org.gnome.Decibels org.gnome.Calculator org.gnome.Calendar org.gnome.Snapshot org.gnome.clocks org.gnome.Papers org.gnome.font-viewer org.gnome.Loupe org.gnome.Logs org.gnome.Maps org.gnome.Music org.gnome.TextEditor org.gnome.Showtime org.gnome.Weather
+
+distribution arch && flathub org.gnome.Decibels
+distribution arch && flathub org.gnome.Calculator
+distribution arch && flathub org.gnome.Calendar
+distribution arch && flathub org.gnome.Snapshot
+distribution arch && flathub org.gnome.clocks
+distribution arch && flathub org.gnome.Papers
+distribution arch && flathub org.gnome.font-viewer
+distribution arch && flathub org.gnome.Loupe
+distribution arch && flathub org.gnome.Logs
+distribution arch && flathub org.gnome.Maps
+distribution arch && flathub org.gnome.Music
+distribution arch && flathub org.gnome.TextEditor
+distribution arch && flathub org.gnome.Showtime
+distribution arch && flathub org.gnome.Weather
+distribution arch && flathub org.gnome.SoundRecorder
 
 # distribution arch && packages evolution-data-server
 # distribution arch && flathub org.gnome.Contacts

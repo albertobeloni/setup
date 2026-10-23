@@ -1,6 +1,12 @@
 post()
 {
 	#
+	# Services
+	#
+
+	command systemctl --user enable oo7-daemon.service
+
+	#
 	# User directories
 	#
 

@@ -31,6 +31,10 @@ default_position = { x = 0, y = 0, anchor = "bottom_right" }
 default_focused = false
 default_pinned = true
 
+#
+# GNOME Applications
+#
+
 [[window_rule]]
 match.app_id = "^org.gnome.Calculator$"
 default_floating = true
@@ -57,4 +61,8 @@ default_floating = true
 
 [[window_rule]]
 match.app_id = "^org.gnome.Showtime$"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^org.gnome.SoundRecorder$"
 default_floating = true
