@@ -1,0 +1,108 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+	"toolbar": {
+		"code_actions": false,
+		"agent_review": false,
+		"selections_menu": false,
+		"quick_actions": false,
+		"breadcrumbs": false
+	},
+	"scrollbar": {
+		"selected_text": true,
+		"selected_symbol": true,
+		"search_results": false,
+		"git_diff": false,
+		"cursors": false
+	},
+	"inline_code_actions": false,
+	"gutter": {
+		"folds": true,
+		"bookmarks": false,
+		"breakpoints": false,
+		"runnables": false
+	},
+	"buffer_line_height": "standard",
+	"agent": {
+		"button": false,
+		"favorite_models": [],
+		"model_parameters": []
+	},
+	"git": {
+		"inline_blame": {
+			"enabled": false
+		}
+	},
+	"collaboration_panel": {
+		"button": false
+	},
+	"outline_panel": {
+		"button": false
+	},
+	"completions": {
+		"lsp": false
+	},
+	"enable_language_server": false,
+	"hard_tabs": true,
+	"window_decorations": "server",
+	"centered_layout": {
+		"right_padding": 0.2,
+		"left_padding": 0.2
+	},
+	"tab_bar": {
+		"show_tab_bar_buttons": true,
+		"show_nav_history_buttons": false
+	},
+	"title_bar": {
+		"open_menus_on_hover": false,
+		"show_menus": false,
+		"show_user_picture": false,
+		"show_user_menu": false,
+		"show_sign_in": false,
+		"show_onboarding_banner": false,
+		"show_project_items": false,
+		"show_worktree_name": false,
+		"show_branch_name": false
+	},
+	"debugger": {
+		"button": false
+	},
+	"search": {
+		"button": false
+	},
+	"diagnostics": {
+		"button": false
+	},
+	"status_bar": {
+		"pending_keystrokes_indicator": false,
+		"cursor_position_button": false,
+		"active_language_button": false
+	},
+	"project_panel": {
+		"entry_spacing": "standard",
+		"git_status": true,
+		"folder_indicator": "both",
+		"dock": "left",
+		"button": true
+	},
+	"cursor_shape": "underline",
+	"disable_ai": true,
+	"ui_font_family": "Sans",
+	"buffer_font_family": "Mono Extended",
+	"terminal": {
+		"cursor_shape": "underline"
+	},
+	"ui_font_size": 14.0,
+	"buffer_font_size": 12.0,
+	"theme": {
+		"mode": "system",
+		"light": "One Light",
+		"dark": "One Dark",
+	},
+}

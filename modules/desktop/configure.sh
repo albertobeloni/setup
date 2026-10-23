@@ -33,6 +33,13 @@ post()
 	prompt "Your name: " && command read name
 	command busctl call "org.freedesktop.Accounts" "${user}" "org.freedesktop.Accounts.User" SetRealName s "${name}"
 
-	command unset user
 	command unset name
+
+	#
+	# Greeter
+	#
+
+	command sudo noctalia-greeter passwordless-sync enable "${user}"
+
+	command unset user
 }

@@ -1,268 +1,379 @@
 config_version = 15
 
+[audio]
+sound_volume = 1.0
+
 [bar.default]
 background_opacity = 0.0
 capsule = true
-capsule_opacity = 0.0
-capsule_padding = 4.0
+capsule_opacity = 0.25
+capsule_padding = 8.0
+capsule_radius = 4
 capsule_thickness = 1.0
-center = []
 end = [ "tray", "group:g1" ]
-hover_highlight = false
-margin_edge = 16
-margin_ends = 16
+margin_edge = 8
+margin_ends = 8
 padding = 0
 panel_overlap = 0
-position = "bottom"
-radius = 0
+radius = 4
 reserve_space = false
 shadow = false
 show_on_workspace_switch = false
-show_tooltip = false
-start = [ "overview" ]
-thickness = 24
+smart_auto_hide = true
+start = [ "group:g2" ]
+thickness = 32
 widget_spacing = 8
 
-[bar.default.dead_zone.actions]
-right = "none"
+	[bar.default.dead_zone.actions]
+	right = "none"
 
-[[bar.default.capsule_group]]
-accordion = true
-accordion_direction = "end"
-border_width = 1.0
-enabled = true
-fill = "surface_variant"
-id = "g1"
-members = [ "clock", "control-center" ]
-opacity = 0.0
-padding = 4.0
+	[[bar.default.capsule_group]]
+	accordion = true
+	accordion_direction = "start"
+	border_width = 1.0
+	enabled = true
+	fill = "surface_variant"
+	id = "g1"
+	members = [ "control-center", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery" ]
+	opacity = 0.25
+	padding = 8.0
+	radius = 4.0
+	widget_spacing = 16
+
+	[[bar.default.capsule_group]]
+	accordion = true
+	accordion_direction = "end"
+	border_width = 1.0
+	enabled = true
+	fill = "surface_variant"
+	id = "g2"
+	members = [ "session-lock", "session-logout", "session-suspend", "session-reboot", "session-shutdown" ]
+	opacity = 0.25
+	padding = 8.0
+	radius = 4.0
+	widget_spacing = 16
 
 [battery]
 warning_threshold = 25
 
 [brightness]
 enable_ddcutil = true
-sync_all_monitors = true
 
-[desktop_widgets]
-schema_version = 2
-widget_order = []
+[control_center]
+show_session_button = false
+show_shortcut_labels = false
+sidebar_section = "none"
+width = 720
 
-[desktop_widgets.grid]
-cell_size = 8
-major_interval = 4
-visible = true
+[dock]
+auto_hide = true
+background_opacity = 0.25
+cross_axis_padding = 0
+enabled = true
+icon_size = 20
+inactive_opacity = 0.75
+inactive_scale = 1.0
+item_spacing = 0
+launcher_position = "start"
+magnification = false
+magnification_scale = 1.25
+main_axis_padding = 0
+margin_edge = 8
+radius = 4
+reserve_space = false
+shadow = false
+show_instance_count = false
 
 [hot_corners]
 delay_ms = 150
 enabled = true
 
-[hot_corners.top_left]
-action = "command"
-command = "umbriel msg overview-toggle"
+	[hot_corners.top_left]
+	action = "command"
+	command = "umbriel msg overview-toggle"
 
-[hot_corners.top_right]
-action = "command"
-command = "umbriel msg overview-toggle"
-
-[idle]
-behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
-
-[idle.behavior.lock]
-action = "lock"
-enabled = false
-timeout = 600.0
-
-[idle.behavior.lock-and-suspend]
-action = "lock_and_suspend"
-enabled = true
-timeout = 900.0
-
-[idle.behavior.screen-off]
-action = "screen_off"
-enabled = true
-timeout = 660.0
+	[hot_corners.top_right]
+	action = "command"
+	command = "umbriel msg overview-toggle"
 
 [location]
 address = "Barueri, Brazil"
 
 [lockscreen]
-blurred_desktop = true
+tint_intensity = 0.0
 transition = [ "fade" ]
-transition_duration = 200
+transition_duration = 1000
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
 widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
 
-[lockscreen_widgets.grid]
-cell_size = 8
-major_interval = 4
-visible = true
+	[lockscreen_widgets.grid]
+	cell_size = 16
+	major_interval = 4
+	visible = true
 
-[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
-box_height = 80.0
-box_width = 400.0
-cx = 960.0
-cy = 960.0
-output = "HDMI-A-1"
-placement_height = 1080.0
-placement_width = 1920.0
-rotation = 0.0
-type = "login_box"
+	[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+	box_height = 80
+	box_width = 280.0
+	cx = 960.0
+	cy = 920.0
+	output = "HDMI-A-1"
+	placement_height = 1080.0
+	placement_width = 1920.0
+	rotation = 0.0
+	type = "login_box"
 
-[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-background_color = "surface_variant"
-background_opacity = 1.0
-background_radius = 8.0
-center_password_text = false
-input_opacity = 1.0
-input_radius = 8.0
-layout = "compact"
-show_caps_lock = true
-show_keyboard_layout = true
-show_login_button = false
-show_media = true
-show_password_reveal = true
-show_session_buttons = true
-show_unlock_hint = false
-show_weather = true
+		[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+		background_color = "surface_variant"
+		background_opacity = 0.80
+		background_radius = 8.0
+		center_password_text = false
+		input_opacity = 1.0
+		input_radius = 8.0
+		layout = "compact"
+		show_caps_lock = true
+		show_keyboard_layout = true
+		show_login_button = false
+		show_media = true
+		show_password_reveal = false
+		show_session_buttons = true
+		show_unlock_hint = false
+		show_weather = true
 
-[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-box_height = 80.0
-box_width = 400.0
-cx = 960.0
-cy = 960.0
-output = "eDP-1"
-placement_height = 1080.0
-placement_width = 1920.0
-rotation = 0.0
-type = "login_box"
+	[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+	box_height = 80.0
+	box_width = 280.0
+	cx = 960.0
+	cy = 920.0
+	output = "eDP-1"
+	placement_height = 1080.0
+	placement_width = 1920.0
+	rotation = 0.0
+	type = "login_box"
 
-[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-background_color = "surface_variant"
-background_opacity = 1.0
-background_radius = 8.0
-center_password_text = false
-input_opacity = 1.0
-input_radius = 8.0
-layout = "compact"
-show_caps_lock = true
-show_keyboard_layout = true
-show_login_button = false
-show_media = true
-show_password_reveal = true
-show_session_buttons = true
-show_unlock_hint = false
-show_weather = true
+		[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+		background_color = "surface_variant"
+		background_opacity = 0.80
+		background_radius = 8.0
+		center_password_text = false
+		input_opacity = 1.0
+		input_radius = 8.0
+		layout = "compact"
+		show_caps_lock = true
+		show_keyboard_layout = true
+		show_login_button = false
+		show_media = true
+		show_password_reveal = false
+		show_session_buttons = true
+		show_unlock_hint = false
+		show_weather = true
 
 [notification]
-background_opacity = 1.0
-offset_x = 16
-offset_y = 16
+background_opacity = 0.75
+offset_x = 8
 
 [osd]
-background_opacity = 1.0
-offset_x = 16
-offset_y = 16
+background_opacity = 0.80
+hide_delay_ms = 1500
+offset_x = 8
 position = "bottom_center"
 position_vertical = "center_left"
 
 [shell]
-corner_radius_scale = 0.40000000000000002
+corner_radius_scale = 0.4
 polkit_agent = true
 popup_shadows = false
 umbriel_overview_type_to_launch_enabled = true
 
-[shell.launcher]
-categories = false
-compact = true
-layout = "simple"
-show_app_origin_indicator = false
-show_icons = false
+	[shell.greeter_sync]
+	auto_sync = true
 
-[shell.panel]
-control_center_placement = "floating"
-floating_offset = 16
-open_near_click_control_center = true
-session_placement = "floating"
-wallpaper_placement = "floating"
-wallpaper_position = "center"
-wallpaper_show_names = false
+	[shell.launcher]
+	category_icons_only = true
+	compact = true
+	layout = "simple"
+	show_icons = false
 
-[shell.screen_corners]
-enabled = true
+	[shell.panel]
+	border_width = 2.0
+	control_center_placement = "floating"
+	open_near_click_control_center = true
+	session_placement = "floating"
+	session_position = "center"
+	transparency_mode = "soft"
+	wallpaper_placement = "floating"
+	wallpaper_position = "center"
+	wallpaper_show_names = false
 
-[shell.session]
-show_shortcuts = false
+	[shell.screen_corners]
+	enabled = true
+	size = 8
 
-[[shell.session.actions]]
-action = "lock"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "1"
-variant = "ghost"
+	[shell.screenshot]
+	directory = "/home/alberto/Pictures/Screenshots"
 
-[[shell.session.actions]]
-action = "logout"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "2"
-variant = "ghost"
+	[shell.session]
+	show_shortcuts = false
 
-[[shell.session.actions]]
-action = "lock_and_suspend"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "3"
-variant = "ghost"
+		[[shell.session.actions]]
+		action = "lock"
+		countdown_seconds = 0.0
+		enabled = true
+		shortcut = "1"
+		variant = "ghost"
 
-[[shell.session.actions]]
-action = "reboot"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "4"
-variant = "ghost"
+		[[shell.session.actions]]
+		action = "logout"
+		countdown_seconds = 0.0
+		enabled = true
+		shortcut = "2"
+		variant = "ghost"
 
-[[shell.session.actions]]
-action = "shutdown"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "5"
-variant = "ghost"
+		[[shell.session.actions]]
+		action = "lock_and_suspend"
+		countdown_seconds = 0.0
+		enabled = true
+		shortcut = "3"
+		variant = "ghost"
 
-[shell.shadow]
-alpha = 0.0
+		[[shell.session.actions]]
+		action = "reboot"
+		countdown_seconds = 0.0
+		enabled = true
+		shortcut = "4"
+		variant = "ghost"
 
-[shell.window_switcher]
-show_app_icon = false
-show_caption = false
-show_count = false
+		[[shell.session.actions]]
+		action = "shutdown"
+		countdown_seconds = 0.0
+		enabled = true
+		shortcut = "5"
+		variant = "ghost"
 
-[theme]
-community_palette = "Flexoki"
-source = "community"
+	[shell.shadow]
+	alpha = 0.0
+
+	[shell.window_switcher]
+	mru = true
+	show_app_icon = false
+	show_caption = false
+	show_count = false
+	style = "compact"
 
 [wallpaper]
+directory = "/home/alberto/Pictures/Wallpapers"
 transition = [ "fade" ]
 
-[wallpaper.default]
-path = "color:#100F0F"
+[widget.battery]
+capsule_padding = 8
+show_label = false
 
-[wallpaper.monitors.HDMI-A-1]
-path = "color:#100F0F"
+	[widget.battery.actions]
+	middle = "none"
 
-[wallpaper.monitors.eDP-1]
-path = "color:#100F0F"
+[widget.bluetooth]
+capsule_padding = 8
+
+	[widget.bluetooth.actions]
+	middle = "none"
+
+[widget.brightness]
+capsule_padding = 8
+show_label = false
+
+	[widget.brightness.actions]
+	middle = "none"
+
+[widget.clipboard]
+capsule_padding = 8
+
+	[widget.clipboard.actions]
+	middle = "none"
+
+[widget.clock]
+anchor = true
+capsule_padding = 8
+
+	[widget.clock.actions]
+	middle = "none"
 
 [widget.control-center]
-glyph = "user"
+capsule_padding = 8
+glyph = "settings"
 
-[widget.overview]
+	[widget.control-center.actions]
+	middle = "none"
+
+[widget.network]
+capsule_padding = 8
+show_label = false
+
+	[widget.network.actions]
+	middle = "none"
+
+[widget.notifications]
+capsule_padding = 8
+
+	[widget.notifications.actions]
+	middle = "none"
+
+[widget.session-lock]
+capsule_padding = 8
+glyph = "lock"
 type = "custom_button"
 
-[widget.overview.actions]
-left = "exec umbriel msg overview-toggle"
-scroll_down = "exec umbriel msg workspace-next"
-scroll_up = "exec umbriel msg workspace-previous"
+	[widget.session-lock.actions]
+	left = "session lock"
+	middle = "none"
+
+[widget.session-logout]
+capsule_padding = 8
+glyph = "logout"
+type = "custom_button"
+
+	[widget.session-logout.actions]
+	left = "session logout"
+	middle = "none"
+
+[widget.session-reboot]
+capsule_padding = 8
+glyph = "reboot"
+type = "custom_button"
+
+	[widget.session-reboot.actions]
+	left = "session reboot"
+	middle = "none"
+
+[widget.session-shutdown]
+capsule_padding = 8
+glyph = "shutdown"
+type = "custom_button"
+
+	[widget.session-shutdown.actions]
+	left = "session shutdown"
+	middle = "none"
+
+[widget.session-suspend]
+capsule_padding = 8
+glyph = "suspend"
+type = "custom_button"
+
+	[widget.session-suspend.actions]
+	left = "session suspend"
+	middle = "none"
+
+[widget.tray]
+capsule_padding = 8
+match_adjacent_spacing = true
+
+	[widget.tray.actions]
+	middle = "none"
+
+[widget.volume]
+capsule_padding = 8
+show_label = false
+
+	[widget.volume.actions]
+	middle = "none"

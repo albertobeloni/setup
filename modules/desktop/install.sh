@@ -37,3 +37,13 @@ distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
 distribution arch && packages adwaita-cursors adwaita-fonts adwaita-icon-theme
 distribution arch && packages papirus-icon-theme
 distribution arch && packages sound-theme-freedesktop
+
+# ------------------------------------------------------------------------------
+# Software
+# ------------------------------------------------------------------------------
+
+distribution arch && packages nautilus gnome-software gnome-system-monitor
+distribution arch && flathub org.gnome.Decibels org.gnome.Calculator org.gnome.Calendar org.gnome.Snapshot org.gnome.clocks org.gnome.Papers org.gnome.font-viewer org.gnome.Loupe org.gnome.Logs org.gnome.Maps org.gnome.Music org.gnome.TextEditor org.gnome.Showtime org.gnome.Weather
+
+# distribution arch && packages evolution-data-server
+# distribution arch && flathub org.gnome.Contacts

@@ -3,8 +3,8 @@
 # ------------------------------------------------------------------------------
 
 [appearance]
-border_width = 1
-corner_radius = 8
+border_width = 2
+corner_radius = 4
 drag_opacity = 1.0
 opaque_fullscreen = true
 outer_border_width = 0
@@ -24,12 +24,12 @@ prefer_no_csd = true
 
 [colors.border]
 # focused = "#000000ff"
-# outer = "#000000ff"
-# unfocused = "#000000ff"
+# outer = "#000000"
+# unfocused = "#757575"
 
 [appearance.blur]
-brightness = 0.8
-contrast = 0.8
+brightness = 1.0
+contrast = 1.0
 enabled = true
 noise = 0.02
 optimized = true
@@ -42,3 +42,23 @@ enabled = false
 softness = 0
 offset_x = 0
 offset_y = 0
+
+# 0d
+# 1a
+# 26
+# 33
+# 40
+# 4d
+# 59
+# 66
+# 73
+# 80
+# 8c
+# 99
+# a6
+# b3
+# bf
+# cc
+# d9
+# e6
+# f2

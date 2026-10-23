@@ -4,16 +4,16 @@
 
 [layout]
 mode = "scrolling"
-gap = 16
+gap = 8
 extent_presets = [0.333, 0.5, 0.667]
 new_exits_fullscreen = []
 client_maximize = "column"
 
 [layout.struts]
-top = 16
-right = 24
+top = 40
+right = 40
 bottom = 40
-left = 24
+left = 40
 
 [layout.scrolling]
 default_extent_fraction = 0.5
@@ -22,7 +22,7 @@ center_focused = "on_overflow"
 
 [layout.dwindle]
 preserve_split = false
-new_toward_cursor = false
+new_toward_cursor = true
 
 [layout.master]
 position = "left"
