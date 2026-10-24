@@ -21,9 +21,9 @@ post()
 	#
 
 	command gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-	command gsettings set org.gnome.desktop.interface font-name "Sans 10.5"
-	command gsettings set org.gnome.desktop.interface document-font-name "Sans 10.5"
-	command gsettings set org.gnome.desktop.interface monospace-font-name "Mono 10.5"
+	command gsettings set org.gnome.desktop.interface font-name "sans-serif 9"
+	command gsettings set org.gnome.desktop.interface document-font-name "sans-serif 9"
+	command gsettings set org.gnome.desktop.interface monospace-font-name "monospace 9"
 
 	#
 	# User information
@@ -44,6 +44,8 @@ post()
 	#
 	# Greeter
 	#
+
+	user="$(command whoami)"
 
 	command sudo noctalia-greeter passwordless-sync enable "${user}"
 

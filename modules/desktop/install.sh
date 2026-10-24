@@ -34,7 +34,7 @@ distribution arch && packages oo7
 # ------------------------------------------------------------------------------
 
 distribution arch && packages noctalia noctalia-greeter
-distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
+# distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
 
 # ------------------------------------------------------------------------------
 # Other

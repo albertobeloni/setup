@@ -37,6 +37,8 @@
 "Mod+Ctrl+Right" = "window-move-right"
 "Mod+Ctrl+Up" = "window-move-up"
 
+"Mod+C" = "window-center"
+
 "Alt+Tab" = "spawn:noctalia msg window-switcher"
 
 #

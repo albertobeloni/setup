@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 [appearance]
-border_width = 2
+border_width = 0
 corner_radius = 4
 drag_opacity = 1.0
 opaque_fullscreen = true
@@ -24,7 +24,7 @@ prefer_no_csd = true
 
 [colors.border]
 # focused = "#000000ff"
-# outer = "#000000"
+# outer = "#000000ff"
 # unfocused = "#757575"
 
 [appearance.blur]
