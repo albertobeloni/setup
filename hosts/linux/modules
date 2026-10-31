@@ -1,11 +1,6 @@
-battery
-bluetooth
-desktop
-flatpak
 fonts
 git
 intel
-keyring
 kitty
 neovim
 node
@@ -13,5 +8,3 @@ nvidia
 qutebrowser
 shell
 ssh
-yazi
-zed
