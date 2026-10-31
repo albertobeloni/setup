@@ -1,0 +1,13 @@
+[Unit]
+Description=Automount removable drives
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/udiskie --automount --notify --no-tray
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,14 @@
+[[mgr.prepend_keymap]]
+on = "p"
+run = "plugin system-clipboard"
+desc = "Paste yanked files, or files from the system clipboard"
+
+[[mgr.prepend_keymap]]
+on = "M"
+run = "plugin mount"
+desc = "Mount, unmount and eject drives"
+
+[[input.prepend_keymap]]
+on = "<Esc>"
+run = "close"
+desc = "Cancel input"

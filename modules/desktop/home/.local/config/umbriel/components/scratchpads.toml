@@ -1,0 +1,13 @@
+# ------------------------------------------------------------------------------
+# Scratchpads
+# ------------------------------------------------------------------------------
+
+[[scratchpad]]
+name = "terminal"
+spawn_when_empty = "kitty --class scratchpad-terminal"
+
+[[window_rule]]
+match.app_id = "^scratchpad-terminal$"
+default_scratchpad = "terminal"
+default_floating_size = { width = 0.5, height = 0.5 }
+title_bar = "off"

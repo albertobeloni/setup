@@ -1,0 +1,11 @@
+command alias ls="ls --color=auto"
+
+command alias copy="cp -r"
+command alias create="mkdir -p"
+command alias list="ls -1"
+command alias move="mv -f"
+command alias remove="rm -fr"
+command alias rename="mv -f"
+command alias size="du -hs"
+command alias sudo="sudo "
+command alias where="pwd"

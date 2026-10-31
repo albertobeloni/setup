@@ -1,0 +1,12 @@
+# ------------------------------------------------------------------------------
+# Overview
+# ------------------------------------------------------------------------------
+
+[overview]
+background_blur = true
+scroll_factor_horizontal = 1.0
+scroll_factor_vertical = 1.0
+shortcut_keys = "1234567890"
+shortcuts = false
+workspace_wallpaper = true
+zoom = 0.75

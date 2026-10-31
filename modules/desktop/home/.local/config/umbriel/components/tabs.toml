@@ -1,0 +1,18 @@
+# ------------------------------------------------------------------------------
+# Tabs
+# ------------------------------------------------------------------------------
+
+[appearance.tab_bar]
+# corner_radius = -1
+# font = "Fira Sans 9"
+# height = 24
+# hide_when_single = false
+# max_tabs = 0
+# overflow = "scroll"
+# padding = 8
+# position = "top"
+# style = "titles"
+# tab_gap = 2
+# title_align = "center"
+# title_format = "{title}"
+# visible = true

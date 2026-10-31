@@ -1,0 +1,69 @@
+# ------------------------------------------------------------------------------
+# Noctalia
+# ------------------------------------------------------------------------------
+
+[keybinds]
+
+#
+# Launcher and session
+#
+
+"Mod" = "spawn noctalia msg panel-toggle launcher"
+"Mod+Escape" = "spawn noctalia msg panel-toggle session"
+"Mod+L" = "spawn noctalia msg session lock"
+"Scroll_Lock" = "spawn noctalia msg session lock"
+"Alt+Tab" = "spawn noctalia msg window-switcher"
+
+#
+# Screenshots
+#
+
+"Mod+Shift+S" = "spawn noctalia msg screenshot-region"
+"Print" = "spawn noctalia msg screenshot-fullscreen pick"
+
+#
+# Media
+#
+
+"XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn noctalia msg volume-mute", allow_when_locked = true, repeat = false }
+"XF86AudioNext" = { action = "spawn noctalia msg media next", allow_when_locked = true }
+"XF86AudioPlay" = { action = "spawn noctalia msg media toggle", allow_when_locked = true, repeat = false }
+"XF86AudioPrev" = { action = "spawn noctalia msg media previous", allow_when_locked = true }
+"XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioStop" = { action = "spawn noctalia msg media stop", allow_when_locked = true }
+"XF86AudioMicMute" = { action = "spawn noctalia msg mic-mute", allow_when_locked = true }
+"XF86Tools" = { action = "spawn noctalia msg media next-player", allow_when_locked = true }
+
+#
+# Brightness
+#
+
+"XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down", allow_when_locked = true }
+"XF86MonBrightnessUp" = { action = "spawn noctalia msg brightness-up", allow_when_locked = true }
+
+#
+# Special keys
+#
+
+"XF86Calculator" = { action = "spawn noctalia msg panel-toggle launcher" }
+"XF86Favorites" = { action = "spawn noctalia msg panel-toggle clipboard" }
+"XF86Search" = { action = "spawn noctalia msg panel-toggle launcher" }
+"XF86SelectiveScreenshot" = { action = "spawn noctalia msg screenshot-region" }
+
+# ------------------------------------------------------------------------------
+# Windows and layers
+# ------------------------------------------------------------------------------
+
+[[window_rule]]
+match.app_id = "^dev[.]noctalia[.]Noctalia$"
+blur = true
+blur_optimized = false
+default_floating = true
+
+[[layer_rule]]
+match.namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|desktop-widget-.*)$"
+blur = true
+blur_ignore_alpha = 0.25
+blur_popups = true
+blur_optimized = false

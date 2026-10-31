@@ -1,0 +1,72 @@
+# ------------------------------------------------------------------------------
+# Keybinds
+# ------------------------------------------------------------------------------
+
+[keybinds]
+
+"Mod+H" = "cheatsheet-toggle"
+
+#
+# Session
+#
+
+"Mod+Q" = { action = "window-close", repeat = false }
+"Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+
+#
+# Focus and movement
+#
+
+"Mod+Down" = "window-focus-or-workspace-down"
+"Mod+Left" = "window-focus-or-output-left"
+"Mod+Right" = "window-focus-or-output-right"
+"Mod+Up" = "window-focus-or-workspace-up"
+
+"Mod+Shift+Down" = "window-move-or-workspace-down"
+"Mod+Shift+Left" = "window-move-or-output-left"
+"Mod+Shift+Right" = "window-move-or-output-right"
+"Mod+Shift+Up" = "window-move-or-workspace-up"
+
+"Mod+Ctrl+Down" = "window-move-down"
+"Mod+Ctrl+Left" = "window-move-left"
+"Mod+Ctrl+Right" = "window-move-right"
+"Mod+Ctrl+Up" = "window-move-up"
+
+"Mod+C" = "window-center"
+
+#
+# Window state and layout
+#
+
+"Mod+Shift+WheelDown" = "workspace-next"
+"Mod+Shift+WheelUp" = "workspace-previous"
+"Mod+WheelDown" = "window-focus-right"
+"Mod+WheelUp" = "window-focus-left"
+
+"Mod+F" = { action = "window-toggle-maximize", repeat = false }
+"Mod+Ctrl+F" = { action = "window-toggle-floating", repeat = false }
+"Mod+Shift+F" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+Alt+F" = { action = "window-focus-switch-floating", repeat = false }
+
+#
+# Workspaces
+#
+
+"Mod+1" = "workspace-switch 1"
+"Mod+2" = "workspace-switch 2"
+"Mod+3" = "workspace-switch 3"
+"Mod+4" = "workspace-switch 4"
+"Mod+5" = "workspace-switch 5"
+"Mod+6" = "workspace-switch 6"
+"Mod+7" = "workspace-switch 7"
+"Mod+8" = "workspace-switch 8"
+"Mod+9" = "workspace-switch 9"
+"Mod+Shift+1" = "window-move-to-workspace 1"
+"Mod+Shift+2" = "window-move-to-workspace 2"
+"Mod+Shift+3" = "window-move-to-workspace 3"
+"Mod+Shift+4" = "window-move-to-workspace 4"
+"Mod+Shift+5" = "window-move-to-workspace 5"
+"Mod+Shift+6" = "window-move-to-workspace 6"
+"Mod+Shift+7" = "window-move-to-workspace 7"
+"Mod+Shift+8" = "window-move-to-workspace 8"
+"Mod+Shift+9" = "window-move-to-workspace 9"

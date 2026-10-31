@@ -1,0 +1,1 @@
+KERNEL=="card*", SUBSYSTEM=="drm", DRIVERS=="i915|xe", SYMLINK+="dri/intel"

@@ -1,0 +1,12 @@
+# IDs (lowercase hex): udevadm info --query=property --name=/dev/sdX | grep -E "ID_USB_(VENDOR|MODEL)_ID"
+
+# Keep the hub and the enclosure from autosuspending
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="05e3", ATTR{idProduct}=="0610", ATTR{power/control}="on"
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="05e3", ATTR{idProduct}=="0625", ATTR{power/control}="on"
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="9210", ATTR{power/control}="on"
+
+# TRIM: only if "lsblk --discard /dev/sdX" shows zeros but the bridge supports UNMAP
+ACTION=="add|change", SUBSYSTEM=="scsi_disk", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="9210", ATTR{provisioning_mode}="unmap"
+
+# SSD behind the bridge is reported as rotational; mark it as non-rotational
+ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="9210", ATTR{queue/rotational}="0"

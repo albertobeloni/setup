@@ -1,0 +1,51 @@
+#!/bin/sh
+
+path_append()
+{
+	path=":${PATH}:"
+
+	if command test "${path#*":${1}:"}" = "${path}"
+	then
+		PATH="${PATH:+${PATH}:}${1}"
+	fi
+
+	command unset -v path
+}
+
+path_prepend()
+{
+	path=":${PATH}:"
+
+	if command test "${path#*":${1}:"}" = "${path}"
+	then
+		PATH="${1}${PATH:+:${PATH}}"
+	fi
+
+	command unset -v path
+}
+
+shell_include()
+{
+	directory="${1}"
+
+	if command test -d "${directory}"
+	then
+		for file in "${directory}"/*.sh
+		do
+			if command test -r "${file}"
+			then
+				command . "${file}"
+			fi
+		done
+
+		command unset -v file
+	fi
+
+	command unset -v directory
+}
+
+shell_include "${XDG_CONFIG_HOME:-${HOME}/.config}/shell/profile.d"
+
+command unset -f path_append
+command unset -f path_prepend
+command unset -f shell_include
