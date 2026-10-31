@@ -1,5 +1,4 @@
-post()
-{
+function post() {
 	command local directory
 
 	directory="/etc/fonts/conf.d"

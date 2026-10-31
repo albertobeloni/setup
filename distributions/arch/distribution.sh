@@ -1,16 +1,12 @@
-
-packages()
-{
+function packages() {
 	command sudo pacman -S --noconfirm --needed "${@}"
 }
 
-prepare()
-{
+function prepare() {
 	command sudo pacman -Syu --noconfirm
 }
 
-flathub()
-{
+function flathub() {
 	if ! command -v "flatpak" > "/dev/null"
 	then
 		modules "flatpak"
@@ -19,8 +15,7 @@ flathub()
 	command sudo flatpak install --noninteractive flathub "${@}"
 }
 
-aur()
-{
+function aur() {
 	if ! command -v "paru" > "/dev/null"
 	then
 		modules "paru"

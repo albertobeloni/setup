@@ -3,9 +3,9 @@ then
 	command return
 fi
 
-if command test -r "${XDG_CONFIG_HOME:-${HOME}/.config}/bash/bashrc"
+if command test -r "${XDG_CONFIG_HOME:-${HOME}/.local/config}/bash/bashrc"
 then
-	command source "${XDG_CONFIG_HOME:-${HOME}/.config}/bash/bashrc"
+	command source "${XDG_CONFIG_HOME:-${HOME}/.local/config}/bash/bashrc"
 fi
 
 if [[ "${TERM}" == "screen"* ]]

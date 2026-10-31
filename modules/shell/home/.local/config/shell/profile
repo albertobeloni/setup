@@ -1,7 +1,6 @@
 #!/bin/sh
 
-path_append()
-{
+function path_append() {
 	path=":${PATH}:"
 
 	if command test "${path#*":${1}:"}" = "${path}"
@@ -12,8 +11,7 @@ path_append()
 	command unset -v path
 }
 
-path_prepend()
-{
+function path_prepend() {
 	path=":${PATH}:"
 
 	if command test "${path#*":${1}:"}" = "${path}"
@@ -24,8 +22,7 @@ path_prepend()
 	command unset -v path
 }
 
-shell_include()
-{
+function shell_include() {
 	directory="${1}"
 
 	if command test -d "${directory}"
@@ -44,7 +41,7 @@ shell_include()
 	command unset -v directory
 }
 
-shell_include "${XDG_CONFIG_HOME:-${HOME}/.config}/shell/profile.d"
+shell_include "${XDG_CONFIG_HOME:-${HOME}/.local/config}/shell/profile.d"
 
 command unset -f path_append
 command unset -f path_prepend

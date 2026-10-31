@@ -1,5 +1,4 @@
-post()
-{
+function post() {
 	command local device
 
 	for device in $(command upower -e | command grep "battery_")

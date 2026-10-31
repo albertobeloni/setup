@@ -1,6 +1,6 @@
 command declare symbol
 
-if [[ "$(tty)" == "/dev/tty"[1-9]* ]]
+if [[ "$(command tty)" == "/dev/tty"[1-9]* ]]
 then
 	symbol=">"
 else

@@ -1,5 +1,4 @@
-post()
-{
+function post() {
 	if changed
 	then
 		command sudo udevadm control --reload

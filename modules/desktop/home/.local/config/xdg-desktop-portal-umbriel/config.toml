@@ -1,5 +1,5 @@
 [screencast]
-chooser_cmd = "/usr/local/libexec/umbriel-share-picker"
+chooser_cmd = "/usr/lib/umbriel-share-picker"
 max_fps = 0
 
 [screenshot]

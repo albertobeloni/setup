@@ -1,5 +1,4 @@
 local fallbacks = {
-	CmdlineIndicator = "StatusLineMode",
 	CursorLineNrSeparator = "CursorLineNr",
 	LineNrSeparator = "LineNr",
 	StatusLineMode = "StatusLine",
@@ -17,4 +16,4 @@ link()
 vim.api.nvim_create_autocmd("ColorScheme", { callback = link })
 
 vim.o.background = "dark"
-pcall(vim.cmd.colorscheme, "rose")
+pcall(vim.cmd.colorscheme, "custom")

@@ -1,5 +1,4 @@
-post()
-{
+function post() {
 	command local plugin
 
 	plugin="${XDG_DATA_HOME}/nvim/site/pack/setup/start/nvim-treesitter"

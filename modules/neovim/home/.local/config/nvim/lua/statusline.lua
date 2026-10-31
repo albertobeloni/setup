@@ -46,6 +46,28 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 	end,
 })
 
+local visibility = nil
+
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+	nested = true,
+	callback = function()
+		if visibility == nil then
+			visibility = vim.o.laststatus
+			vim.o.laststatus = 0
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+	nested = true,
+	callback = function()
+		if vim.v.event.cmdlevel == 1 and visibility ~= nil then
+			vim.o.laststatus = visibility
+			visibility = nil
+		end
+	end,
+})
+
 vim.keymap.set("n", "<leader>s", function()
 	vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0
 end, { desc = "Toggle statusline" })

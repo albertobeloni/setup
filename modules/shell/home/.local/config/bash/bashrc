@@ -1,7 +1,6 @@
 #!/bin/bash
 
-bash_include()
-{
+function bash_include() {
 	command local directory
 
 	directory="${1}"
@@ -24,6 +23,6 @@ bash_include()
 	command unset -v directory
 }
 
-bash_include "${XDG_CONFIG_HOME:-${HOME}/.config}/bash/bash.d"
+bash_include "${XDG_CONFIG_HOME:-${HOME}/.local/config}/bash/bash.d"
 
 command unset -f bash_include

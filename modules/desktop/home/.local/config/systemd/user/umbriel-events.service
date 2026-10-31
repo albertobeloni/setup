@@ -5,7 +5,7 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=%h/.local/bin/umbriel-events.sh
+ExecStart=%h/.local/bin/umbriel-events
 Restart=on-failure
 RestartSec=2
 

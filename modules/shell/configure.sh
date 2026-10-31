@@ -1,5 +1,4 @@
-post()
-{
+function post() {
 	command mkdir -p "${XDG_STATE_HOME:-${HOME}/.local/state}/bash"
 
 	backup "${HOME}/.bash_logout"

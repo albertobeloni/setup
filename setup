@@ -1,30 +1,25 @@
 #!/bin/bash
 
 (
-	message()
-	{
+	function message() {
 		command printf '%s: %s\n' "${module:-setup}" "${1:-}" >&3
 		command printf '%s: %s\n' "${module:-setup}" "${1:-}" >&2
 	}
 
-	prompt()
-	{
+	function prompt() {
 		command printf '%s' "${1:-}" >&3
 		command printf '%s' "${1:-}" >&2
 	}
 
-	distribution()
-	{
+	function distribution() {
 		command test "${1:-}" == "${distribution}" || command return 200
 	}
 
-	changed()
-	{
+	function changed() {
 		command test "${changed:-}" == "true" || command return 200
 	}
 
-	backup()
-	{
+	function backup() {
 		command local backup
 		command local source
 
@@ -46,8 +41,7 @@
 		fi
 	}
 
-	elevate()
-	{
+	function elevate() {
 		if command test "${EUID}" -eq 0
 		then
 			message "do not run as root"
@@ -69,8 +63,7 @@
 		command disown "${process}"
 	}
 
-	clean()
-	{
+	function clean() {
 		if command test "${?}" -eq 0
 		then
 			command rm -f "${base}/setup.log"
@@ -83,8 +76,7 @@
 		fi
 	}
 
-	home()
-	{
+	function home() {
 		command local source
 		command local target
 		command local manifest
@@ -129,8 +121,7 @@
 		command printf '%s\n' "${!current[@]}" > "${manifest}"
 	}
 
-	root()
-	{
+	function root() {
 		command local source
 		command local target
 
@@ -154,8 +145,7 @@
 		done < <(command find "${path}/root" -type f -printf '%P\0')
 	}
 
-	configure()
-	{
+	function configure() {
 		command local changed
 
 		changed="false"
@@ -186,16 +176,14 @@
 		fi
 	}
 
-	install()
-	{
+	function install() {
 		if command test -r "install.sh"
 		then
 			command source "install.sh"
 		fi
 	}
 
-	run()
-	{
+	function run() {
 		command local action
 		command local module
 		command local path
@@ -233,8 +221,7 @@
 		command return "${status}"
 	}
 
-	parse()
-	{
+	function parse() {
 		command local line
 
 		command test -r "${1}" || command return 0
@@ -258,8 +245,7 @@
 		done < "${1}"
 	}
 
-	modules()
-	{
+	function modules() {
 		command local -A exclude
 		command local -a modules
 		command local module
@@ -343,8 +329,7 @@
 		command return "${status}"
 	}
 
-	main()
-	{
+	function main() {
 		command set -uo pipefail
 
 		command export XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.local/cache}"
@@ -386,8 +371,6 @@
 		#
 		# Modules
 		#
-
-		command local modules
 
 		modules "${@}"
 		command test "${?}" -eq 0 || command exit 1

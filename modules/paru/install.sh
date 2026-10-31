@@ -6,7 +6,7 @@ then
 
 		command local build
 
-		build="$(mktemp -d)"
+		build="$(command mktemp -d)"
 
 		command git clone "https://aur.archlinux.org/paru.git" "${build}/paru"
 

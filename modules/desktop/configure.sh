@@ -1,10 +1,9 @@
-post()
-{
+function post() {
 	#
 	# Services
 	#
 
-	command systemctl --user enable umbriel-events.service
+	command systemctl --user --root=/ enable umbriel-events.service
 
 	#
 	# XDG User Directories
@@ -28,8 +27,11 @@ post()
 
 	user="$(command whoami)"
 
-	prompt "Your name: " && command read name
-	command sudo usermod -c "${name}" "${user}"
+	if command test -z "$(command getent passwd "${user}" | command cut -d ":" -f 5)"
+	then
+		prompt "Your name: " && command read -r name
+		command sudo usermod -c "${name}" "${user}"
+	fi
 
 	#
 	# Greeter
@@ -38,8 +40,8 @@ post()
 	command sudo noctalia-greeter passwordless-sync enable "${user}"
 	command sudo systemctl enable greetd.service
 
-	command unset user
-	command unset name
+	command unset -v user
+	command unset -v name
 
 	if changed
 	then

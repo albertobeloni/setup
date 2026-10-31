@@ -1,4 +1,3 @@
-require("cmdline")
 require("colors")
 require("statuscolumn")
 require("statusline")
@@ -9,6 +8,7 @@ require("treesitter")
 -- Interface
 -- ------------------------------------------------------------------------------
 
+vim.o.cmdheight = 0
 vim.o.cursorline = true
 vim.o.guicursor = "n-v-c:hor25,i-ci-ve:hor25,r-cr:hor25,o:hor25"
 vim.o.ruler = false
@@ -16,7 +16,14 @@ vim.o.showmode = false
 vim.o.termguicolors = true
 
 vim.opt.fillchars:append({ eob = " " })
-vim.opt.shortmess:append("I")
+
+-- ------------------------------------------------------------------------------
+-- Messages
+-- ------------------------------------------------------------------------------
+
+vim.o.report = 9999
+
+vim.opt.shortmess:append("acIsSW")
 
 -- ------------------------------------------------------------------------------
 -- Indentation

@@ -1,4 +1,3 @@
-post()
-{
-	command systemctl --user enable oo7-daemon.service
+function post() {
+	command systemctl --user --root=/ enable oo7-daemon.service
 }
