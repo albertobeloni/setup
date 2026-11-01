@@ -1,1 +1,1 @@
-path_prepend "${HOME}/.local/bin"
+prepend "${HOME}/.local/bin"

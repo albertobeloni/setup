@@ -1,1 +1,2 @@
-distribution arch && packages vulkan-intel intel-media-driver
+distribution arch && packages vulkan-intel
+distribution arch && packages intel-media-driver

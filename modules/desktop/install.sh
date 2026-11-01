@@ -9,16 +9,26 @@
 distribution arch && packages plymouth
 
 #
+# Wayland Compositor
+#
+
+distribution arch && aur umbriel-git
+distribution arch && aur xdg-desktop-portal-umbriel-git
+distribution arch && packages xdg-desktop-portal-gnome
+
+#
 # Shell and Greeter
 #
 
-distribution arch && packages noctalia noctalia-greeter
+distribution arch && packages noctalia
+distribution arch && packages noctalia-greeter
 
 #
 # XDG Directories
 #
 
 distribution arch && packages xdg-user-dirs
+distribution arch && packages xdg-user-dirs-gtk
 
 #
 # Support
@@ -33,12 +43,6 @@ distribution arch && packages playerctl
 distribution arch && packages rtkit
 distribution arch && packages wireplumber
 distribution arch && packages wl-clipboard
-
-#
-# Wayland Compositor
-#
-
-distribution arch && aur umbriel-git xdg-desktop-portal-umbriel-git
 
 #
 # Themes

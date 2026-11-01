@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Music;Audio;AudioVideo;
+Comment=Play audio files
+Comment[pt_BR]=Reproduza arquivos de áudio
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=org.gnome.Decibels --file-forwarding org.gnome.Decibels @@u %U @@
+Icon=multimedia-audio-player
+Keywords=Decibels;Audio;Sound;Music;Player;
+Keywords[pt_BR]=Decibels;Áudio;Som;Música;Reprodutor;
+MimeType=audio/mpeg;audio/wav;audio/x-aac;audio/x-aiff;audio/x-ape;audio/x-flac;audio/x-m4a;audio/x-m4b;audio/x-mp1;audio/x-mp2;audio/x-mp3;audio/x-mpg;audio/x-mpeg;audio/x-mpegurl;audio/x-opus+ogg;audio/x-pn-aiff;audio/x-pn-au;audio/x-pn-wav;audio/x-speex;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wavpack;
+Name=Audio Player
+Name[pt_BR]=Reprodutor de áudio
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Decibels
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Decibels

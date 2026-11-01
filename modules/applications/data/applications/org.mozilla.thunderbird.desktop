@@ -1,0 +1,29 @@
+[Desktop Entry]
+Actions=ComposeMessage;OpenAddressBook;
+Categories=Network;Email;
+Comment=Read, write and organize email
+Comment[pt_BR]=Leia, escreva e organize e-mails
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird --file-forwarding org.mozilla.thunderbird @@u %u @@
+Icon=mail-client
+Keywords=Thunderbird;Mozilla;Email;Mail;Newsgroup;Feed;RSS;
+Keywords[pt_BR]=Thunderbird;Mozilla;Email;E-mail;Correio;Newsgroup;Feed;RSS;
+MimeType=message/rfc822;x-scheme-handler/mailto;x-scheme-handler/net.thunderbird;text/calendar;text/vcard;text/x-vcard;x-scheme-handler/webcal;x-scheme-handler/webcals;x-scheme-handler/mid;
+Name=Mail
+Name[pt_BR]=E-mail
+StartupNotify=true
+StartupWMClass=thunderbird
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.mozilla.thunderbird
+Type=Application
+Version=1.5
+X-Flatpak=org.mozilla.thunderbird
+
+[Desktop Action ComposeMessage]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird org.mozilla.thunderbird -compose
+Name=Write New Message
+Name[pt_BR]=Escrever nova mensagem
+
+[Desktop Action OpenAddressBook]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird org.mozilla.thunderbird -addressbook
+Name=Open the Address Book
+Name[pt_BR]=Abrir catálogo de endereços

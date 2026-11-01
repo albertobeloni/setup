@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Office;Calendar;Core;
+Comment=Access and manage your calendars
+Comment[pt_BR]=Acesse e gerencie suas agendas
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-calendar --file-forwarding org.gnome.Calendar @@u %U @@
+Icon=x-office-calendar
+Keywords=GNOME Calendar;Event;Reminder;Schedule;
+Keywords[pt_BR]=Agenda do GNOME;Calendário;Evento;Lembrete;Compromisso;
+MimeType=text/calendar;
+Name=Calendar
+Name[pt_BR]=Agenda
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Calendar
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Calendar

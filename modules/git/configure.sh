@@ -9,8 +9,5 @@ function post() {
 
 		command git config --file "${XDG_CONFIG_HOME:-${HOME}/.local/config}/git/local" user.name "${name}"
 		command git config --file "${XDG_CONFIG_HOME:-${HOME}/.local/config}/git/local" user.email "${email}"
-
-		command unset -v name
-		command unset -v email
 	fi
 }

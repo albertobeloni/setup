@@ -2,6 +2,7 @@ command alias ls="ls --color=auto"
 
 command alias copy="cp -r"
 command alias create="mkdir -p"
+command alias edit='${EDITOR:-vi}'
 command alias list="ls -1"
 command alias move="mv -f"
 command alias remove="rm -fr"

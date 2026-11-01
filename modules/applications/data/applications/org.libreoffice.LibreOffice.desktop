@@ -1,0 +1,50 @@
+[Desktop Entry]
+Actions=Writer;Calc;Impress;Draw;Base;Math;
+Categories=Office;
+Comment=Create text documents, spreadsheets, presentations, drawings, formulas and databases
+Comment[pt_BR]=Crie documentos de texto, planilhas, apresentações, desenhos, fórmulas e bancos de dados
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice @@u %U @@
+Icon=libreoffice-startcenter
+Keywords=LibreOffice;Office;Document;Spreadsheet;Presentation;Drawing;Formula;Database;
+Keywords[pt_BR]=LibreOffice;Escritório;Documento;Planilha;Apresentação;Desenho;Fórmula;Banco de dados;
+MimeType=application/vnd.openofficeorg.extension;x-scheme-handler/vnd.libreoffice.cmis;x-scheme-handler/vnd.sun.star.webdav;x-scheme-handler/vnd.sun.star.webdavs;x-scheme-handler/vnd.libreoffice.command;x-scheme-handler/ms-word;x-scheme-handler/ms-powerpoint;x-scheme-handler/ms-excel;x-scheme-handler/ms-visio;x-scheme-handler/ms-access;
+Name=Office
+Name[pt_BR]=Escritório
+StartupNotify=true
+StartupWMClass=libreoffice-startcenter
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.libreoffice.LibreOffice
+Type=Application
+Version=1.5
+X-Flatpak=org.libreoffice.LibreOffice
+X-GIO-NoFuse=true
+
+[Desktop Action Writer]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --writer
+Name=Word Processor
+Name[pt_BR]=Processador de texto
+
+[Desktop Action Calc]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --calc
+Name=Spreadsheet
+Name[pt_BR]=Planilha
+
+[Desktop Action Impress]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --impress
+Name=Presentation
+Name[pt_BR]=Apresentação
+
+[Desktop Action Draw]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --draw
+Name=Drawing
+Name[pt_BR]=Desenho
+
+[Desktop Action Base]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --base
+Name=Database
+Name[pt_BR]=Banco de dados
+
+[Desktop Action Math]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --math
+Name=Formula Editor
+Name[pt_BR]=Editor de fórmulas

@@ -1,1 +1,2 @@
-distribution arch && packages upower power-profiles-daemon
+distribution arch && packages upower
+distribution arch && packages power-profiles-daemon

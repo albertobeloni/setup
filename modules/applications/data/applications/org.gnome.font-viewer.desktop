@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=GTK;GNOME;Utility;
+Comment=View and install fonts
+Comment[pt_BR]=Veja e instale fontes
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-font-viewer --file-forwarding org.gnome.font-viewer @@u %u @@
+Icon=preferences-desktop-font
+Keywords=GNOME Fonts;Font;Typeface;Typography;
+Keywords[pt_BR]=Fontes do GNOME;Fonte;Tipo de letra;Tipografia;
+MimeType=application/x-font-ttf;application/x-font-pcf;application/x-font-type1;application/x-font-otf;font/ttf;font/otf;font/woff;font/collection;
+Name=Fonts
+Name[pt_BR]=Fontes
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.font-viewer
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.font-viewer

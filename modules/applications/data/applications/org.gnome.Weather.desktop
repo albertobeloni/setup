@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Utility;Core;
+Comment=Show weather conditions and forecast
+Comment[pt_BR]=Mostre as condições do tempo e a previsão
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gapplication org.gnome.Weather launch org.gnome.Weather
+Icon=weather
+Keywords=GNOME Weather;Forecast;Temperature;
+Keywords[pt_BR]=Meteorologia do GNOME;Tempo;Previsão;Temperatura;
+Name=Weather
+Name[pt_BR]=Meteorologia
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Weather
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Weather
+X-Geoclue-Reason=Allows weather information to be displayed for your location.

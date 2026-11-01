@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function bash_include() {
+function include() {
 	command local directory
 
 	directory="${1}"
@@ -16,13 +16,9 @@ function bash_include() {
 				command source "${file}"
 			fi
 		done
-
-		command unset -v file
 	fi
-
-	command unset -v directory
 }
 
-bash_include "${XDG_CONFIG_HOME:-${HOME}/.local/config}/bash/bash.d"
+include "${XDG_CONFIG_HOME:-${HOME}/.local/config}/bash/bash.d"
 
-command unset -f bash_include
+command unset -f include

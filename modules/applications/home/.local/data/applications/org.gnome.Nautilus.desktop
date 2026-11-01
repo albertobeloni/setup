@@ -1,0 +1,23 @@
+[Desktop Entry]
+Actions=new-window;
+Categories=GNOME;GTK;Utility;Core;FileManager;
+Comment=Access and organize files
+Comment[pt_BR]=Acesse e organize arquivos
+DBusActivatable=true
+Exec=nautilus --new-window %U
+Icon=system-file-manager
+Keywords=Nautilus;Folder;Manager;Explore;Disk;Filesystem;
+Keywords[pt_BR]=Nautilus;Pasta;Gerenciador;Explorar;Disco;Sistema de arquivos;
+MimeType=inode/directory;application/x-7z-compressed;application/x-7z-compressed-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-gzip;application/x-lha;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-tar;application/x-tarz;application/x-xar;application/x-xz;application/x-xz-compressed-tar;application/zip;application/gzip;application/bzip2;application/x-bzip2-compressed-tar;application/vnd.rar;application/zstd;application/x-zstd-compressed-tar
+Name=Files
+Name[pt_BR]=Arquivos
+StartupNotify=true
+Terminal=false
+TryExec=nautilus
+Type=Application
+Version=1.5
+
+[Desktop Action new-window]
+Exec=nautilus --new-window
+Name=New Window
+Name[pt_BR]=Nova janela

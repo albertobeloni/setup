@@ -1,5 +1,12 @@
 function post() {
 	#
+	# Themes
+	#
+
+	command gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+	command gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
+	#
 	# Services
 	#
 
@@ -10,6 +17,7 @@ function post() {
 	#
 
 	command xdg-user-dirs-update
+	command xdg-user-dirs-gtk-update
 
 	#
 	# Screenshot and Wallpaper Directories
@@ -39,9 +47,6 @@ function post() {
 
 	command sudo noctalia-greeter passwordless-sync enable "${user}"
 	command sudo systemctl enable greetd.service
-
-	command unset -v user
-	command unset -v name
 
 	if changed
 	then

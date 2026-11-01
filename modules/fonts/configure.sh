@@ -17,8 +17,6 @@ function post() {
 	command ln -sf "/usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf" "${directory}/10-sub-pixel.conf"
 	command ln -sf "/usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf" "${directory}/11-lcdfilter.conf"
 
-	command unset -v directory
-
 	#
 	# GTK rendering settings
 	#
@@ -27,9 +25,9 @@ function post() {
 	command gsettings set org.gnome.desktop.interface font-hinting "slight"
 	command gsettings set org.gnome.desktop.interface font-rgba-order "rgb"
 
-	command gsettings set org.gnome.desktop.interface font-name "sans-serif 9"
-	command gsettings set org.gnome.desktop.interface document-font-name "sans-serif 9"
-	command gsettings set org.gnome.desktop.interface monospace-font-name "monospace 9"
+	command gsettings set org.gnome.desktop.interface font-name "sans-serif 9.75"
+	command gsettings set org.gnome.desktop.interface document-font-name "sans-serif 9.75"
+	command gsettings set org.gnome.desktop.interface monospace-font-name "monospace 9.75"
 
 	command fc-cache -fv
 }

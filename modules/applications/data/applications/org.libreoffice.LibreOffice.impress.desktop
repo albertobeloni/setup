@@ -1,0 +1,27 @@
+[Desktop Entry]
+Actions=NewDocument;
+Categories=Office;Presentation;
+Comment=Create and edit presentations for slideshows, meetings and Web pages
+Comment[pt_BR]=Crie e edite apresentações para slides, reuniões e páginas web
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --impress @@u %U @@
+Icon=libreoffice-impress
+Keywords=LibreOffice Impress;Slideshow;Slides;PowerPoint;odp;ppt;pptx;
+Keywords[pt_BR]=LibreOffice Impress;Slides;PowerPoint;odp;ppt;pptx;
+MimeType=application/mspowerpoint;application/vnd.apple.keynote;application/vnd.ms-powerpoint;application/vnd.ms-powerpoint.presentation.macroEnabled.12;application/vnd.ms-powerpoint.slideshow.macroEnabled.12;application/vnd.ms-powerpoint.template.macroEnabled.12;application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.presentation-flat-xml;application/vnd.oasis.opendocument.presentation-template;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.slide;application/vnd.openxmlformats-officedocument.presentationml.slideshow;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.stardivision.impress;application/vnd.sun.xml.impress;application/vnd.sun.xml.impress.template;application/x-iwork-keynote-sffkey;application/x-starimpress;
+Name=Presentation
+Name[pt_BR]=Apresentação
+NoDisplay=true
+StartupNotify=true
+StartupWMClass=libreoffice-impress
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.libreoffice.LibreOffice
+Type=Application
+Version=1.5
+X-Flatpak=org.libreoffice.LibreOffice
+X-GIO-NoFuse=true
+
+[Desktop Action NewDocument]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --impress
+Icon=document-new
+Name=New Presentation
+Name[pt_BR]=Nova apresentação

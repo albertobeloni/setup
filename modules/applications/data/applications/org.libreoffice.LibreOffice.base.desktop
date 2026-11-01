@@ -1,0 +1,27 @@
+[Desktop Entry]
+Actions=NewDocument;
+Categories=Office;Database;
+Comment=Manage databases, create queries and reports to track and manage your information
+Comment[pt_BR]=Gerencie bancos de dados e crie consultas e relatórios para acompanhar e gerenciar suas informações
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --base @@u %U @@
+Icon=libreoffice-base
+Keywords=LibreOffice Base;Query;Report;SQL;odb;
+Keywords[pt_BR]=LibreOffice Base;Consulta;Relatório;SQL;odb;
+MimeType=application/vnd.oasis.opendocument.base;application/vnd.sun.xml.base;
+Name=Database
+Name[pt_BR]=Banco de dados
+NoDisplay=true
+StartupNotify=true
+StartupWMClass=libreoffice-base
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.libreoffice.LibreOffice
+Type=Application
+Version=1.5
+X-Flatpak=org.libreoffice.LibreOffice
+X-GIO-NoFuse=true
+
+[Desktop Action NewDocument]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --base
+Icon=document-new
+Name=New Database
+Name[pt_BR]=Novo banco de dados

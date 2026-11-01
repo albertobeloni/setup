@@ -21,5 +21,23 @@ function aur() {
 		modules "paru"
 	fi
 
-	command paru -S --cleanafter --skipreview --removemake=yes --noconfirm --needed "${@}"
+	command local package
+	command local -a missing
+
+	missing=()
+
+	for package in "${@}"
+	do
+		if ! command pacman -Q "${package}" > "/dev/null" 2>&1
+		then
+			missing+=("${package}")
+		fi
+	done
+
+	if command test "${#missing[@]}" -eq 0
+	then
+		command return 0
+	fi
+
+	command paru -S --cleanafter --skipreview --removemake=yes --noconfirm --needed "${missing[@]}"
 }

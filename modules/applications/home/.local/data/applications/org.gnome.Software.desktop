@@ -1,0 +1,17 @@
+[Desktop Entry]
+Categories=GNOME;GTK;System;PackageManager;
+Comment=Add, remove or update software on this computer
+Comment[pt_BR]=Adicione, remova ou atualize programas neste computador
+DBusActivatable=true
+Exec=gnome-software %U
+Icon=system-software-install
+Keywords=GNOME Software;Updates;Upgrade;Repositories;Install;Uninstall;Program;Flatpak;
+Keywords[pt_BR]=GNOME Software;Atualizações;Atualizar;Repositórios;Instalar;Desinstalar;Programa;Flatpak;
+MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
+Name=Software
+Name[pt_BR]=Programas
+StartupNotify=true
+Terminal=false
+TryExec=gnome-software
+Type=Application
+Version=1.5

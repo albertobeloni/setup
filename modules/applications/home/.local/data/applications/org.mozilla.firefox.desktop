@@ -1,0 +1,35 @@
+[Desktop Entry]
+Actions=new-window;new-private-window;open-profile-manager;
+Categories=GNOME;GTK;Network;WebBrowser;
+Comment=Browse websites and use web applications
+Comment[pt_BR]=Navegue em sites e use aplicativos web
+DBusActivatable=false
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox @@u %u @@
+Icon=web-browser
+Keywords=Firefox;Mozilla;Internet;WWW;Browser;Web;
+Keywords[pt_BR]=Firefox;Mozilla;Internet;WWW;Navegador;Web;
+MimeType=application/json;application/pdf;application/rdf+xml;application/rss+xml;application/x-xpinstall;application/xhtml+xml;application/xml;audio/flac;audio/ogg;audio/webm;image/avif;image/gif;image/jpeg;image/png;image/svg+xml;image/webp;text/html;text/xml;video/ogg;video/webm;x-scheme-handler/chrome;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/mailto;
+Name=Web Browser
+Name[pt_BR]=Navegador web
+StartupNotify=true
+StartupWMClass=firefox
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.mozilla.firefox
+Type=Application
+Version=1.5
+X-Flatpak=org.mozilla.firefox
+
+[Desktop Action new-window]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --new-window @@u %u @@
+Name=New Window
+Name[pt_BR]=Nova janela
+
+[Desktop Action new-private-window]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --private-window @@u %u @@
+Name=New Private Window
+Name[pt_BR]=Nova janela privativa
+
+[Desktop Action open-profile-manager]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox org.mozilla.firefox --ProfileManager
+Name=Open Profile Manager
+Name[pt_BR]=Abrir gerenciador de perfis

@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=System;TerminalEmulator;
+Comment=Run commands and programs in a command-line shell
+Comment[pt_BR]=Execute comandos e programas em um shell de linha de comando
+Exec=kitty
+Icon=utilities-terminal
+Keywords=Kitty;Shell;Prompt;Command;Commandline;Console;
+Keywords[pt_BR]=Kitty;Shell;Prompt;Comando;Linha de comando;Console;
+Name=Terminal
+Name[pt_BR]=Terminal
+StartupNotify=true
+Terminal=false
+TryExec=kitty
+Type=Application
+Version=1.5
+X-TerminalArgAppId=--class
+X-TerminalArgDir=--working-directory
+X-TerminalArgExec=--
+X-TerminalArgHold=--hold
+X-TerminalArgTitle=--title

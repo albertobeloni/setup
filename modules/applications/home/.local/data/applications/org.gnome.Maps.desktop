@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Utility;
+Comment=Find places, get directions and explore maps of the world
+Comment[pt_BR]=Encontre lugares, obtenha rotas e explore mapas do mundo
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gapplication --file-forwarding org.gnome.Maps launch org.gnome.Maps @@u %U @@
+Icon=maps
+Keywords=GNOME Maps;Map;Location;Directions;Route;Navigation;
+Keywords[pt_BR]=Mapas do GNOME;Mapa;Localização;Direções;Rota;Navegação;
+MimeType=application/vnd.geo+json;x-scheme-handler/geo;x-scheme-handler/maps;application/vnd.google-earth.kml+xml;application/gpx+xml;application/fits;
+Name=Maps
+Name[pt_BR]=Mapas
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Maps
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Maps

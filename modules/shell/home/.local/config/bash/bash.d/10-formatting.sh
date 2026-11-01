@@ -1,4 +1,4 @@
-function __terminal_color() {
+function color() {
 	command local -i base
 	command local code
 	command local hex
@@ -38,16 +38,30 @@ function __terminal_color() {
 	reply="$(( ${base} + ${code} ))"
 }
 
-function __terminal_format() {
-	command local format
+function foreground() {
+	command local reply
+
+	color "${1}" 30 "${2:-false}" || command return
+	command printf '\033[%sm' "${reply}"
+}
+
+function background() {
+	command local reply
+
+	color "${1}" 40 "${2:-false}" || command return
+	command printf '\033[%sm' "${reply}"
+}
+
+function format() {
+	command local style
 	command local code
 	command local codes
 
 	codes=""
 
-	for format in "${@}"
+	for style in "${@}"
 	do
-		case "${format}" in
+		case "${style}" in
 			reset) code=0 ;;
 			bold) code=1 ;;
 			dim) code=2 ;;
@@ -68,63 +82,12 @@ function __terminal_format() {
 			*) command return 1 ;;
 		esac
 
-		codes+=${codes:+;}${code}
+		codes+="${codes:+;}${code}"
 	done
 
-	reply="${codes}"
+	command printf '\033[%sm' "${codes}"
 }
 
-function __terminal_escape() {
-	command local prompt
-
-	prompt="${2:-false}"
-
-	if [[ "${prompt}" == "false" ]]
-	then
-		command printf '\033[%sm' "${1}"
-	else
-		command printf '\001\033[%sm\002' "${1}"
-	fi
-}
-
-function bash_background() {
-	command local reply
-
-	__terminal_color "${1}" 40 "${2:-false}" || command return
-	__terminal_escape "${reply}"
-}
-
-function bash_foreground() {
-	command local reply
-
-	__terminal_color "${1}" 30 "${2:-false}" || command return
-	__terminal_escape "${reply}"
-}
-
-function bash_format() {
-	command local reply
-
-	__terminal_format "${@}" || command return
-	__terminal_escape "${reply}"
-}
-
-function prompt_background() {
-	command local reply
-
-	__terminal_color "${1}" 40 "${2:-false}" || command return
-	__terminal_escape "${reply}" "true"
-}
-
-function prompt_foreground() {
-	command local reply
-
-	__terminal_color "${1}" 30 "${2:-false}" || command return
-	__terminal_escape "${reply}" "true"
-}
-
-function prompt_format() {
-	command local reply
-
-	__terminal_format "${@}" || command return
-	__terminal_escape "${reply}" "true"
+function prompt() {
+	command printf '\001%s\002' "${1}"
 }

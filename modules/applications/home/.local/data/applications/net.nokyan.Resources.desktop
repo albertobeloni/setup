@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=System;
+Comment=Monitor processes and the use of system resources
+Comment[pt_BR]=Monitore processos e o uso dos recursos do sistema
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=resources net.nokyan.Resources
+Icon=utilities-system-monitor
+Keywords=Resources;Process;Task;CPU;Memory;Network;GPU;
+Keywords[pt_BR]=Resources;Processo;Tarefa;CPU;Memória;Rede;GPU;
+Name=System Monitor
+Name[pt_BR]=Monitor do sistema
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/net.nokyan.Resources
+Type=Application
+Version=1.5
+X-Flatpak=net.nokyan.Resources

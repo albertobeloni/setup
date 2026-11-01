@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Graphics;Scanning;
+Comment=Make a digital copy of your photos and documents
+Comment[pt_BR]=Faça uma cópia digital de suas fotos e documentos
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=simple-scan org.gnome.SimpleScan
+Icon=scanner
+Keywords=Simple Scan;Scan;Scanner;Document;Photo;
+Keywords[pt_BR]=Simple Scan;Digitalizar;Scanner;Documento;Foto;
+Name=Document Scanner
+Name[pt_BR]=Digitalizador de documentos
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.SimpleScan
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.SimpleScan

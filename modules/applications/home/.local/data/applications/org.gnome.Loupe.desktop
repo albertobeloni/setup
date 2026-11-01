@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Graphics;2DGraphics;RasterGraphics;Viewer;
+Comment=View and edit images
+Comment[pt_BR]=Veja e edite imagens
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=loupe --file-forwarding org.gnome.Loupe @@u %U @@
+Icon=image-viewer
+Keywords=Loupe;Picture;Photo;Graphics;Slideshow;
+Keywords[pt_BR]=Loupe;Imagem;Foto;Gráficos;Apresentação de slides;
+MimeType=image/apng;image/bmp;image/gif;image/jp2;image/jpeg;image/png;image/qoi;image/tiff;image/x-jp2-codestream;image/vnd.microsoft.icon;image/webp;image/x-dds;image/x-exr;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-qoi;image/x-tga;image/x-win-bitmap;image/x-xbitmap;image/x-xpixmap;image/svg+xml;image/svg+xml-compressed;image/avif;image/heic;image/jxl;
+Name=Image Viewer
+Name[pt_BR]=Visualizador de imagens
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Loupe
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Loupe

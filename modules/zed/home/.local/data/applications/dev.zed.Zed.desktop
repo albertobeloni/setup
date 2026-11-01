@@ -1,0 +1,22 @@
+[Desktop Entry]
+Actions=NewWorkspace;
+Categories=Utility;TextEditor;Development;IDE;
+Comment=Write, edit and navigate code in software projects
+Comment[pt_BR]=Escreva, edite e navegue pelo código de projetos de software
+Exec=zeditor %U
+Icon=applications-development
+Keywords=Zed;Code;IDE;Development;Programming;Editor;
+Keywords[pt_BR]=Zed;Código;IDE;Desenvolvimento;Programação;Editor;
+MimeType=text/plain;application/x-zerosize;x-scheme-handler/zed;
+Name=Code Editor
+Name[pt_BR]=Editor de código
+StartupNotify=true
+Terminal=false
+TryExec=zeditor
+Type=Application
+Version=1.5
+
+[Desktop Action NewWorkspace]
+Exec=zeditor --new %U
+Name=Open a new workspace
+Name[pt_BR]=Abrir um novo espaço de trabalho

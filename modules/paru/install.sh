@@ -2,7 +2,8 @@ if distribution arch
 then
 	if ! command -v "paru" > "/dev/null"
 	then
-		packages git base-devel
+		packages git
+		packages base-devel
 
 		command local build
 

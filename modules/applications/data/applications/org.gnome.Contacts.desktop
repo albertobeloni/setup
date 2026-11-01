@@ -1,0 +1,17 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Office;ContactManagement;
+Comment=Manage your contacts
+Comment[pt_BR]=Gerencie seus contatos
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-contacts org.gnome.Contacts
+Icon=x-office-address-book
+Keywords=GNOME Contacts;Contact;Address Book;Friends;
+Keywords[pt_BR]=Contatos do GNOME;Contato;Catálogo de endereços;Amigos;
+Name=Contacts
+Name[pt_BR]=Contatos
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Contacts
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Contacts

@@ -1,7 +1,7 @@
 function post() {
 	command local plugin
 
-	plugin="${XDG_DATA_HOME}/nvim/site/pack/setup/start/nvim-treesitter"
+	plugin="${XDG_DATA_HOME:-${HOME}/.local/data}/nvim/site/pack/setup/start/nvim-treesitter"
 
 	if command test -d "${plugin}/.git"
 	then

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Categories=System;Settings;HardwareSettings;Printing;GTK;
+Comment=Add and configure printers
+Comment[pt_BR]=Adicione e configure impressoras
+Exec=system-config-printer
+Icon=printer
+Keywords=Print Settings;Printer;Queue;Print;CUPS;
+Keywords[pt_BR]=Configurações de impressão;Impressora;Fila;Imprimir;CUPS;
+Name=Printers
+Name[pt_BR]=Impressoras
+StartupNotify=true
+Terminal=false
+TryExec=system-config-printer
+Type=Application
+Version=1.5

@@ -1,0 +1,27 @@
+[Desktop Entry]
+Actions=NewDocument;
+Categories=Office;Spreadsheet;
+Comment=Perform calculations, analyze information and manage lists in spreadsheets
+Comment[pt_BR]=Faça cálculos, analise informações e gerencie listas em planilhas
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --calc @@u %U @@
+Icon=libreoffice-calc
+Keywords=LibreOffice Calc;Accounting;Statistics;Excel;ods;xls;xlsx;csv;
+Keywords[pt_BR]=LibreOffice Calc;Contabilidade;Estatística;Excel;ods;xls;xlsx;csv;
+MimeType=application/clarisworks;application/csv;application/excel;application/msexcel;application/tab-separated-values;application/vnd.apache.parquet;application/vnd.apple.numbers;application/vnd.lotus-1-2-3;application/vnd.ms-excel;application/vnd.ms-excel.sheet.binary.macroEnabled.12;application/vnd.ms-excel.sheet.macroEnabled.12;application/vnd.ms-excel.template.macroEnabled.12;application/vnd.ms-works;application/vnd.oasis.opendocument.chart;application/vnd.oasis.opendocument.chart-template;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-flat-xml;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.openxmlformats-officedocument.spreadsheetml.template;application/vnd.stardivision.calc;application/vnd.stardivision.chart;application/vnd.sun.xml.calc;application/vnd.sun.xml.calc.template;application/x-123;application/x-dbase;application/x-dbf;application/x-dos_ms_excel;application/x-excel;application/x-gnumeric;application/x-iwork-numbers-sffnumbers;application/x-ms-excel;application/x-msexcel;application/x-quattropro;application/x-starcalc;application/x-starchart;text/comma-separated-values;text/csv;text/spreadsheet;text/tab-separated-values;text/x-comma-separated-values;text/x-csv;
+Name=Spreadsheet
+Name[pt_BR]=Planilha
+NoDisplay=true
+StartupNotify=true
+StartupWMClass=libreoffice-calc
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.libreoffice.LibreOffice
+Type=Application
+Version=1.5
+X-Flatpak=org.libreoffice.LibreOffice
+X-GIO-NoFuse=true
+
+[Desktop Action NewDocument]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --calc
+Icon=document-new
+Name=New Spreadsheet
+Name[pt_BR]=Nova planilha

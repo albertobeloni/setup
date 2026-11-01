@@ -1,6 +1,9 @@
+applications
 battery
 bluetooth
 desktop
+firewall
+firmware
 fonts
 git
 intel
@@ -11,5 +14,4 @@ node
 nvidia
 shell
 ssh
-yazi
 zed

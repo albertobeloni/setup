@@ -1,1 +1,2 @@
-distribution arch && packages nodejs npm
+distribution arch && packages nodejs
+distribution arch && packages npm

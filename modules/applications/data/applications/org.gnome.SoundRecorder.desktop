@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Audio;AudioVideo;
+Comment=Record sound via the microphone and play it back
+Comment[pt_BR]=Grave sons pelo microfone e reproduza-os
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-sound-recorder org.gnome.SoundRecorder
+Icon=audio-recorder
+Keywords=GNOME Sound Recorder;Audio;Record;Microphone;Voice;
+Keywords[pt_BR]=Gravador de Som do GNOME;Áudio;Gravar;Microfone;Voz;
+Name=Sound Recorder
+Name[pt_BR]=Gravador de som
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.SoundRecorder
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.SoundRecorder

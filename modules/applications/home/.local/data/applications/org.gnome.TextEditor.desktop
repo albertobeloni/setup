@@ -1,0 +1,24 @@
+[Desktop Entry]
+Actions=new-window;
+Categories=GNOME;GTK;Utility;TextEditor;
+Comment=View and edit text files
+Comment[pt_BR]=Veja e edite arquivos de texto
+DBusActivatable=true
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor --file-forwarding org.gnome.TextEditor @@u %U @@
+Icon=accessories-text-editor
+Keywords=GNOME Text Editor;Text;Plaintext;Write;Notepad;
+Keywords[pt_BR]=Editor de Texto do GNOME;Texto;Texto puro;Escrever;Bloco de notas;
+MimeType=text/plain;application/x-zerosize;
+Name=Text Editor
+Name[pt_BR]=Editor de texto
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.TextEditor
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.TextEditor
+
+[Desktop Action new-window]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-text-editor org.gnome.TextEditor --new-window
+Name=New Window
+Name[pt_BR]=Nova janela

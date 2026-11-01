@@ -1,0 +1,27 @@
+[Desktop Entry]
+Actions=NewDocument;
+Categories=Office;Education;Science;Math;
+Comment=Create and edit scientific formulas and equations
+Comment[pt_BR]=Crie e edite fórmulas e equações científicas
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --math @@u %U @@
+Icon=libreoffice-math
+Keywords=LibreOffice Math;Formula;Equation;Math;odf;
+Keywords[pt_BR]=LibreOffice Math;Fórmula;Equação;Matemática;odf;
+MimeType=application/mathml+xml;application/vnd.oasis.opendocument.formula;application/vnd.oasis.opendocument.formula-template;application/vnd.stardivision.math;application/vnd.sun.xml.math;application/x-starmath;text/mathml;
+Name=Formula Editor
+Name[pt_BR]=Editor de fórmulas
+NoDisplay=true
+StartupNotify=true
+StartupWMClass=libreoffice-math
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.libreoffice.LibreOffice
+Type=Application
+Version=1.5
+X-Flatpak=org.libreoffice.LibreOffice
+X-GIO-NoFuse=true
+
+[Desktop Action NewDocument]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --math
+Icon=document-new
+Name=New Formula
+Name[pt_BR]=Nova fórmula

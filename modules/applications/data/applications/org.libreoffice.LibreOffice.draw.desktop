@@ -1,0 +1,27 @@
+[Desktop Entry]
+Actions=NewDocument;
+Categories=Office;FlowChart;Graphics;2DGraphics;VectorGraphics;
+Comment=Create and edit drawings, flow charts and logos
+Comment[pt_BR]=Crie e edite desenhos, fluxogramas e logotipos
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice --file-forwarding org.libreoffice.LibreOffice --draw @@u %U @@
+Icon=libreoffice-draw
+Keywords=LibreOffice Draw;Vector;Diagram;Flowchart;odg;
+Keywords[pt_BR]=LibreOffice Draw;Vetor;Diagrama;Fluxograma;odg;
+MimeType=application/clarisworks;application/pdf;application/vnd.corel-draw;application/vnd.ms-publisher;application/vnd.oasis.opendocument.graphics;application/vnd.oasis.opendocument.graphics-flat-xml;application/vnd.oasis.opendocument.graphics-template;application/vnd.quark.quarkxpress;application/vnd.stardivision.draw;application/vnd.sun.xml.draw;application/vnd.sun.xml.draw.template;application/vnd.visio;application/x-pagemaker;application/x-stardraw;application/x-wpg;image/x-emf;image/x-freehand;image/x-wmf;
+Name=Drawing
+Name[pt_BR]=Desenho
+NoDisplay=true
+StartupNotify=true
+StartupWMClass=libreoffice-draw
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.libreoffice.LibreOffice
+Type=Application
+Version=1.5
+X-Flatpak=org.libreoffice.LibreOffice
+X-GIO-NoFuse=true
+
+[Desktop Action NewDocument]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=libreoffice org.libreoffice.LibreOffice --draw
+Icon=document-new
+Name=New Drawing
+Name[pt_BR]=Novo desenho

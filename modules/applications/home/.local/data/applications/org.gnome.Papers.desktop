@@ -1,0 +1,23 @@
+[Desktop Entry]
+Actions=new-window;
+Categories=GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;
+Comment=View PDF and other multi-page documents
+Comment[pt_BR]=Veja PDFs e outros documentos de várias páginas
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=papers --file-forwarding org.gnome.Papers @@u %U @@
+Icon=document-viewer
+Keywords=Papers;PDF;Document;Viewer;Reader;
+Keywords[pt_BR]=Papers;PDF;Documento;Visualizador;Leitor;
+MimeType=application/vnd.comicbook-rar;application/vnd.comicbook+zip;application/x-cb7;application/x-cbr;application/x-cbt;application/x-cbz;application/x-ext-cb7;application/x-ext-cbr;application/x-ext-cbt;application/x-ext-cbz;application/x-ext-djv;application/x-ext-djvu;image/vnd.djvu;image/vnd.djvu+multipage;application/pdf;application/x-bzpdf;application/x-ext-pdf;application/x-gzpdf;application/x-xzpdf;application/illustrator;image/tiff;
+Name=Document Viewer
+Name[pt_BR]=Visualizador de documentos
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Papers
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Papers
+
+[Desktop Action new-window]
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=papers org.gnome.Papers
+Name=New Window
+Name[pt_BR]=Nova janela

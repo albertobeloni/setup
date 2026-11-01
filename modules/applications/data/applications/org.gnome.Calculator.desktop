@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=GNOME;GTK;Utility;Calculator;
+Comment=Perform arithmetic, scientific or financial calculations
+Comment[pt_BR]=Realize cálculos aritméticos, científicos ou financeiros
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-calculator org.gnome.Calculator
+Icon=accessories-calculator
+Keywords=GNOME Calculator;Calculation;Arithmetic;Scientific;Financial;
+Keywords[pt_BR]=Calculadora do GNOME;Cálculo;Aritmética;Científica;Financeira;
+Name=Calculator
+Name[pt_BR]=Calculadora
+StartupNotify=true
+Terminal=false
+TryExec=/var/lib/flatpak/exports/bin/org.gnome.Calculator
+Type=Application
+Version=1.5
+X-Flatpak=org.gnome.Calculator

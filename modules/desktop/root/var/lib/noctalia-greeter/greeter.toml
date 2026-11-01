@@ -10,9 +10,6 @@ power_buttons_position = "bottom-right"
 scheme_selector_position = "hidden"
 theme_mode = "dark"
 
-[appearance.wallpaper]
-fill_color = "#000000"
-
 [clock]
 enabled = false
 
