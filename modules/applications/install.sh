@@ -32,6 +32,7 @@ distribution arch && flathub org.gnome.TextEditor
 # Internet
 #
 
+distribution arch && packages speech-dispatcher
 distribution arch && flathub org.mozilla.firefox
 # distribution arch && flathub org.mozilla.thunderbird
 
