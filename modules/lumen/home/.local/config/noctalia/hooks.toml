@@ -4,3 +4,4 @@
 
 [hooks]
 wallpaper_changed = "lumen apply \"$NOCTALIA_WALLPAPER_PATH\""
+theme_mode_changed = "lumen apply"

@@ -15,5 +15,11 @@ link()
 
 vim.api.nvim_create_autocmd("ColorScheme", { callback = link })
 
-vim.o.background = "dark"
-pcall(vim.cmd.colorscheme, "custom")
+vim.api.nvim_create_autocmd("Signal", {
+	pattern = "SIGUSR1",
+	callback = function()
+		pcall(vim.cmd.colorscheme, "lumen")
+	end,
+})
+
+pcall(vim.cmd.colorscheme, "lumen")

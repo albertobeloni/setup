@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 [appearance]
-border_width = 0
+border_width = 1
 corner_radius = 4
 drag_opacity = 1.0
 opaque_fullscreen = true

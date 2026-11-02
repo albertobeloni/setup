@@ -14,7 +14,6 @@ show_cheatsheet = false
 files = [
 	"components/animations.toml",
 	"components/appearance.toml",
-	"components/colors.toml",
 	"components/effects.toml",
 	"components/environment.toml",
 	"components/inputs.toml",
@@ -30,5 +29,6 @@ files = [
 
 [include.optional]
 files = [
+	"components/lumen.toml",
 	"components/host.toml",
 ]
